@@ -1,0 +1,6 @@
+.DS_Store
+.vscode/
+
+# Design source files (too large for GitHub)
+*.fig
+*.psd

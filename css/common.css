@@ -1,0 +1,42 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+:root {
+  --color-bg: #111111;
+  --color-bg-dark: #0d0d0d;
+  --color-text: #f4f8ff;
+  --color-accent: #c1121f;
+  --color-muted: #555555;
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+.section {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
