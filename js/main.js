@@ -33,7 +33,7 @@ function initScrollReveal() {
           trigger: target,
           start: "top 85%",
           end: "bottom 15%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       });
 
@@ -48,7 +48,25 @@ function initScrollReveal() {
   ScrollTrigger.refresh();
 }
 
+function initContactEmailCopy() {
+  const emailBtn = document.querySelector(".contact-email");
+  if (!emailBtn) return;
+
+  emailBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(emailBtn.dataset.email);
+    } catch (err) {
+      return;
+    }
+
+    emailBtn.classList.add("is-copied");
+    setTimeout(() => emailBtn.classList.remove("is-copied"), 1500);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initContactEmailCopy();
+
   document.querySelectorAll('.main-nav a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {
       const targetId = link.getAttribute("href");
