@@ -197,15 +197,164 @@ function initCategoryClickFlash() {
     const name = toggle.querySelector(".category-row-name");
     if (!name) return;
 
+    const category = toggle.closest(".category-row").dataset.category;
+
     toggle.addEventListener("click", () => {
       gsap.set(name, { color: "#c1121f" });
       gsap.to(name, { color: "#f4f8ff", duration: 0.3, ease: "power1.out", overwrite: "auto" });
 
-      // TODO: GSAP ScrollToPlugin으로 해당 프로젝트 섹션으로 스크롤 이동 (추후 구현)
+      scrollToCategoryFirstCard(category);
     });
+  });
+}
+
+let projectSliderTrigger = null;
+
+function getProjectSliderScrollLength(track) {
+  const cards = track.querySelectorAll(".project-card");
+  const lastCard = cards[cards.length - 1];
+  const paddingRight = parseFloat(getComputedStyle(track).paddingRight) || 0;
+  const contentEnd = lastCard.offsetLeft + lastCard.offsetWidth + paddingRight;
+  return Math.max(contentEnd - window.innerWidth, 0);
+}
+
+function initProjectSlider() {
+  const section = document.querySelector(".project-slider");
+  if (!section || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+  gsap.registerPlugin(ScrollTrigger);
+  if (typeof ScrollToPlugin !== "undefined") gsap.registerPlugin(ScrollToPlugin);
+
+  initProjectSliderColorShift(section);
+
+  const track = section.querySelector(".project-slider-track");
+  const cards = track.querySelectorAll(".project-card");
+
+  cards.forEach((card) => {
+    const img = card.querySelector(".project-card-img");
+    if (img && img.dataset.thumb) img.src = img.dataset.thumb;
+  });
+
+  initProjectCardInteractions(cards);
+
+  if (window.matchMedia("(max-width: 768px)").matches) return;
+
+  const scrollTween = gsap.to(track, {
+    x: () => -getProjectSliderScrollLength(track),
+    ease: "none",
+    scrollTrigger: {
+      trigger: section,
+      start: "top top",
+      end: () => `+=${getProjectSliderScrollLength(track)}`,
+      pin: true,
+      scrub: true,
+      invalidateOnRefresh: true,
+    },
+  });
+
+  projectSliderTrigger = scrollTween.scrollTrigger;
+}
+
+function initProjectSliderColorShift(section) {
+  gsap.fromTo(
+    section,
+    { backgroundColor: "#f4f8ff" },
+    {
+      backgroundColor: "#0d0d0d",
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+      },
+    }
+  );
+}
+
+function initProjectCardInteractions(cards) {
+  cards.forEach((card) => {
+    const img = card.querySelector(".project-card-img");
+
+    card.addEventListener("mouseenter", () => {
+      gsap.to(img, { scale: 1.05, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+      gsap.to(card, { y: -10, duration: 0.3, ease: "power2.out", overwrite: "auto" });
+    });
+
+    card.addEventListener("mouseleave", () => {
+      gsap.to(img, { scale: 1, duration: 0.3, ease: "power2.out", overwrite: "auto" });
+      gsap.to(card, { y: 0, duration: 0.3, ease: "power2.out", overwrite: "auto" });
+    });
+
+    card.addEventListener("click", () => openProjectOverlay(card));
+  });
+}
+
+function scrollToCategoryFirstCard(category) {
+  const track = document.querySelector(".project-slider-track");
+  if (!track || !projectSliderTrigger || typeof gsap === "undefined") return;
+
+  const card =
+    category === "all"
+      ? track.querySelector(".project-card")
+      : track.querySelector(`.project-card[data-category="${category}"]`);
+  if (!card) return;
+
+  const maxX = getProjectSliderScrollLength(track);
+  if (maxX <= 0) return;
+
+  const progress = Math.min(card.offsetLeft / maxX, 1);
+  const targetY =
+    projectSliderTrigger.start + progress * (projectSliderTrigger.end - projectSliderTrigger.start);
+
+  gsap.to(window, { scrollTo: { y: targetY, autoKill: false }, duration: 1, ease: "power3.inOut" });
+}
+
+function initProjectOverlay() {
+  const overlay = document.querySelector(".project-overlay");
+  if (!overlay || typeof gsap === "undefined") return;
+
+  gsap.set(overlay, { yPercent: 100 });
+  overlay.querySelector(".project-overlay-close").addEventListener("click", closeProjectOverlay);
+}
+
+function openProjectOverlay(card) {
+  const overlay = document.querySelector(".project-overlay");
+  if (!overlay || typeof gsap === "undefined") return;
+
+  overlay.querySelector(".project-overlay-hero-img").src = card.dataset.thumb || "";
+  overlay.querySelector(".project-overlay-category").textContent =
+    card.querySelector(".project-card-category").textContent;
+  overlay.querySelector(".project-overlay-title").textContent =
+    card.querySelector(".project-card-name").textContent;
+  overlay.querySelector(".project-overlay-desc").textContent =
+    card.querySelector(".project-card-desc").textContent;
+
+  overlay.scrollTop = 0;
+  document.body.style.overflow = "hidden";
+
+  gsap.set(overlay, { pointerEvents: "auto" });
+  gsap.to(overlay, { yPercent: 0, duration: 0.6, ease: "power3.out", overwrite: "auto" });
+}
+
+function closeProjectOverlay() {
+  const overlay = document.querySelector(".project-overlay");
+  if (!overlay || typeof gsap === "undefined") return;
+
+  gsap.to(overlay, {
+    yPercent: 100,
+    duration: 0.5,
+    ease: "power3.in",
+    overwrite: "auto",
+    onComplete: () => {
+      gsap.set(overlay, { pointerEvents: "none" });
+      document.body.style.overflow = "";
+    },
   });
 }
 
 document.addEventListener("DOMContentLoaded", initIntroAnimation);
 document.addEventListener("DOMContentLoaded", initCategoryHoverFx);
 document.addEventListener("DOMContentLoaded", initCategoryClickFlash);
+document.addEventListener("DOMContentLoaded", initProjectSlider);
+document.addEventListener("DOMContentLoaded", initProjectOverlay);

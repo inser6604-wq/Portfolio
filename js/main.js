@@ -24,7 +24,7 @@ function initScrollReveal() {
     gsap.set(targets, { opacity: 0, y: 40 });
 
     targets.forEach((target) => {
-      gsap.to(target, {
+      const tween = gsap.to(target, {
         opacity: 1,
         y: 0,
         duration: 0.8,
@@ -36,6 +36,11 @@ function initScrollReveal() {
           toggleActions: "play reverse play reverse",
         },
       });
+
+      if (tween.scrollTrigger.start <= 0) {
+        tween.scrollTrigger.kill();
+        gsap.set(target, { opacity: 1, y: 0 });
+      }
     });
   });
 
