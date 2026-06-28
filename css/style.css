@@ -436,77 +436,108 @@
   }
 }
 
-#category {
-  background-color: var(--color-bg-dark);
-  padding: 80px 120px;
-}
-
-.category-list {
-  list-style: none;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.category-item {
+.category-section {
   position: relative;
-  border-bottom: 1px solid #333;
-  cursor: pointer;
-  overflow: visible;
+  background-color: var(--color-bg-dark);
+  height: 100vh;
+  overflow: hidden;
+  cursor: none;
 }
 
-.category-item:first-child {
-  border-top: 1px solid #333;
+.category-row-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.category-name {
+.category-row {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(244, 248, 255, 0.15);
+}
+
+.category-row:first-child {
+  border-top: 1px solid rgba(244, 248, 255, 0.15);
+}
+
+.category-row-toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-left: 4vw;
+  text-align: left;
+  cursor: none;
+}
+
+.category-row-name {
   display: block;
-  padding: clamp(12px, 2vw, 24px) 0;
   font-family: var(--font-display);
-  font-size: clamp(60px, 10vw, 140px);
+  font-size: clamp(40px, 8.5vw, 180px);
   line-height: 1;
   color: var(--color-text);
-  text-transform: lowercase;
-  transition: color 0.2s ease;
+  text-transform: uppercase;
 }
 
-.category-item:hover .category-name {
-  color: var(--color-accent);
-}
-
-.category-thumb {
+.hover-preview {
   position: fixed;
-  left: 0;
   top: 0;
-  z-index: 20;
-  width: 260px;
-  border-radius: 12px;
+  left: 0;
+  width: 240px;
+  height: 160px;
+  border-radius: 6px;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  transform: rotate(-5deg) scale(0.95);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  will-change: transform, left, top;
+  z-index: 60;
+  will-change: transform, opacity;
 }
 
-.category-thumb img {
+.hover-preview-img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 282 / 179;
+  height: 100%;
   object-fit: cover;
 }
 
-.category-item:hover .category-thumb {
-  opacity: 1;
-  transform: rotate(-3deg) scale(1);
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 61;
+  will-change: transform, opacity;
+}
+
+.custom-cursor-arrow {
+  width: 7px;
+  height: 7px;
+}
+
+.custom-cursor-arrow path {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 @media (max-width: 768px) {
-  #category {
-    padding: 60px 24px;
+  .category-row-toggle {
+    padding-left: 24px;
   }
 
-  .category-thumb {
-    width: 200px;
+  .hover-preview {
+    width: 160px;
+    height: 110px;
   }
 }

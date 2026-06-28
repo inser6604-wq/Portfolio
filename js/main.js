@@ -23,43 +23,24 @@ function initScrollReveal() {
 
     gsap.set(targets, { opacity: 0, y: 40 });
 
-    gsap.to(targets, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out",
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
-        end: "bottom 20%",
-        toggleActions: "play reverse play reverse",
-      },
+    targets.forEach((target) => {
+      gsap.to(target, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: target,
+          start: "top 85%",
+          end: "bottom 15%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
     });
   });
 
+  window.addEventListener("load", () => ScrollTrigger.refresh());
   ScrollTrigger.refresh();
-}
-
-const CATEGORY_THUMB_OFFSET_X = 30;
-const CATEGORY_THUMB_OFFSET_Y = 30;
-
-function initCategoryHover() {
-  const categoryItems = document.querySelectorAll(".category-item");
-
-  categoryItems.forEach((item) => {
-    const thumb = item.querySelector(".category-thumb");
-    const img = item.querySelector(".category-thumb img[data-src]");
-
-    if (!thumb || !img) return;
-
-    img.src = img.dataset.src;
-
-    item.addEventListener("mousemove", (event) => {
-      thumb.style.left = `${event.clientX + CATEGORY_THUMB_OFFSET_X}px`;
-      thumb.style.top = `${event.clientY + CATEGORY_THUMB_OFFSET_Y}px`;
-    });
-  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -79,8 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!document.getElementById("intro")) {
     initScrollReveal();
   }
-
-  initCategoryHover();
 });
 
 document.addEventListener("intro:complete", initScrollReveal);

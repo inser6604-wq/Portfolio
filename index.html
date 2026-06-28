@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -157,39 +158,44 @@
       <h2 id="about-title" class="about-title scroll-reveal">about me</h2>
     </section>
 
-    <section id="category" class="category section" aria-label="프로젝트 카테고리">
-      <ul class="category-list">
-        <li class="category-item scroll-reveal" data-category="all">
-          <span class="category-name">ALL</span>
-          <div class="category-thumb" aria-hidden="true">
-            <img src="" data-src="img/projects/thumb-all.jpg" alt="" />
-          </div>
+    <section id="category" class="category-section" aria-label="프로젝트 카테고리">
+      <ul class="category-row-list">
+        <li class="category-row" data-category="all" data-thumb="img/projects/thumb-all.jpg" data-tilt="-3">
+          <button class="category-row-toggle" type="button">
+            <span class="category-row-name">ALL</span>
+          </button>
         </li>
-        <li class="category-item scroll-reveal" data-category="uiux">
-          <span class="category-name">UI·UX</span>
-          <div class="category-thumb" aria-hidden="true">
-            <img src="" data-src="img/projects/thumb-uiux.jpg" alt="" />
-          </div>
+        <li class="category-row" data-category="uiux" data-thumb="img/projects/thumb-uiux.jpg" data-tilt="-1.5">
+          <button class="category-row-toggle" type="button">
+            <span class="category-row-name">UI·UX</span>
+          </button>
         </li>
-        <li class="category-item scroll-reveal" data-category="publishing">
-          <span class="category-name">PUBLISHING</span>
-          <div class="category-thumb" aria-hidden="true">
-            <img src="" data-src="img/projects/thumb-publishing.png" alt="" />
-          </div>
+        <li class="category-row" data-category="publishing" data-thumb="img/projects/thumb-publishing.png" data-tilt="0">
+          <button class="category-row-toggle" type="button">
+            <span class="category-row-name">PUBLISHING</span>
+          </button>
         </li>
-        <li class="category-item scroll-reveal" data-category="team">
-          <span class="category-name">TEAM</span>
-          <div class="category-thumb" aria-hidden="true">
-            <img src="" data-src="img/projects/thumb-team.jpg" alt="" />
-          </div>
+        <li class="category-row" data-category="team" data-thumb="img/projects/thumb-team.jpg" data-tilt="1.5">
+          <button class="category-row-toggle" type="button">
+            <span class="category-row-name">TEAM</span>
+          </button>
         </li>
-        <li class="category-item scroll-reveal" data-category="archive">
-          <span class="category-name">ARCHIVE</span>
-          <div class="category-thumb" aria-hidden="true">
-            <img src="" data-src="img/projects/thumb-archive.jpg" alt="" />
-          </div>
+        <li class="category-row" data-category="archive" data-thumb="img/projects/thumb-archive.jpg" data-tilt="3">
+          <button class="category-row-toggle" type="button">
+            <span class="category-row-name">ARCHIVE</span>
+          </button>
         </li>
       </ul>
+
+      <div class="hover-preview" aria-hidden="true">
+        <img class="hover-preview-img" alt="" />
+      </div>
+
+      <div class="custom-cursor" aria-hidden="true">
+        <svg class="custom-cursor-arrow" viewBox="0 0 24 24">
+          <path d="M4 12h15M13 5l7 7-7 7" />
+        </svg>
+      </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

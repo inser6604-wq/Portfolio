@@ -127,4 +127,85 @@ function initIntroAnimation() {
   );
 }
 
+const CATEGORY_PREVIEW_LERP = 0.12;
+const CATEGORY_PREVIEW_OFFSET_X = 20;
+const CATEGORY_PREVIEW_OFFSET_Y = -80;
+
+function initCategoryHoverFx() {
+  const section = document.querySelector(".category-section");
+  if (!section || typeof gsap === "undefined") return;
+
+  const preview = section.querySelector(".hover-preview");
+  const previewImg = preview.querySelector(".hover-preview-img");
+  const cursor = section.querySelector(".custom-cursor");
+  if (!preview || !previewImg || !cursor) return;
+
+  gsap.set(preview, { scale: 0.85 });
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let previewX = 0;
+  let previewY = 0;
+
+  const setPreviewX = gsap.quickSetter(preview, "x", "px");
+  const setPreviewY = gsap.quickSetter(preview, "y", "px");
+  const setCursorX = gsap.quickSetter(cursor, "x", "px");
+  const setCursorY = gsap.quickSetter(cursor, "y", "px");
+
+  document.addEventListener("mousemove", (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+  });
+
+  function tick() {
+    previewX += (mouseX + CATEGORY_PREVIEW_OFFSET_X - previewX) * CATEGORY_PREVIEW_LERP;
+    previewY += (mouseY + CATEGORY_PREVIEW_OFFSET_Y - previewY) * CATEGORY_PREVIEW_LERP;
+    setPreviewX(previewX);
+    setPreviewY(previewY);
+    setCursorX(mouseX);
+    setCursorY(mouseY);
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  section.querySelectorAll(".category-row").forEach((row) => {
+    const name = row.querySelector(".category-row-name");
+
+    row.addEventListener("mouseenter", () => {
+      const thumb = row.dataset.thumb;
+      const tilt = Number(row.dataset.tilt || 0);
+      if (thumb) previewImg.src = thumb;
+
+      gsap.to(preview, { opacity: 1, scale: 1, rotate: tilt, duration: 0.3, ease: "power2.out", overwrite: "auto" });
+      gsap.to(cursor, { opacity: 1, duration: 0.2, overwrite: "auto" });
+      if (name) gsap.to(name, { color: "#c1121f", x: -8, duration: 0.2, ease: "power2.out", overwrite: "auto" });
+    });
+
+    row.addEventListener("mouseleave", () => {
+      gsap.to(preview, { opacity: 0, scale: 0.85, duration: 0.2, ease: "power2.in", overwrite: "auto" });
+      gsap.to(cursor, { opacity: 0, duration: 0.2, overwrite: "auto" });
+      if (name) gsap.to(name, { color: "#f4f8ff", x: 0, duration: 0.2, ease: "power2.out", overwrite: "auto" });
+    });
+  });
+}
+
+function initCategoryClickFlash() {
+  const section = document.querySelector(".category-section");
+  if (!section || typeof gsap === "undefined") return;
+
+  section.querySelectorAll(".category-row-toggle").forEach((toggle) => {
+    const name = toggle.querySelector(".category-row-name");
+    if (!name) return;
+
+    toggle.addEventListener("click", () => {
+      gsap.set(name, { color: "#c1121f" });
+      gsap.to(name, { color: "#f4f8ff", duration: 0.3, ease: "power1.out", overwrite: "auto" });
+
+      // TODO: GSAP ScrollToPlugin으로 해당 프로젝트 섹션으로 스크롤 이동 (추후 구현)
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", initIntroAnimation);
+document.addEventListener("DOMContentLoaded", initCategoryHoverFx);
+document.addEventListener("DOMContentLoaded", initCategoryClickFlash);
