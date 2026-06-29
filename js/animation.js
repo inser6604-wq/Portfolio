@@ -239,6 +239,9 @@ function initProjectSlider() {
 
   if (window.matchMedia("(max-width: 768px)").matches) return;
 
+  const categoryBoundaries = getCategoryBoundaries(track);
+  const categoryEdge = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+
   const scrollTween = gsap.to(track, {
     x: () => -getProjectSliderScrollLength(track),
     ease: "none",
@@ -249,10 +252,52 @@ function initProjectSlider() {
       pin: true,
       scrub: true,
       invalidateOnRefresh: true,
+      onUpdate: (self) => updateActiveCategory(self, track, categoryBoundaries, categoryEdge),
     },
   });
 
   projectSliderTrigger = scrollTween.scrollTrigger;
+}
+
+function getCategoryBoundaries(track) {
+  const boundaries = [];
+  let lastCategory = null;
+
+  track.querySelectorAll(".project-card").forEach((card) => {
+    const category = card.dataset.category;
+    if (category !== lastCategory) {
+      boundaries.push({ category, offsetLeft: card.offsetLeft });
+      lastCategory = category;
+    }
+  });
+
+  return boundaries;
+}
+
+function setActiveCategoryRow(category) {
+  document.querySelectorAll(".category-row").forEach((row) => {
+    row.classList.toggle("is-active", row.dataset.category === category);
+  });
+}
+
+let activeCategory = null;
+
+// Mirrors the "slideChange -> active class" behavior from a discrete slider,
+// adapted to this scrub-driven horizontal track: the active category is
+// whichever card group currently sits at the track's left edge.
+function updateActiveCategory(self, track, boundaries, edge) {
+  const maxX = getProjectSliderScrollLength(track);
+  const currentX = maxX > 0 ? self.progress * maxX : 0;
+
+  let category = "all";
+  boundaries.forEach((boundary) => {
+    if (currentX + edge > boundary.offsetLeft) category = boundary.category;
+  });
+
+  if (category !== activeCategory) {
+    activeCategory = category;
+    setActiveCategoryRow(category);
+  }
 }
 
 function initProjectSliderColorShift(section) {
@@ -291,6 +336,11 @@ function initProjectCardInteractions(cards) {
 }
 
 function scrollToCategoryFirstCard(category) {
+  if (category === "archive") {
+    document.getElementById("archive")?.scrollIntoView({ behavior: "smooth" });
+    return;
+  }
+
   const track = document.querySelector(".project-slider-track");
   if (!track || !projectSliderTrigger || typeof gsap === "undefined") return;
 
@@ -310,31 +360,233 @@ function scrollToCategoryFirstCard(category) {
   gsap.to(window, { scrollTo: { y: targetY, autoKill: false }, duration: 1, ease: "power3.inOut" });
 }
 
+// Rich "Template A" content for projects that have a Figma case-study design.
+// Projects without an entry here fall back to the card's own basic fields and
+// the extra sections (overview/before-after/etc.) stay hidden.
+const PROJECT_DETAILS = {
+  downy: {
+    figmaUrl:
+      "https://www.figma.com/design/mlNyk8zl2HXSxHw0jDAgRy/%EA%B9%80%EC%9D%B8%EC%84%9C-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4?node-id=85-25",
+    tag: "UI · UX PROJECT",
+    titleLines: ["Downy", "Redesign"],
+    info: [
+      { label: "period", value: "3days" },
+      { label: "role", value: "기획 · 디자인" },
+      { label: "tool", value: "Figma" },
+    ],
+    heroImg: "img/downy-mockup copy.jpg",
+    overview:
+      "기존 다우니 웹사이트는 브랜드 아이덴티티 없이 단순 마크업 수준에 머물러 있었습니다.\n레이아웃 구조를 전면 재설계하고, 다우니 고유의 부드럽고 청결한 브랜드 이미지를\n\n시각적으로 일관성 있게 구현하는 것에 중점을 두었습니다.\n사용자가 브랜드를 자연스럽게 경험할 수 있도록 정보 흐름과 시각 위계를 함께 고려했습니다.",
+    beforeImg: "img/기존사이트 캡쳐.png",
+    afterImg: "img/downy-mockup copy.jpg",
+    colors: ["#12284B", "#0055A0", "#252525", "#FFFFFF"],
+    typographyTagline: {
+      bold: "다우니, ",
+      regular: "부드러운 향기 오래도록  ",
+      faded: "NanumSquare Neo OTF",
+    },
+    wireframeImg: "img/downy-wireframe.webp",
+    designDetails: [
+      {
+        tag: "HERO BANNER",
+        img: "img/downy-mockup copy.jpg",
+        desc:
+          "브랜드의 첫인상을 결정하는 구간으로, 자연광과 플로럴 소재를 활용한 이미지와 대형 타이포그래피를 조합해 다우니 고유의 프리미엄 감성을 시각적으로 전달했습니다. CTA 버튼 배치를 통해 사용자의 시선 흐름과 행동을 자연스럽게 유도했습니다.",
+      },
+      {
+        tag: "FEATURE ICON SECTION",
+        img: "",
+        desc:
+          "다우니의 핵심 제품 특징을 아이콘과 함께 시각화한 섹션입니다. 일관된 아이콘 스타일과 명확한 텍스트 위계를 통해 정보를 빠르게 인지할 수 있도록 구성하고, 브랜드 컬러를 절제해 사용해 깔끔하고 신뢰감 있는 인상을 유지했습니다.",
+      },
+      {
+        tag: "CARD GRID",
+        img: "",
+        desc:
+          "제품을 일관성 있게 탐색할 수 있도록 카드형 레이아웃을 적용했습니다. BEST 뱃지와 View all 링크로 정보 위계를 명확히 하고, 그리드 정렬과 여백을 통해 시각적 피로감 없이 다수의 제품을 자연스럽게 노출할 수 있도록 했습니다.",
+      },
+    ],
+  },
+};
+
 function initProjectOverlay() {
   const overlay = document.querySelector(".project-overlay");
   if (!overlay || typeof gsap === "undefined") return;
 
   gsap.set(overlay, { yPercent: 100 });
   overlay.querySelector(".project-overlay-close").addEventListener("click", closeProjectOverlay);
+  overlay.querySelector(".overlay-detail-next").addEventListener("click", advanceDesignDetailSlide);
+
+  overlay.querySelector(".overlay-footer-prev").addEventListener("click", () => {
+    const sibling = getSiblingProjectCard(Number(overlay.dataset.currentCardId), -1);
+    if (sibling) openProjectOverlay(sibling);
+  });
+  overlay.querySelector(".overlay-footer-next").addEventListener("click", () => {
+    const sibling = getSiblingProjectCard(Number(overlay.dataset.currentCardId), 1);
+    if (sibling) openProjectOverlay(sibling);
+  });
+  overlay.querySelector(".overlay-footer-all").addEventListener("click", (event) => {
+    event.preventDefault();
+    closeProjectOverlay();
+    document.getElementById("project")?.scrollIntoView({ behavior: "smooth" });
+  });
+
+  initWireframeHoverScroll(overlay);
+}
+
+function getAllProjectCards() {
+  return [...document.querySelectorAll(".project-slider-track .project-card")];
+}
+
+function getSiblingProjectCard(index, direction) {
+  const cards = getAllProjectCards();
+  return cards[index + direction] || null;
+}
+
+function setOverlaySectionVisible(overlay, section, visible) {
+  const el = overlay.querySelector(`[data-section="${section}"]`);
+  if (el) el.style.display = visible ? "" : "none";
 }
 
 function openProjectOverlay(card) {
   const overlay = document.querySelector(".project-overlay");
   if (!overlay || typeof gsap === "undefined") return;
 
-  overlay.querySelector(".project-overlay-hero-img").src = card.dataset.thumb || "";
-  overlay.querySelector(".project-overlay-category").textContent =
-    card.querySelector(".project-card-category").textContent;
-  overlay.querySelector(".project-overlay-title").textContent =
-    card.querySelector(".project-card-name").textContent;
-  overlay.querySelector(".project-overlay-desc").textContent =
-    card.querySelector(".project-card-desc").textContent;
+  const id = card.dataset.projectId || "";
+  const details = PROJECT_DETAILS[id];
+
+  const category = card.querySelector(".project-card-category").textContent;
+  const name = card.querySelector(".project-card-name").textContent;
+
+  overlay.querySelector(".overlay-hero-img").src = details?.heroImg || card.dataset.thumb || "";
+  overlay.querySelector(".overlay-hero-tag").textContent = details?.tag || category;
+
+  const titleLines = details?.titleLines || [name];
+  overlay.querySelector(".overlay-hero-title").innerHTML = titleLines
+    .map((line) => `<span>${line}</span>`)
+    .join("<br />");
+
+  const infoList = overlay.querySelector(".overlay-hero-info");
+  infoList.innerHTML = (details?.info || [])
+    .map(
+      (row) =>
+        `<li><span class="overlay-hero-info-label">${row.label}&nbsp;&nbsp;|</span><span class="overlay-hero-info-value">${row.value}</span></li>`
+    )
+    .join("");
+
+  const figmaLinks = overlay.querySelectorAll(".overlay-hero-figma, .overlay-bottom-figma");
+  figmaLinks.forEach((link) => {
+    link.href = details?.figmaUrl || "#";
+    link.style.display = details?.figmaUrl ? "" : "none";
+  });
+
+  setOverlaySectionVisible(overlay, "overview", Boolean(details?.overview));
+  overlay.querySelector(".overlay-overview-text").textContent = details?.overview || "";
+
+  setOverlaySectionVisible(overlay, "before-after", Boolean(details?.beforeImg && details?.afterImg));
+  overlay.querySelector(".overlay-before-img").src = details?.beforeImg || "";
+  overlay.querySelector(".overlay-after-img").src = details?.afterImg || "";
+
+  setOverlaySectionVisible(overlay, "color-typography", Boolean(details?.colors));
+  const colorList = overlay.querySelector(".overlay-color-list");
+  colorList.innerHTML = (details?.colors || [])
+    .map(
+      (hex) =>
+        `<li><span class="overlay-color-swatch" style="background-color:${hex}"></span><span class="overlay-color-hex">${hex}</span></li>`
+    )
+    .join("");
+  const tagline = overlay.querySelector(".overlay-typo-tagline");
+  if (details?.typographyTagline) {
+    const { bold, regular, faded } = details.typographyTagline;
+    tagline.innerHTML = `<strong>${bold}</strong>${regular}<span>${faded}</span>`;
+  } else {
+    tagline.innerHTML = "";
+  }
+
+  setOverlaySectionVisible(overlay, "wireframe", Boolean(details?.wireframeImg));
+  overlay.querySelector(".overlay-wireframe-img").src = details?.wireframeImg || "";
+
+  setOverlaySectionVisible(overlay, "design-detail", Boolean(details?.designDetails?.length));
+  buildDesignDetailSlides(overlay, details?.designDetails || []);
+
+  const cards = getAllProjectCards();
+  const cardIndex = cards.indexOf(card);
+  overlay.dataset.currentCardId = String(cardIndex);
+  const prevCard = getSiblingProjectCard(cardIndex, -1);
+  const nextCard = getSiblingProjectCard(cardIndex, 1);
+  fillFooterProject(overlay.querySelector(".overlay-footer-prev"), prevCard);
+  fillFooterProject(overlay.querySelector(".overlay-footer-next"), nextCard);
 
   overlay.scrollTop = 0;
+  overlay.querySelector(".overlay-detail-slider").dataset.index = "0";
   document.body.style.overflow = "hidden";
 
   gsap.set(overlay, { pointerEvents: "auto" });
   gsap.to(overlay, { yPercent: 0, duration: 0.6, ease: "power3.out", overwrite: "auto" });
+}
+
+function fillFooterProject(button, projectCard) {
+  if (!projectCard) {
+    button.style.visibility = "hidden";
+    return;
+  }
+  button.style.visibility = "visible";
+  button.querySelector(".overlay-footer-name").textContent =
+    projectCard.querySelector(".project-card-name").textContent;
+  button.querySelector(".overlay-footer-thumb").src = projectCard.dataset.thumb || "";
+}
+
+function buildDesignDetailSlides(overlay, slides) {
+  const track = overlay.querySelector(".overlay-detail-track");
+  track.innerHTML = slides
+    .map(
+      (slide) => `
+        <div class="overlay-detail-slide">
+          <span class="overlay-detail-tag">${slide.tag}</span>
+          ${slide.img ? `<img class="overlay-detail-img" src="${slide.img}" alt="${slide.tag}" />` : ""}
+          <p class="overlay-detail-desc">${slide.desc}</p>
+        </div>`
+    )
+    .join("");
+  gsap.set(track, { xPercent: 0 });
+}
+
+function advanceDesignDetailSlide() {
+  const overlay = document.querySelector(".project-overlay");
+  const slider = overlay.querySelector(".overlay-detail-slider");
+  const track = overlay.querySelector(".overlay-detail-track");
+  const slideCount = track.children.length;
+  if (!slideCount) return;
+
+  const index = (Number(slider.dataset.index || 0) + 1) % slideCount;
+  slider.dataset.index = String(index);
+  gsap.to(track, { xPercent: -100 * index, duration: 0.6, ease: "power3.inOut", overwrite: "auto" });
+}
+
+function initWireframeHoverScroll(overlay) {
+  const frame = overlay.querySelector(".overlay-wireframe-frame");
+  const scroller = overlay.querySelector(".overlay-wireframe-scroll");
+  const img = overlay.querySelector(".overlay-wireframe-img");
+  if (!frame || !scroller || !img) return;
+
+  function getScrollDistance() {
+    return Math.max(img.offsetHeight - frame.offsetHeight, 0);
+  }
+
+  frame.addEventListener("mouseenter", () => {
+    const distance = getScrollDistance();
+    if (distance <= 0) return;
+    gsap.to(scroller, {
+      y: -distance,
+      duration: Math.min(Math.max(distance / 60, 3), 14),
+      ease: "sine.inOut",
+      overwrite: "auto",
+    });
+  });
+
+  frame.addEventListener("mouseleave", () => {
+    gsap.to(scroller, { y: 0, duration: 1, ease: "sine.out", overwrite: "auto" });
+  });
 }
 
 function closeProjectOverlay() {

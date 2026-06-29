@@ -214,7 +214,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="uiux" data-thumb="img/works-img07.jpg">
+          <article class="project-card" data-category="uiux" data-thumb="img/works-img07.jpg" data-project-id="downy">
             <div class="project-card-thumb">
               <img class="project-card-img" data-thumb="img/works-img07.jpg" alt="" />
             </div>
@@ -490,17 +490,110 @@
         <span class="project-overlay-close-line"></span>
         <span class="project-overlay-close-line"></span>
       </button>
+
       <div class="project-overlay-scroll">
-        <div class="project-overlay-hero">
-          <img class="project-overlay-hero-img" alt="" />
-        </div>
-        <div class="project-overlay-body">
-          <div class="project-overlay-heading">
-            <span class="project-overlay-category"></span>
-            <h2 class="project-overlay-title"></h2>
+        <section class="overlay-hero">
+          <div class="overlay-hero-media">
+            <img class="overlay-hero-img" alt="" />
+            <div class="overlay-hero-gradient" aria-hidden="true"></div>
           </div>
-          <p class="project-overlay-desc"></p>
-        </div>
+          <span class="overlay-hero-badge">100% PERSONAL</span>
+
+          <div class="overlay-hero-panel">
+            <span class="overlay-hero-tag"></span>
+            <h1 class="overlay-hero-title"></h1>
+            <ul class="overlay-hero-info"></ul>
+            <a class="overlay-hero-figma" href="#" target="_blank" rel="noopener">figma &#8594;</a>
+          </div>
+        </section>
+
+        <section class="overlay-section overlay-overview" data-section="overview">
+          <h2 class="overlay-label">overview</h2>
+          <p class="overlay-overview-text"></p>
+        </section>
+
+        <section class="overlay-section overlay-before-after" data-section="before-after">
+          <h2 class="overlay-label">Before / after</h2>
+          <div class="overlay-before-after-row">
+            <div class="overlay-before-after-col">
+              <img class="overlay-before-img" alt="Before" />
+            </div>
+            <span class="overlay-before-after-arrow" aria-hidden="true">&#8594;</span>
+            <div class="overlay-before-after-col">
+              <img class="overlay-after-img" alt="After" />
+            </div>
+          </div>
+        </section>
+
+        <section class="overlay-section overlay-color-type" data-section="color-typography">
+          <h2 class="overlay-label">color &amp; typhography</h2>
+          <div class="overlay-color-type-row">
+            <ul class="overlay-color-list"></ul>
+            <div class="overlay-typography">
+              <p class="overlay-typo-aa">Aa</p>
+              <p class="overlay-typo-chars">
+                ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
+                1234567890<br />
+                Bold<br />
+                Medium<br />
+                Regular
+              </p>
+              <p class="overlay-typo-tagline"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="overlay-section overlay-wireframe" data-section="wireframe">
+          <h2 class="overlay-label">wireframe</h2>
+          <div class="overlay-wireframe-frame">
+            <div class="overlay-wireframe-scroll">
+              <img class="overlay-wireframe-img" alt="" />
+            </div>
+            <div class="overlay-wireframe-hint">
+              <span class="overlay-wireframe-hint-icon" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+              <span>마우스 오버시 와이어프레임이 아래로 움직입니다</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="overlay-section overlay-design-detail" data-section="design-detail">
+          <h2 class="overlay-label overlay-label--inline">SELECT DESIGN DETAIL</h2>
+          <div class="overlay-detail-slider">
+            <div class="overlay-detail-track"></div>
+            <button class="overlay-detail-next" type="button" aria-label="다음 디테일">&#8594;</button>
+          </div>
+        </section>
+
+        <a class="overlay-bottom-figma" href="#" target="_blank" rel="noopener">figma &#8594;</a>
+
+        <nav class="overlay-footer-nav" data-section="footer-nav">
+          <button class="overlay-footer-project overlay-footer-prev" type="button">
+            <span class="overlay-footer-arrow" aria-hidden="true">&#8592;</span>
+            <span class="overlay-footer-info">
+              <span class="overlay-footer-label">prev project</span>
+              <span class="overlay-footer-name"></span>
+            </span>
+            <img class="overlay-footer-thumb" alt="" />
+          </button>
+
+          <a class="overlay-footer-all" href="#project">
+            <span class="overlay-footer-all-label">all works</span>
+            <span class="overlay-footer-grid" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </span>
+          </a>
+
+          <button class="overlay-footer-project overlay-footer-next" type="button">
+            <img class="overlay-footer-thumb" alt="" />
+            <span class="overlay-footer-info">
+              <span class="overlay-footer-label">next project</span>
+              <span class="overlay-footer-name"></span>
+            </span>
+            <span class="overlay-footer-arrow" aria-hidden="true">&#8594;</span>
+          </button>
+        </nav>
       </div>
     </div>
 

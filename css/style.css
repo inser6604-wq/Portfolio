@@ -475,10 +475,20 @@
 .category-row-name {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(40px, 8.5vw, 180px);
+  font-size: clamp(9rem, 10vw, 18rem);
   line-height: 1;
   color: var(--color-text);
   text-transform: uppercase;
+}
+
+.category-row.is-active .category-row-name {
+  color: var(--color-accent);
+}
+
+@media (max-width: 1024px) {
+  .category-row-name {
+    font-size: 7rem;
+  }
 }
 
 .hover-preview {
@@ -537,6 +547,10 @@
     padding-left: 24px;
   }
 
+  .category-row-name {
+    font-size: 5rem;
+  }
+
   .hover-preview {
     width: 160px;
     height: 110px;
@@ -562,8 +576,10 @@
 
 .project-slider-title {
   flex-shrink: 0;
-  padding-top: clamp(40px, 7.2vw, 103px);
-  padding-left: var(--slider-edge);
+  padding-top: clamp(22px, 7.2vw, 57px);
+  /* matches .category-row-toggle's left edge so WORKS lines up with the
+     category list directly above it. */
+  padding-left: 4vw;
   font-family: var(--font-display);
   font-size: clamp(48px, 8.3vw, 120px);
   line-height: 1;
@@ -574,8 +590,8 @@
 .project-slider-track {
   display: flex;
   align-items: flex-start;
-  gap: clamp(20px, 2.4vw, 35px);
-  margin-top: clamp(24px, 3.5vw, 51px);
+  gap: clamp(32px, 2.6vw, 40px);
+  margin-top: clamp(13px, 3.5vw, 28px);
   padding-left: var(--slider-edge);
   padding-right: var(--slider-edge);
   will-change: transform;
@@ -585,8 +601,10 @@
   flex-shrink: 0;
   /* min() of the original vw-based width and a vh-based cap: stays full-size
      on tall windows, only shrinks on wide-but-short ones so the thumbnail +
-     info stack never exceeds the pinned section's 100vh box. */
-  width: clamp(420px, min(51vw, 60vh), 740px);
+     info stack never exceeds the pinned section's 100vh box. The surrounding
+     spacing above/below the card was tightened (title/track/info/desc) to make
+     room for this larger card within the same 100vh budget. */
+  width: clamp(540px, min(64vw, 78vh), 940px);
 }
 
 .project-card-thumb {
@@ -606,7 +624,7 @@
 
 .project-card-info {
   --category-col: clamp(78px, 8.2vw, 121px);
-  padding-top: clamp(28px, 3vw, 42px);
+  padding-top: clamp(15px, 3vw, 23px);
 }
 
 .project-card-heading {
@@ -631,7 +649,7 @@
 }
 
 .project-card-desc {
-  margin-top: clamp(10px, 1.4vw, 18px);
+  margin-top: clamp(6px, 1.4vw, 10px);
   margin-left: calc(var(--category-col) + 14px);
   font-family: var(--font-body);
   font-weight: 500;
@@ -672,51 +690,499 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.project-overlay-hero {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 60vh;
-  overflow: hidden;
+/* ============================================================
+   Template A — UI/UX project detail (Figma node 85:25)
+   ============================================================ */
+
+.overlay-section {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: clamp(48px, 5.5vw, 80px) clamp(24px, 5.5vw, 80px);
+  border-bottom: 1px solid rgba(244, 248, 255, 0.2);
 }
 
-.project-overlay-hero-img {
+.overlay-label {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 35px);
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--color-accent);
+  opacity: 0.6;
+}
+
+/* --- Hero --- */
+
+.overlay-hero {
+  position: relative;
+  max-width: 1600px;
+  margin: 0 auto;
+  min-height: 70vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.overlay-hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.overlay-hero-img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.project-overlay-body {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: clamp(32px, 5vw, 72px) clamp(24px, 5vw, 71px);
+.overlay-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 55%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 45%);
 }
 
-.project-overlay-heading {
+.overlay-hero-badge {
+  position: absolute;
+  /* sits below the fixed close button so the two never overlap */
+  top: clamp(56px, 8.3vw, 119px);
+  right: clamp(24px, 4vw, 71px);
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  color: var(--color-text);
+  text-transform: lowercase;
+  z-index: 1;
+}
+
+.overlay-hero-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 17px;
+  width: min(100%, 713px);
+  padding: clamp(32px, 5.5vw, 80px) clamp(24px, 5.5vw, 80px);
+}
+
+.overlay-hero-tag {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.overlay-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8vw, 112px);
+  line-height: 0.93;
+  color: var(--color-text);
+}
+
+.overlay-hero-info {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--color-text);
+}
+
+.overlay-hero-info li {
+  display: flex;
+  gap: 0.4em;
+  padding: clamp(6px, 1vw, 10px) 0;
+}
+
+.overlay-hero-info-label {
+  font-family: var(--font-display);
+  min-width: 5.5em;
+}
+
+.overlay-hero-info-value {
+  font-family: var(--font-body);
+}
+
+.overlay-hero-figma,
+.overlay-bottom-figma {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(8px, 1.5vw, 16px);
+  padding: 10px clamp(32px, 4vw, 52px);
+  background-color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  letter-spacing: 0.1em;
+  color: var(--color-text);
+  text-transform: lowercase;
+  text-decoration: none;
+}
+
+.overlay-bottom-figma {
+  width: fit-content;
+  margin: clamp(40px, 6vw, 88px) clamp(24px, 5.5vw, 80px);
+}
+
+/* --- Overview --- */
+
+.overlay-overview-text {
+  max-width: 720px;
+  margin-top: clamp(28px, 4vw, 48px);
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.5vw, 22px);
+  line-height: 1.8;
+  color: var(--color-text);
+  white-space: pre-line;
+}
+
+/* --- Before / After --- */
+
+.overlay-before-after-row {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 40px);
+  margin-top: clamp(32px, 4.5vw, 56px);
+}
+
+.overlay-before-after-col {
+  flex: 1;
+  aspect-ratio: 567 / 760;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+}
+
+.overlay-before-img,
+.overlay-after-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.overlay-before-after-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(40px, 4.5vw, 62px);
+  height: clamp(40px, 4.5vw, 62px);
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  font-size: 1.2em;
+}
+
+/* --- Color & Typography --- */
+
+.overlay-color-type-row {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 56px);
+  margin-top: clamp(28px, 4vw, 48px);
+}
+
+.overlay-color-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 1.5vw, 17px);
+}
+
+.overlay-color-list li {
+  display: flex;
+  flex-direction: column;
   gap: 14px;
+  width: clamp(120px, 14vw, 200px);
 }
 
-.project-overlay-category {
+.overlay-color-swatch {
+  width: 100%;
+  height: clamp(56px, 6vw, 90px);
+}
+
+.overlay-color-hex {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.2vw, 16px);
+  color: var(--color-text);
+}
+
+.overlay-typo-aa {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(44px, 6vw, 80px);
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.overlay-typo-chars {
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.2vw, 16px);
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.overlay-typo-tagline {
+  margin-top: clamp(16px, 2vw, 24px);
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.2vw, 16px);
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.overlay-typo-tagline strong {
+  font-weight: 800;
+}
+
+.overlay-typo-tagline span {
+  color: rgba(244, 248, 255, 0.4);
+}
+
+/* --- Wireframe --- */
+
+.overlay-wireframe-frame {
+  position: relative;
+  margin-top: clamp(28px, 4vw, 48px);
+  height: clamp(260px, 32vw, 460px);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #4a4a4a;
+}
+
+.overlay-wireframe-scroll {
+  position: absolute;
+  inset: 0;
+}
+
+.overlay-wireframe-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay-wireframe-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  border: 1px solid var(--color-text);
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
   font-family: var(--font-display);
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(13px, 1.3vw, 18px);
+  color: var(--color-text);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.overlay-wireframe-hint-icon {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+  width: 15px;
+  height: 15px;
+}
+
+.overlay-wireframe-hint-icon span {
+  border: 1.4px solid var(--color-text);
+  border-radius: 1.4px;
+}
+
+/* --- Select Design Detail --- */
+
+.overlay-design-detail {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: #1e1e1e;
+}
+
+.overlay-design-detail .overlay-label {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5.5vw, 80px);
+}
+
+.overlay-detail-slider {
+  position: relative;
+  margin-top: clamp(32px, 4vw, 56px);
+  overflow: hidden;
+}
+
+.overlay-detail-track {
+  display: flex;
+  will-change: transform;
+}
+
+.overlay-detail-slide {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(28px, 4vw, 60px);
+  padding: 0 clamp(24px, 6vw, 120px);
+  text-align: center;
+}
+
+.overlay-detail-tag {
+  padding: 10px 24px;
+  border: 1px solid var(--color-text);
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.3vw, 20px);
+  color: var(--color-text);
+}
+
+.overlay-detail-img {
+  display: block;
+  width: 100%;
+  max-width: 912px;
+  height: auto;
+}
+
+.overlay-detail-desc {
+  max-width: 600px;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.3vw, 20px);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.overlay-detail-next {
+  position: absolute;
+  top: 50%;
+  right: clamp(8px, 3vw, 40px);
+  transform: translateY(-50%);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(40px, 4.5vw, 62px);
+  height: clamp(40px, 4.5vw, 62px);
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  font-size: 1.2em;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* --- Footer nav --- */
+
+.overlay-footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(32px, 6vw, 129px);
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 5.5vw, 80px);
+}
+
+.overlay-footer-project {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 86px);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.overlay-footer-arrow {
+  flex-shrink: 0;
+  font-size: clamp(24px, 3vw, 36px);
+  color: var(--color-text);
+}
+
+.overlay-footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.overlay-footer-label {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.6vw, 22px);
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
   color: var(--color-accent);
-  text-transform: uppercase;
 }
 
-.project-overlay-title {
+.overlay-footer-name {
   font-family: var(--font-body);
-  font-weight: 500;
-  font-size: clamp(22px, 2.2vw, 32px);
+  font-size: clamp(13px, 1.2vw, 16px);
   color: var(--color-text);
 }
 
-.project-overlay-desc {
-  margin-top: 16px;
-  font-family: var(--font-body);
-  font-size: clamp(14px, 1.2vw, 18px);
-  color: var(--color-text);
+.overlay-footer-thumb {
+  width: clamp(110px, 11vw, 163px);
+  aspect-ratio: 163 / 81;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.overlay-footer-all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.overlay-footer-all-label {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: var(--color-accent);
+}
+
+.overlay-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  width: 33px;
+  height: 33px;
+}
+
+.overlay-footer-grid span {
+  border: 3px solid var(--color-text);
+  border-radius: 3px;
+}
+
+@media (max-width: 1024px) {
+  .overlay-before-after-row {
+    flex-direction: column;
+  }
+
+  .overlay-before-after-arrow {
+    transform: rotate(90deg);
+  }
+
+  .overlay-footer-nav {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay-hero-panel {
+    width: 100%;
+  }
+
+  .overlay-color-list li {
+    width: calc(50% - 8px);
+  }
+
+  .overlay-footer-project {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 @media (max-width: 768px) {
@@ -726,6 +1192,10 @@
 
   .project-slider-pin {
     height: auto;
+  }
+
+  .project-slider-title {
+    padding-left: 24px;
   }
 
   .project-slider-track {
@@ -747,13 +1217,15 @@
 }
 
 .archive {
-  --archive-edge: clamp(40px, 9.5vw, 160px);
+  --archive-edge: 4vw;
   position: relative;
-  padding: clamp(56px, 8vw, 120px) var(--archive-edge);
+  padding: 0 var(--archive-edge) clamp(56px, 8vw, 120px);
   background-color: var(--color-bg-dark);
 }
 
 .archive-title {
+  /* matches .project-slider-title's own size + top/left spacing exactly. */
+  padding-top: clamp(22px, 7.2vw, 57px);
   font-family: var(--font-display);
   font-size: clamp(48px, 8.3vw, 120px);
   line-height: 1;
@@ -770,7 +1242,7 @@
 .archive-grid {
   margin-top: clamp(40px, 5vw, 72px);
   column-count: 3;
-  column-gap: clamp(16px, 2vw, 29px);
+  column-gap: clamp(14px, 1.8vw, 24px);
 }
 
 .archive-card {
@@ -978,7 +1450,17 @@
   border-radius: 4px;
 }
 
+@media (max-width: 1024px) {
+  .archive-grid {
+    column-count: 2;
+  }
+}
+
 @media (max-width: 768px) {
+  .archive {
+    --archive-edge: 24px;
+  }
+
   .archive-grid {
     column-count: 1;
   }
