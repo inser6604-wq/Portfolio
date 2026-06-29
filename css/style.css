@@ -152,8 +152,16 @@
   position: absolute;
   top: clamp(120px, 18.15vw, 186px);
   left: clamp(24px, 5.35vw, 77px);
-  font-size: clamp(120px, 32.82vw, 472.635px);
+  font-size: clamp(129.6px, 35.446vw, 510.446px);
   line-height: 0.831;
+}
+
+@media (min-width: 769px) {
+  .main-hero {
+    /* min() of the original vw size and a vh-based cap: stays full-size on
+       tall windows, only shrinks on wide-but-short ones to avoid overflow. */
+    font-size: clamp(129.6px, min(35.446vw, 42.12vh), 510.446px);
+  }
 }
 
 .main-title {
@@ -271,20 +279,13 @@
 }
 
 .about-profile {
+  background: url(../img/aboutme-profile.svg) left / contain no-repeat;
   width: 100%;
   max-width: 586px;
   aspect-ratio: 586 / 411;
-  background-color: #111;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.about-profile-label {
-  font-size: clamp(28px, 2.8vw, 40px);
-  font-weight: 500;
-  line-height: 1.45;
-  color: #f4f8ff;
 }
 
 .about-intro,
@@ -582,7 +583,10 @@
 
 .project-card {
   flex-shrink: 0;
-  width: clamp(420px, 51vw, 740px);
+  /* min() of the original vw-based width and a vh-based cap: stays full-size
+     on tall windows, only shrinks on wide-but-short ones so the thumbnail +
+     info stack never exceeds the pinned section's 100vh box. */
+  width: clamp(420px, min(51vw, 60vh), 740px);
 }
 
 .project-card-thumb {

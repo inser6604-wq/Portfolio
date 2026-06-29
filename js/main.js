@@ -17,9 +17,18 @@ function initScrollReveal() {
   scrollRevealInitialized = true;
   gsap.registerPlugin(ScrollTrigger);
 
+  const aboveFoldTweens = [];
+
   getScrollSections().forEach((section) => {
     const targets = section.querySelectorAll(SCROLL_REVEAL_SELECTOR);
     if (!targets.length) return;
+
+    // The very first section's small elements (header/subtitle) sit so
+    // close to the page top that their OWN "bottom 15%" end can also land
+    // above scroll 0, making the trigger zone entirely unreachable. Anchor
+    // the end to the whole section's bottom instead, which is always a
+    // safely-positive distance away, so onLeave/onEnterBack stay reachable.
+    const useSectionEnd = section.matches("main.section");
 
     gsap.set(targets, { opacity: 0, y: 40 });
 
@@ -32,20 +41,37 @@ function initScrollReveal() {
         scrollTrigger: {
           trigger: target,
           start: "top 85%",
-          end: "bottom 15%",
-          toggleActions: "play none none none",
+          ...(useSectionEnd ? { endTrigger: section, end: "bottom 15%" } : { end: "bottom 15%" }),
+          toggleActions: "play reverse play reverse",
         },
       });
 
-      if (tween.scrollTrigger.start <= 0) {
-        tween.scrollTrigger.kill();
-        gsap.set(target, { opacity: 1, y: 0 });
-      }
+      if (useSectionEnd) aboveFoldTweens.push(tween);
     });
   });
 
-  window.addEventListener("load", () => ScrollTrigger.refresh());
+  // Re-checked after every refresh, since start/end can shift as web fonts
+  // and images finish loading and layout settles.
+  function fixAboveFoldTweens() {
+    aboveFoldTweens.forEach((tween) => {
+      const st = tween.scrollTrigger;
+      if (!st) return;
+      if (st.end <= 0) {
+        st.kill();
+        gsap.set(tween.targets(), { opacity: 1, y: 0 });
+      } else if (st.start <= 0 && st.isActive && tween.progress() === 0) {
+        tween.progress(1);
+      }
+    });
+  }
+
   ScrollTrigger.refresh();
+  fixAboveFoldTweens();
+
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+    fixAboveFoldTweens();
+  });
 }
 
 function initContactEmailCopy() {
