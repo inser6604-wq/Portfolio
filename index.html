@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   </head>
   <body>
     <section id="intro" class="intro" aria-label="인트로 프리로더">
@@ -38,6 +39,14 @@
     </section>
 
     <main id="main" class="main section">
+      <div class="hero-mesh" aria-hidden="true">
+        <span class="hero-mesh-blob hero-mesh-blob--1"></span>
+        <span class="hero-mesh-blob hero-mesh-blob--2"></span>
+        <span class="hero-mesh-blob hero-mesh-blob--3"></span>
+        <span class="hero-mesh-blob hero-mesh-blob--4"></span>
+        <span class="hero-mesh-blob hero-mesh-blob--5"></span>
+      </div>
+
       <header class="main-header scroll-reveal">
         <a href="#" class="main-logo" aria-label="홈">
           <img src="img/main/logo.png" alt="" width="99" height="72" />
@@ -45,6 +54,7 @@
         <nav class="main-nav" aria-label="주요 메뉴">
           <a href="#about">about</a>
           <a href="#project">project</a>
+          <a href="#archive">archive</a>
           <a href="#contact">contact</a>
         </nav>
       </header>
@@ -201,7 +211,7 @@
         <h2 class="project-slider-title">WORKS</h2>
 
         <div class="project-slider-track">
-          <article class="project-card" data-category="uiux" data-thumb="img/works-img06.jpg">
+          <article class="project-card" data-category="uiux" data-thumb="img/works-img06.jpg" data-project-id="arco">
             <div class="project-card-thumb">
               <img class="project-card-img" data-thumb="img/works-img06.jpg" alt="" />
             </div>
@@ -227,7 +237,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="publishing" data-thumb="img/works-img03.jpg">
+          <article class="project-card" data-category="publishing" data-thumb="img/works-img03.jpg" data-project-id="zara">
             <div class="project-card-thumb">
               <img class="project-card-img" data-thumb="img/works-img03.jpg" alt="" />
             </div>
@@ -486,10 +496,12 @@
     </section>
 
     <div class="project-overlay" aria-hidden="true">
-      <button class="project-overlay-close" type="button" aria-label="닫기">
-        <span class="project-overlay-close-line"></span>
-        <span class="project-overlay-close-line"></span>
-      </button>
+      <div class="overlay-hero-topbar">
+        <button class="project-overlay-close" type="button" aria-label="닫기">
+          <span class="project-overlay-close-line"></span>
+          <span class="project-overlay-close-line"></span>
+        </button>
+      </div>
 
       <div class="project-overlay-scroll">
         <section class="overlay-hero">
@@ -497,19 +509,34 @@
             <img class="overlay-hero-img" alt="" />
             <div class="overlay-hero-gradient" aria-hidden="true"></div>
           </div>
-          <span class="overlay-hero-badge">100% PERSONAL</span>
+          <span class="overlay-hero-badge">100% personal</span>
 
           <div class="overlay-hero-panel">
             <span class="overlay-hero-tag"></span>
             <h1 class="overlay-hero-title"></h1>
             <ul class="overlay-hero-info"></ul>
-            <a class="overlay-hero-figma" href="#" target="_blank" rel="noopener">figma &#8594;</a>
+          </div>
+          <div class="overlay-hero-actions">
+            <a class="overlay-cta-btn overlay-hero-site" href="#" target="_blank" rel="noopener">go to site &#8594;</a>
+            <a class="overlay-cta-btn overlay-hero-github" href="#" target="_blank" rel="noopener">github &#8594;</a>
+            <a class="overlay-cta-btn overlay-hero-figma" href="#" target="_blank" rel="noopener">figma &#8594;</a>
           </div>
         </section>
 
         <section class="overlay-section overlay-overview" data-section="overview">
           <h2 class="overlay-label">overview</h2>
           <p class="overlay-overview-text"></p>
+        </section>
+
+        <section class="overlay-section overlay-planning" data-section="planning">
+          <h2 class="overlay-label">planning</h2>
+          <div class="overlay-planning-frame">
+            <div class="overlay-planning-swiper swiper">
+              <div class="swiper-wrapper"></div>
+            </div>
+            <button class="overlay-planning-prev" type="button" aria-label="이전 기획안">&#8592;</button>
+            <button class="overlay-planning-next" type="button" aria-label="다음 기획안">&#8594;</button>
+          </div>
         </section>
 
         <section class="overlay-section overlay-before-after" data-section="before-after">
@@ -534,9 +561,9 @@
               <p class="overlay-typo-chars">
                 ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
                 1234567890<br />
-                Bold<br />
-                Medium<br />
-                Regular
+                <span class="overlay-typo-bold">Bold</span><br />
+                <span class="overlay-typo-medium">Medium</span><br />
+                <span class="overlay-typo-regular">Regular</span>
               </p>
               <p class="overlay-typo-tagline"></p>
             </div>
@@ -545,28 +572,31 @@
 
         <section class="overlay-section overlay-wireframe" data-section="wireframe">
           <h2 class="overlay-label">wireframe</h2>
-          <div class="overlay-wireframe-frame">
-            <div class="overlay-wireframe-scroll">
-              <img class="overlay-wireframe-img" alt="" />
-            </div>
-            <div class="overlay-wireframe-hint">
-              <span class="overlay-wireframe-hint-icon" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </span>
-              <span>마우스 오버시 와이어프레임이 아래로 움직입니다</span>
-            </div>
-          </div>
+          <div class="overlay-wireframe-frame"></div>
+        </section>
+
+        <section class="overlay-section overlay-final-design" data-section="final-design">
+          <img class="overlay-final-design-img" alt="Final Design" />
         </section>
 
         <section class="overlay-section overlay-design-detail" data-section="design-detail">
           <h2 class="overlay-label overlay-label--inline">SELECT DESIGN DETAIL</h2>
           <div class="overlay-detail-slider">
             <div class="overlay-detail-track"></div>
+            <div class="overlay-detail-swiper swiper">
+              <div class="swiper-wrapper"></div>
+              <div class="overlay-detail-pagination swiper-pagination"></div>
+            </div>
+            <button class="overlay-detail-prev" type="button" aria-label="이전 디테일">&#8592;</button>
             <button class="overlay-detail-next" type="button" aria-label="다음 디테일">&#8594;</button>
           </div>
         </section>
 
-        <a class="overlay-bottom-figma" href="#" target="_blank" rel="noopener">figma &#8594;</a>
+        <div class="overlay-bottom-actions">
+          <a class="overlay-cta-btn overlay-bottom-site" href="#" target="_blank" rel="noopener">go to site &#8594;</a>
+          <a class="overlay-cta-btn overlay-bottom-github" href="#" target="_blank" rel="noopener">github &#8594;</a>
+          <a class="overlay-cta-btn overlay-bottom-figma" href="#" target="_blank" rel="noopener">figma &#8594;</a>
+        </div>
 
         <nav class="overlay-footer-nav" data-section="footer-nav">
           <button class="overlay-footer-project overlay-footer-prev" type="button">
@@ -578,12 +608,16 @@
             <img class="overlay-footer-thumb" alt="" />
           </button>
 
+          <span class="overlay-footer-divider" aria-hidden="true"></span>
+
           <a class="overlay-footer-all" href="#project">
             <span class="overlay-footer-all-label">all works</span>
             <span class="overlay-footer-grid" aria-hidden="true">
               <span></span><span></span><span></span><span></span>
             </span>
           </a>
+
+          <span class="overlay-footer-divider" aria-hidden="true"></span>
 
           <button class="overlay-footer-project overlay-footer-next" type="button">
             <img class="overlay-footer-thumb" alt="" />
@@ -631,6 +665,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/animation.js"></script>
     <script src="js/main.js"></script>
   </body>
