@@ -366,7 +366,8 @@ function scrollToCategoryFirstCard(category) {
 const PROJECT_DETAILS = {
   downy: {
     figmaUrl:
-      "https://www.figma.com/design/mlNyk8zl2HXSxHw0jDAgRy/%EA%B9%80%EC%9D%B8%EC%84%9C-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4?node-id=85-25",
+      "https://www.figma.com/design/juZYlQiaWwqnBIVte538EW/2-%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A5-%E1%84%87%E1%85%B3%E1%84%85%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B3UI%E1%84%83%E1%85%B5%E1%84%8C%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AB?node-id=0-1&t=lvmnhQAMGtEeBdcj-1",
+    badge: "100% PERSONAL",
     tag: "UI · UX PROJECT",
     titleLines: ["Downy", "Redesign"],
     info: [
@@ -378,7 +379,7 @@ const PROJECT_DETAILS = {
     overview:
       "기존 다우니 웹사이트는 브랜드 아이덴티티 없이 단순 마크업 수준에 머물러 있었습니다.\n레이아웃 구조를 전면 재설계하고, 다우니 고유의 부드럽고 청결한 브랜드 이미지를 시각적으로 일관성 있게 구현하는 것에 중점을 두었습니다.\n\n사용자가 브랜드를 자연스럽게 경험할 수 있도록 정보 흐름과 시각 위계를 함께 고려했습니다.",
     beforeImg: "img/기존사이트 캡쳐.png",
-    afterImg: "img/Downyviewpage-after.webp",
+    afterImg: "img/downy-afterimg.jpg",
     colors: ["#12284B", "#0055A0", "#252525", "#FFFFFF"],
     typographyTagline: {
       bold: "다우니, ",
@@ -411,6 +412,9 @@ const PROJECT_DETAILS = {
   arco: {
     figmaUrl:
       "https://www.figma.com/design/mlNyk8zl2HXSxHw0jDAgRy/%EA%B9%80%EC%9D%B8%EC%84%9C-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4?node-id=263-7",
+    badge: "100% PERSONAL",
+    badgeColor: "#9359FF",
+    heroNavColor: "#0d0d0d",
     tag: "UI · UX PROJECT",
     titleLines: ["Arco"],
     info: [
@@ -442,6 +446,7 @@ const PROJECT_DETAILS = {
       "https://www.figma.com/design/mlNyk8zl2HXSxHw0jDAgRy/%EA%B9%80%EC%9D%B8%EC%84%9C-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4?node-id=281-8",
     siteUrl: "#",
     githubUrl: "#",
+    badge: "100% PERSONAL",
     tag: "PUBLISHING",
     titleLines: ["ZARA Onepage"],
     info: [
@@ -492,7 +497,265 @@ const PROJECT_DETAILS = {
     ],
     sectionOrder: ["overview", "color-typography", "wireframe", "design-detail"],
   },
+  compose: {
+    siteUrl: "#",
+    githubUrl: "#",
+    badge: "100% PERSONAL",
+    tag: "PUBLISHING",
+    titleLines: ["Compose", "Coffee Website"],
+    info: [
+      { label: "period", value: "2week" },
+      { label: "role", value: "100% Personal" },
+      { label: "tool", value: "HTML / CSS / JavaScript" },
+    ],
+    heroImg: "img/works-img05.jpg",
+    overview:
+      "기존 컴포즈커피 창업 웹사이트는 정보가 분산되어 있고 창업자가 필요로 하는 핵심 정보가 부족해 원하는 내용을 빠르게 파악하기 어려웠습니다.\n\n창업 절차와 브랜드 경쟁력, 비용 안내 등 필수 콘텐츠를 중심으로 정보 구조를 재구성하고, HTML·CSS·JavaScript를 활용한 하드코딩 방식으로 구현하여 직관적인 사용자 경험을 제공하는 데 중점을 두었습니다.",
+    storyboard: {
+      images: [
+        "img/compose/compose-storyboard01.jpg",
+        "img/compose/compose-storyboard02.jpg",
+        "img/compose/compose-storyboard03.jpg",
+        "img/compose/compose-storyboard04.jpg",
+        "img/compose/compose-storyboard05.jpg",
+        "img/compose/compose-storyboard06.jpg",
+        "img/compose/compose-storyboard07.jpg",
+        "img/compose/compose-storyboard08.jpg",
+        "img/compose/compose-storyboard09.jpg",
+        "img/compose/compose-storyboard10.jpg",
+      ],
+      figmaUrl: "",
+    },
+    publishingDetail: {
+      tabs: [
+        { label: "01 MAIN VISUAL" },
+        { label: "02 BRAND HISTORY" },
+        { label: "03 MENU" },
+        { label: "04 EXPECT COST" },
+        { label: "05 ONLINE COUNSEL" },
+      ],
+      images: [
+        "img/compose/compose-detail01.jpg",
+        "img/compose/compose-detail02.jpg",
+        "img/compose/compose-detail03.jpg",
+        "img/compose/compose-detail04.jpg",
+        "img/compose/compose-detail05.jpg",
+      ],
+      captions: [
+        {
+          title: "메인 페이지",
+          text: "Hero(CTA 2개) + 4 Reason 카드 + 메뉴 무한 캐러셀 + 숫자 카운터 + 가맹 프로세스 7단계 + 점주 후기 + 예상비용 간이 계산기 + 상담 폼까지 창업 전 여정을 한 페이지에서 완결합니다.",
+        },
+        {
+          title: "브랜드 스토리 페이지",
+          text: "브랜드 철학 텍스트 + 매장수·누적판매량·만족도 숫자 카운터 + 연혁 타임라인 + 품질·상생·혁신 3가지 브랜드 약속 카드로 브랜드 신뢰도를 구조적으로 전달합니다.",
+        },
+        {
+          title: "Menu 페이지",
+          text: "BEST·SEASON·COFFEE·SMOOTHIE·TEA·DESSERT 탭 필터로 전체 메뉴를 카테고리별로 탐색할 수 있도록 구성했습니다.",
+        },
+        {
+          title: "예상 창업 비용 페이지",
+          text: "10평/15평 기준 항목별 비용을 테이블로 분리해 총액을 명확히 비교할 수 있도록 구성했습니다.",
+        },
+        {
+          title: "가맹 창업 상담 페이지",
+          text: "성명·연락처·지역·문의내용 + 개인정보 동의를 한 폼에 담아 상담 신청 흐름을 단일 페이지로 완결했습니다.",
+        },
+      ],
+    },
+    sectionOrder: ["overview", "storyboard", "publishing-detail"],
+  },
+  aether: {
+    siteUrl: "#",
+    githubUrl: "#",
+    badge: "100% PERSONAL",
+    tag: "PUBLISHING",
+    titleLines: ["Aether", "Landing page"],
+    info: [
+      { label: "period", value: "1DAY" },
+      { label: "role", value: "HTML/CSS/JS" },
+      { label: "tool", value: "Cursor, Supabase" },
+    ],
+    heroImg: "img/works-img04.jpg",
+    overview:
+      "가상의 미래형 우주 예약 서비스를 주제로 기획부터 제작까지 진행한 랜딩 페이지 프로젝트입니다. PRD와 TRD를 작성하여 서비스 구조와 기능을 설계하고, 바이브 코딩을 활용해 반응형 UI를 구현했습니다.\n\n또한 예약 폼에 Supabase를 연동하여 사용자 데이터가 실제 데이터베이스에 저장되도록 구현하며, 기획부터 프론트엔드와 백엔드 연동까지 전 과정을 경험하는 데 중점을 두었습니다.",
+    overviewSkills: ["Planning", "Vibe Coding", "Frontend", "Backend"],
+    designProcess: [
+      { title: "PRD", sub: "서비스 목표 정의" },
+      { title: "TRD", sub: "기능 및 기술 설계" },
+      { title: "Cursor", sub: "AI 바이브 코딩" },
+      { title: "Supabase", sub: "예약 데이터 저장" },
+    ],
+    designDetailMode: "swiper",
+    designDetails: [
+      {
+        tag: "HERO BANNER",
+        img: "img/aetherslider-01.webp",
+        desc: "풀스크린 배경 + 슬라이드 카운터(01/05)로 미래형 우주 예약 서비스의 브랜드 아이덴티티를 전달하는 첫 화면입니다.",
+      },
+      {
+        tag: "ABOUT",
+        img: "img/aetherslider-02.webp",
+        desc: "서비스의 핵심 가치와 비전을 임팩트 있는 비주얼과 카피로 구성해 사용자가 서비스 개념을 빠르게 이해할 수 있도록 했습니다.",
+      },
+      {
+        tag: "DESTINATIONS",
+        img: "img/aetherslider-03.webp",
+        desc: "번호 붙은 카드 그리드(화성/유로파/금성/목성)로 여행지를 구조화해 우주 목적지를 상품처럼 탐색할 수 있습니다.",
+      },
+      {
+        tag: "EXPERIENCE",
+        img: "img/aetherslider-04.webp",
+        desc: "01→02→03→04 스텝 플로우로 예약부터 출발까지 복잡한 프로세스를 직관적으로 시각화했습니다.",
+      },
+    ],
+    sectionOrder: ["overview", "design-process", "design-detail"],
+  },
+  jejuvegan: {
+    figmaUrl:
+      "https://www.figma.com/design/mlNyk8zl2HXSxHw0jDAgRy/%EA%B9%80%EC%9D%B8%EC%84%9C-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4?node-id=303-526",
+    siteUrl: "#",
+    githubUrl: "#",
+    badge: "100% PERSONAL",
+    tag: "TEAM",
+    titleLines: ["jeju vegan", "website"],
+    info: [
+      { label: "period", value: "2week" },
+      { label: "role", value: "Team Leader / 기획 · 디자인 · 퍼블리싱" },
+      { label: "TEAM", value: "4 Members" },
+      { label: "tool", value: "Figma / HTML / CSS / JavaScript / SupaBase" },
+    ],
+    heroImg: "img/works-img01.jpg",
+    overview:
+      "기존에는 제주 지역의 비건 식당 정보가 여러 플랫폼에 분산되어 있어 원하는 정보를 빠르게 찾기 어려웠으며, 여행 동선까지 함께 고려한 서비스도 부족했습니다.\n\n이를 개선하기 위해 지도 기반으로 정보를 통합하고, 비건 여행객과 제주 방문객이 식당과 여행 코스를 직관적으로 탐색할 수 있는 사용자 경험을 설계했습니다. 또한 반응형 웹을 구현하여 PC, Tablet, Mobile 환경에서도 일관된 사용성과 접근성을 제공하는 데 중점을 두었습니다.",
+    beforeImg: "img/jejuvegan/jejuvegan-before.jpg",
+    afterImg: "img/jejuvegan/jejuvegan-after.jpg",
+    planning: [
+      { img: "img/jejuvegan/jejuvegan-planning01.jpg", alt: "기획 01" },
+      { img: "img/jejuvegan/jejuvegan-planning02.jpg", alt: "기획 02" },
+      { img: "img/jejuvegan/jejuvegan-planning03.jpg", alt: "기획 03" },
+      { img: "img/jejuvegan/jejuvegan-planning04.jpg", alt: "기획 04" },
+      { img: "img/jejuvegan/jejuvegan-planning05.jpg", alt: "기획 05" },
+    ],
+    colors: ["#FF7F00", "#133020", "#FFFCF7", "#787878", "#111111", "#FFFFFF"],
+    typographyFonts: [
+      {
+        fontClass: "is-a2z",
+        tagline: {
+          bold: "제주에서 ",
+          regular: "비건을 더 쉽고, 즐겁게  ",
+          faded: "A2Z",
+        },
+      },
+      {
+        fontClass: "is-pretendard",
+        tagline: {
+          bold: "제주도에서, ",
+          regular: '"비건을 더 쉽고, 즐겁게"  ',
+          faded: "pretendard",
+        },
+      },
+    ],
+    publishingDetail: {
+      tabs: [
+        { label: "01 MAIN" },
+        { label: "02 VEGAN MAP" },
+        { label: "03 vegan pick" },
+        { label: "04 Submit Vegan Spot" },
+        { label: "05 faq" },
+      ],
+      images: [
+        "img/jejuvegan/jejuvegan-detail01.jpg",
+        "img/jejuvegan/jejuvegan-detail02.jpg",
+        "img/jejuvegan/jejuvegan-detail03.jpg",
+        "img/jejuvegan/jejuvegan-detail04.jpg",
+        "img/jejuvegan/jejuvegan-detail05.jpg",
+      ],
+      captions: [
+        {
+          title: "메인 페이지",
+          text: "메뉴 검색 + 슬라이더 히어로로 진입하자마자 원하는 비건 맛집을 바로 탐색할 수 있도록 유도합니다. 비건 PICK·여행코스·지도 프리뷰·이메일 구독까지 사이트의 핵심 기능을 모두 메인에서 노출합니다.",
+        },
+        {
+          title: "비건 지도",
+          text: "Supabase 데이터베이스와 연동해 식당 정보를 동적으로 불러오는 구조로 구현했습니다. 영업 여부·인원·비건 정도·코스 등 다중 필터로 비건 스팟을 조건에 맞게 탐색할 수 있습니다.",
+        },
+        {
+          title: "비건 PICK",
+          text: "제주비건 팀이 직접 선정한 오늘의 추천 메뉴를 지역·비건 정도 필터와 함께 카드 형태로 소개합니다.",
+        },
+        {
+          title: "비건 정보 제보하기",
+          text: "사장님 직접 등록(4단계 폼)과 방문객 빠른 제보(간단 폼) 두 가지 경로를 분리해 누구나 쉽게 참여할 수 있도록 구성했습니다.",
+        },
+        {
+          title: "자주 묻는 질문",
+          text: "서비스 이용·가게 등록·맛집 제보·여행 정보 4개 카테고리와 키워드 검색을 결합해 원하는 답변을 빠르게 찾을 수 있도록 구성했습니다.",
+        },
+      ],
+    },
+    sectionOrder: ["overview", "before-after", "planning", "color-typography", "publishing-detail"],
+  },
+  timo: {
+    siteUrl: "#",
+    githubUrl: "#",
+    badge: "100% PERSONAL",
+    tag: "TEAM",
+    titleLines: ["timo app"],
+    info: [
+      { label: "period", value: "1week" },
+      { label: "role", value: "기획 · 디자인 · 퍼블리싱 / stitch ai, figma make, claude code" },
+      { label: "TEAM", value: "3 Members" },
+      { label: "tool", value: "Figma / HTML / CSS / JavaScript / SupaBase" },
+    ],
+    heroImg: "img/works-img02.jpg",
+    overview:
+      "프로젝트 팀원 매칭 서비스를 주제로 기획부터 구현까지 진행한 바이브 코딩 프로젝트입니다.\n성향 테스트 기반의 팀 매칭과 프로젝트 탐색 기능을 중심으로 서비스를 설계했으며,\n\nAI와 협업하여 모바일 애플리케이션을 구현했습니다. 기획부터 UI 설계, 프론트엔드, 백엔드 구현까지\n빠르게 반복하며, 서비스를 완성하는 바이브 코딩 프로세스를 경험하는 데 중점을 두었습니다.",
+    colors: ["#7FFFD4", "#6FE6C0", "#202020", "#FEFFFF", "#EAEAEA", "#666666"],
+    typographyFonts: [
+      {
+        fontClass: "is-scoredream",
+        tagline: {
+          bold: "티모에서 ",
+          regular: "팀을 모아요  ",
+          faded: "S-Core Dream",
+        },
+      },
+      {
+        fontClass: "is-pretendard",
+        tagline: {
+          bold: "팀을 찾고 싶다면, ",
+          regular: '"티모에서 시작하세요"  ',
+          faded: "Pretendard",
+        },
+      },
+    ],
+    wireframe: { base: "img/timo/Flow chart 1.jpg", hover: "img/timo/IA 1.jpg", contain: true },
+    preview: {
+      images: ["img/timo/timo-mockup01.jpg", "img/timo/timo-mockup02.jpg"],
+    },
+    sectionOrder: ["overview", "wireframe", "color-typography", "preview"],
+  },
 };
+
+function buildDesignProcess(overlay, steps) {
+  const flow = overlay.querySelector(".overlay-process-flow");
+  if (!flow) return;
+
+  flow.innerHTML = steps
+    .map(
+      (step, i) => `
+        <div class="overlay-process-step">
+          <div class="overlay-process-badge">
+            <span class="overlay-process-badge-title">${step.title}</span>
+            <span class="overlay-process-badge-sub">${step.sub}</span>
+          </div>
+          ${i < steps.length - 1 ? '<div class="overlay-process-arrow" aria-hidden="true"></div>' : ""}
+        </div>`
+    )
+    .join("");
+}
 
 let planningSwiper = null;
 
@@ -540,9 +803,10 @@ function setWireframeImages(overlay, wireframe) {
   frame.onmouseleave = null;
 
   if (wireframe?.hover) {
+    const containClass = wireframe.contain ? " is-contain" : "";
     frame.innerHTML = `
-      <img class="overlay-wireframe-fade-img is-base" src="${wireframe.base}" alt="" />
-      <img class="overlay-wireframe-fade-img is-hover" src="${wireframe.hover}" alt="" />
+      <img class="overlay-wireframe-fade-img is-base${containClass}" src="${wireframe.base}" alt="" />
+      <img class="overlay-wireframe-fade-img is-hover${containClass}" src="${wireframe.hover}" alt="" />
       <div class="overlay-wireframe-hint">
         <span class="overlay-wireframe-hint-icon" aria-hidden="true">
           <span></span><span></span><span></span>
@@ -605,6 +869,14 @@ function initProjectOverlay() {
     if (sibling) openProjectOverlay(sibling);
   });
   overlay.querySelector(".overlay-footer-next").addEventListener("click", () => {
+    const sibling = getSiblingProjectCard(Number(overlay.dataset.currentCardId), 1);
+    if (sibling) openProjectOverlay(sibling);
+  });
+  overlay.querySelector(".overlay-hero-nav-prev").addEventListener("click", () => {
+    const sibling = getSiblingProjectCard(Number(overlay.dataset.currentCardId), -1);
+    if (sibling) openProjectOverlay(sibling);
+  });
+  overlay.querySelector(".overlay-hero-nav-next").addEventListener("click", () => {
     const sibling = getSiblingProjectCard(Number(overlay.dataset.currentCardId), 1);
     if (sibling) openProjectOverlay(sibling);
   });
@@ -694,11 +966,32 @@ function openProjectOverlay(card) {
   setOverlaySectionVisible(overlay, "overview", Boolean(details?.overview));
   overlay.querySelector(".overlay-overview-text").textContent = details?.overview || "";
 
+  const skillsEl = overlay.querySelector(".overlay-overview-skills");
+  if (skillsEl) {
+    if (details?.overviewSkills?.length) {
+      const skills = details.overviewSkills;
+      skillsEl.innerHTML = skills
+        .map((skill, i) => {
+          const isLast = i === skills.length - 1;
+          return isLast
+            ? `<span class="overlay-overview-skill-label">${skill}</span>`
+            : `<span class="overlay-overview-skill-item">
+                 <span class="overlay-overview-skill-label">${skill}</span>
+                 <span class="overlay-overview-skill-line" aria-hidden="true"></span>
+               </span>`;
+        })
+        .join("");
+      skillsEl.style.display = "";
+    } else {
+      skillsEl.style.display = "none";
+    }
+  }
+
   setOverlaySectionVisible(overlay, "before-after", Boolean(details?.beforeImg && details?.afterImg));
   overlay.querySelector(".overlay-before-img").src = details?.beforeImg || "";
   overlay.querySelector(".overlay-after-img").src = details?.afterImg || "";
 
-  setOverlaySectionVisible(overlay, "color-typography", Boolean(details?.colors));
+  setOverlaySectionVisible(overlay, "color-typography", Boolean(details?.colors || details?.typographyFonts));
   const colorList = overlay.querySelector(".overlay-color-list");
   colorList.innerHTML = (details?.colors || [])
     .map(
@@ -706,16 +999,38 @@ function openProjectOverlay(card) {
         `<li><span class="overlay-color-swatch" style="background-color:${hex}"></span><span class="overlay-color-hex">${hex}</span></li>`
     )
     .join("");
-  const tagline = overlay.querySelector(".overlay-typo-tagline");
-  if (details?.typographyTagline) {
-    const { bold, regular, faded } = details.typographyTagline;
-    tagline.innerHTML = `<strong>${bold}</strong>${regular}<span>${faded}</span>`;
+
+  const typoEl = overlay.querySelector(".overlay-typography");
+  if (details?.typographyFonts?.length) {
+    typoEl.className = "overlay-typography";
+    typoEl.innerHTML = details.typographyFonts
+      .map((font) => {
+        const taglineHtml = font.tagline
+          ? `<p class="overlay-typo-tagline"><strong>${font.tagline.bold}</strong>${font.tagline.regular}<span>${font.tagline.faded}</span></p>`
+          : "";
+        return `<div class="overlay-typo-block ${font.fontClass || ""}">
+          <p class="overlay-typo-aa">Aa</p>
+          <p class="overlay-typo-chars">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />1234567890<br /><span class="overlay-typo-bold">Bold</span><br /><span class="overlay-typo-medium">Medium</span><br /><span class="overlay-typo-regular">Regular</span></p>
+          ${taglineHtml}
+        </div>`;
+      })
+      .join("");
   } else {
-    tagline.innerHTML = "";
+    typoEl.innerHTML = `<p class="overlay-typo-aa">Aa</p>
+      <p class="overlay-typo-chars">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
+        1234567890<br />
+        <span class="overlay-typo-bold">Bold</span><br />
+        <span class="overlay-typo-medium">Medium</span><br />
+        <span class="overlay-typo-regular">Regular</span>
+      </p>
+      <p class="overlay-typo-tagline"></p>`;
+    const tagline = typoEl.querySelector(".overlay-typo-tagline");
+    if (details?.typographyTagline) {
+      const { bold, regular, faded } = details.typographyTagline;
+      tagline.innerHTML = `<strong>${bold}</strong>${regular}<span>${faded}</span>`;
+    }
+    typoEl.classList.toggle("is-pretendard", details?.typographyFont === "pretendard");
   }
-  overlay
-    .querySelector(".overlay-typography")
-    .classList.toggle("is-pretendard", details?.typographyFont === "pretendard");
 
   setOverlaySectionVisible(overlay, "wireframe", Boolean(details?.wireframe?.base));
   setWireframeImages(overlay, details?.wireframe);
@@ -726,8 +1041,27 @@ function openProjectOverlay(card) {
   setOverlaySectionVisible(overlay, "final-design", Boolean(details?.finalDesignImg));
   overlay.querySelector(".overlay-final-design-img").src = details?.finalDesignImg || "";
 
+  setOverlaySectionVisible(overlay, "design-process", Boolean(details?.designProcess?.length));
+  buildDesignProcess(overlay, details?.designProcess || []);
+
   setOverlaySectionVisible(overlay, "design-detail", Boolean(details?.designDetails?.length));
   buildDesignDetailSlides(overlay, details?.designDetails || [], details?.designDetailMode || "track");
+
+  // Storyboard
+  if (storyboardSwiper) {
+    storyboardSwiper.destroy(true, true);
+    storyboardSwiper = null;
+  }
+  setOverlaySectionVisible(overlay, "storyboard", Boolean(details?.storyboard));
+  if (details?.storyboard) buildStoryboardSlider(overlay, details.storyboard);
+
+  // Publishing Detail
+  setOverlaySectionVisible(overlay, "publishing-detail", Boolean(details?.publishingDetail));
+  if (details?.publishingDetail) buildPublishingDetail(overlay, details.publishingDetail);
+
+  // Preview
+  setOverlaySectionVisible(overlay, "preview", Boolean(details?.preview?.images?.length));
+  if (details?.preview?.images?.length) buildPreviewSection(overlay, details.preview);
 
   applySectionOrder(overlay, details?.sectionOrder);
 
@@ -738,6 +1072,33 @@ function openProjectOverlay(card) {
   const nextCard = getSiblingProjectCard(cardIndex, 1);
   fillFooterProject(overlay.querySelector(".overlay-footer-prev"), prevCard);
   fillFooterProject(overlay.querySelector(".overlay-footer-next"), nextCard);
+
+  // Badge: show/hide based on project data; fallback (no details) keeps HTML text
+  const badge = overlay.querySelector(".overlay-hero-badge");
+  if (badge) {
+    if (details?.badge) {
+      badge.textContent = details.badge;
+      badge.style.color = details.badgeColor || "";
+      badge.style.display = "";
+    } else if (details) {
+      badge.style.display = "none";
+    } else {
+      badge.style.color = "";
+      badge.style.display = "";
+    }
+  }
+
+  // Hero nav: show/hide arrows + per-project color
+  const heroNavPrev = overlay.querySelector(".overlay-hero-nav-prev");
+  const heroNavNext = overlay.querySelector(".overlay-hero-nav-next");
+  if (heroNavPrev) heroNavPrev.classList.toggle("is-hidden", !prevCard);
+  if (heroNavNext) heroNavNext.classList.toggle("is-hidden", !nextCard);
+  const navColor = details?.heroNavColor || "";
+  [heroNavPrev, heroNavNext].forEach((btn) => {
+    if (!btn) return;
+    btn.style.color = navColor;
+    btn.style.borderColor = navColor;
+  });
 
   overlay.scrollTop = 0;
   overlay.querySelector(".overlay-detail-slider").dataset.index = "0";
@@ -762,6 +1123,197 @@ function fillFooterProject(button, projectCard) {
 // - track mode (default, e.g. Downy): custom GSAP track, advances via the next button only
 // - swiper mode (e.g. Zara): Swiper instance with creative effect, arrows, pagination, drag, keyboard, loop
 let designDetailSwiper = null;
+
+// --- Storyboard Slider ---
+
+let storyboardSwiper = null;
+
+function buildStoryboardSlider(overlay, storyboard) {
+  const section = overlay.querySelector('[data-section="storyboard"]');
+  if (!section) return;
+
+  if (storyboardSwiper) {
+    storyboardSwiper.destroy(true, true);
+    storyboardSwiper = null;
+  }
+
+  const swiperEl = section.querySelector(".overlay-storyboard-swiper");
+  const wrapper = swiperEl.querySelector(".swiper-wrapper");
+  const images = storyboard.images || [];
+  const figmaUrl = storyboard.figmaUrl || "";
+
+  const hintMarkup = `<span class="overlay-storyboard-figma-hint" aria-hidden="true">
+       <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+         <rect x="0" y="0" width="7" height="7" rx="1"/><rect x="9" y="0" width="7" height="7" rx="1"/>
+         <rect x="0" y="9" width="7" height="7" rx="1"/><rect x="9" y="9" width="7" height="7" rx="1"/>
+       </svg>
+       이미지 클릭시 피그마 슬라이드로 이동합니다.
+     </span>`;
+
+  wrapper.innerHTML = images
+    .map((src, i) => {
+      const img = `<img class="overlay-storyboard-img" src="${src}" alt="Storyboard ${i + 1}" loading="lazy" />`;
+      const inner = figmaUrl
+        ? `<a class="overlay-storyboard-slide-link" href="${figmaUrl}" target="_blank" rel="noopener">${img}${hintMarkup}</a>`
+        : `<div class="overlay-storyboard-slide-link">${img}${hintMarkup}</div>`;
+      return `<div class="swiper-slide overlay-storyboard-slide">
+                <div class="overlay-storyboard-slide-img-wrap">${inner}</div>
+              </div>`;
+    })
+    .join("");
+
+  if (typeof Swiper === "undefined" || !images.length) return;
+
+  storyboardSwiper = new Swiper(swiperEl, {
+    effect: "fade",
+    fadeEffect: { crossFade: true },
+    loop: true,
+    autoplay: {
+      delay: 3800,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    navigation: {
+      prevEl: section.querySelector(".overlay-storyboard-prev"),
+      nextEl: section.querySelector(".overlay-storyboard-next"),
+    },
+    pagination: {
+      el: section.querySelector(".overlay-storyboard-pagination"),
+      clickable: true,
+    },
+  });
+}
+
+// --- Publishing Detail ---
+
+function buildPublishingDetail(overlay, data) {
+  const section = overlay.querySelector('[data-section="publishing-detail"]');
+  if (!section) return;
+
+  const tabsEl = section.querySelector(".overlay-pub-tabs");
+  const imgEl = section.querySelector(".overlay-pub-img");
+  const captionEl = section.querySelector(".overlay-pub-caption");
+  const counterCur = section.querySelector(".overlay-pub-counter-cur");
+  const counterTot = section.querySelector(".overlay-pub-counter-tot");
+
+  const tabs = data.tabs || [];
+  const images = data.images || [];
+  const captions = data.captions || [];
+
+  if (counterTot) counterTot.textContent = String(tabs.length).padStart(2, "0");
+
+  tabsEl.innerHTML = tabs
+    .map(
+      (tab, i) =>
+        `<button class="overlay-pub-tab${i === 0 ? " is-active" : ""}" type="button" data-index="${i}">${tab.label}</button>`
+    )
+    .join("");
+
+  function goTo(index, animate) {
+    section._pubIndex = index;
+
+    if (counterCur) counterCur.textContent = String(index + 1).padStart(2, "0");
+
+    tabsEl.querySelectorAll(".overlay-pub-tab").forEach((btn, i) => {
+      btn.classList.toggle("is-active", i === index);
+    });
+
+    const caption = captions[index];
+    if (captionEl) {
+      if (caption && typeof caption === "object") {
+        captionEl.innerHTML = `<strong class="overlay-pub-caption-title">${caption.title}</strong>${caption.text}`;
+      } else {
+        captionEl.textContent = caption || "";
+      }
+    }
+
+    if (animate) {
+      imgEl.classList.remove("is-visible");
+      setTimeout(() => {
+        imgEl.src = images[index] || "";
+        imgEl.onload = () => imgEl.classList.add("is-visible");
+        if (!images[index]) imgEl.classList.add("is-visible");
+      }, 280);
+    } else {
+      imgEl.src = images[index] || "";
+      requestAnimationFrame(() => imgEl.classList.add("is-visible"));
+    }
+  }
+
+  // Always update the live reference so existing listeners use current project's data
+  section._pubGoTo = goTo;
+
+  section._pubIndex = 0;
+  goTo(0, false);
+
+  // Use setup flag to avoid stacking listeners
+  if (!section.dataset.pubReady) {
+    section.dataset.pubReady = "1";
+
+    tabsEl.addEventListener("click", (e) => {
+      const btn = e.target.closest(".overlay-pub-tab");
+      if (!btn) return;
+      section._pubGoTo(parseInt(btn.dataset.index, 10), true);
+    });
+
+    section.querySelector(".overlay-pub-arr--prev").addEventListener("click", () => {
+      const total = section.querySelectorAll(".overlay-pub-tab").length;
+      section._pubGoTo(((section._pubIndex || 0) - 1 + total) % total, true);
+    });
+
+    section.querySelector(".overlay-pub-arr--next").addEventListener("click", () => {
+      const total = section.querySelectorAll(".overlay-pub-tab").length;
+      section._pubGoTo(((section._pubIndex || 0) + 1) % total, true);
+    });
+  }
+}
+
+let previewScrollTriggers = [];
+
+function buildPreviewSection(overlay, data) {
+  const section = overlay.querySelector('[data-section="preview"]');
+  if (!section) return;
+
+  const items = section.querySelectorAll(".overlay-preview-item");
+  const imgs = section.querySelectorAll(".overlay-preview-img");
+  const images = data.images || [];
+
+  imgs.forEach((img, i) => {
+    img.src = images[i] || "";
+  });
+
+  items.forEach((item, i) => {
+    item.style.display = i < images.length ? "" : "none";
+  });
+
+  // Kill old ScrollTrigger instances before creating new ones
+  previewScrollTriggers.forEach((st) => st.kill());
+  previewScrollTriggers = [];
+
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const scroll = overlay.querySelector(".project-overlay-scroll");
+  const visibleItems = [...items].filter((_, i) => i < images.length);
+
+  gsap.set(visibleItems, { opacity: 0, y: 50 });
+
+  visibleItems.forEach((item, i) => {
+    const st = ScrollTrigger.create({
+      trigger: item,
+      scroller: scroll,
+      start: "top 88%",
+      onEnter: () => {
+        gsap.to(item, { opacity: 1, y: 0, duration: 0.75, delay: i * 0.12, ease: "power2.out" });
+      },
+      onLeaveBack: () => {
+        gsap.set(item, { opacity: 0, y: 50 });
+      },
+    });
+    previewScrollTriggers.push(st);
+  });
+}
 
 function buildDesignDetailSlides(overlay, slides, mode = "track") {
   const track = overlay.querySelector(".overlay-detail-track");

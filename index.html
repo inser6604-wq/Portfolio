@@ -250,7 +250,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="publishing" data-thumb="img/works-img04.jpg">
+          <article class="project-card" data-category="publishing" data-thumb="img/works-img04.jpg" data-project-id="aether">
             <div class="project-card-thumb">
               <img class="project-card-img" data-thumb="img/works-img04.jpg" alt="" />
             </div>
@@ -263,7 +263,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="publishing" data-thumb="img/works-img05.jpg">
+          <article class="project-card" data-category="publishing" data-thumb="img/works-img05.jpg" data-project-id="compose">
             <div class="project-card-thumb">
               <img class="project-card-img" data-thumb="img/works-img05.jpg" alt="" />
             </div>
@@ -276,7 +276,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="team" data-thumb="img/works-img01.jpg">
+          <article class="project-card" data-category="team" data-thumb="img/works-img01.jpg" data-project-id="jejuvegan">
             <div class="project-card-thumb">
               <img class="project-card-img" data-thumb="img/works-img01.jpg" alt="" />
             </div>
@@ -289,7 +289,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="team" data-thumb="img/works-img02.jpg">
+          <article class="project-card" data-category="team" data-thumb="img/works-img02.jpg" data-project-id="timo">
             <div class="project-card-thumb">
               <img class="project-card-img" data-thumb="img/works-img02.jpg" alt="" />
             </div>
@@ -509,7 +509,12 @@
             <img class="overlay-hero-img" alt="" />
             <div class="overlay-hero-gradient" aria-hidden="true"></div>
           </div>
-          <span class="overlay-hero-badge">100% personal</span>
+          <span class="overlay-hero-badge">100% PERSONAL</span>
+
+          <div class="overlay-hero-nav">
+            <button class="overlay-hero-nav-btn overlay-hero-nav-prev" type="button" aria-label="이전 프로젝트">&#8592;</button>
+            <button class="overlay-hero-nav-btn overlay-hero-nav-next" type="button" aria-label="다음 프로젝트">&#8594;</button>
+          </div>
 
           <div class="overlay-hero-panel">
             <span class="overlay-hero-tag"></span>
@@ -526,6 +531,12 @@
         <section class="overlay-section overlay-overview" data-section="overview">
           <h2 class="overlay-label">overview</h2>
           <p class="overlay-overview-text"></p>
+          <div class="overlay-overview-skills"></div>
+        </section>
+
+        <section class="overlay-section overlay-design-process" data-section="design-process">
+          <h2 class="overlay-label">DESIGN PROCESS</h2>
+          <div class="overlay-process-flow"></div>
         </section>
 
         <section class="overlay-section overlay-planning" data-section="planning">
@@ -570,9 +581,57 @@
           </div>
         </section>
 
+        <section class="overlay-section overlay-storyboard" data-section="storyboard">
+          <h2 class="overlay-label">story board &amp; wireframe</h2>
+          <div class="overlay-storyboard-wrap">
+            <div class="overlay-storyboard-swiper swiper">
+              <div class="swiper-wrapper"></div>
+            </div>
+            <button class="overlay-storyboard-prev" type="button" aria-label="이전 슬라이드">&#8592;</button>
+            <button class="overlay-storyboard-next" type="button" aria-label="다음 슬라이드">&#8594;</button>
+            <div class="overlay-storyboard-pagination swiper-pagination"></div>
+          </div>
+        </section>
+
+        <section class="overlay-section overlay-pub-detail" data-section="publishing-detail">
+          <div class="overlay-pub-header">
+            <h2 class="overlay-label">publishing detail</h2>
+            <div class="overlay-pub-nav-bar">
+              <span class="overlay-pub-counter">
+                <span class="overlay-pub-counter-cur">01</span>
+                <span class="overlay-pub-counter-sep"> / </span>
+                <span class="overlay-pub-counter-tot">05</span>
+              </span>
+              <button class="overlay-pub-arr overlay-pub-arr--prev" type="button" aria-label="이전">&#8592;</button>
+              <button class="overlay-pub-arr overlay-pub-arr--next" type="button" aria-label="다음">&#8594;</button>
+            </div>
+          </div>
+          <div class="overlay-pub-body">
+            <nav class="overlay-pub-tabs" aria-label="퍼블리싱 상세 탭"></nav>
+            <div class="overlay-pub-content">
+              <div class="overlay-pub-img-wrap">
+                <img class="overlay-pub-img" alt="" />
+              </div>
+              <p class="overlay-pub-caption"></p>
+            </div>
+          </div>
+        </section>
+
         <section class="overlay-section overlay-wireframe" data-section="wireframe">
           <h2 class="overlay-label">wireframe</h2>
           <div class="overlay-wireframe-frame"></div>
+        </section>
+
+        <section class="overlay-section overlay-preview" data-section="preview">
+          <h2 class="overlay-label">preview</h2>
+          <div class="overlay-preview-grid">
+            <div class="overlay-preview-item">
+              <img class="overlay-preview-img" alt="" />
+            </div>
+            <div class="overlay-preview-item">
+              <img class="overlay-preview-img" alt="" />
+            </div>
+          </div>
         </section>
 
         <section class="overlay-section overlay-final-design" data-section="final-design">
