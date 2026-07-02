@@ -90,8 +90,61 @@ function initContactEmailCopy() {
   });
 }
 
+function initGoTop() {
+  const btn = document.querySelector(".go-top");
+  if (!btn) return;
+
+  const showThreshold = window.innerHeight * 0.6;
+
+  const onScroll = () => {
+    const scrolled = window.scrollY > showThreshold;
+    if (scrolled && !btn.classList.contains("is-visible")) {
+      btn.classList.add("is-visible");
+      gsap.to(btn, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" });
+    } else if (!scrolled && btn.classList.contains("is-visible")) {
+      btn.classList.remove("is-visible");
+      gsap.to(btn, { opacity: 0, y: 16, duration: 0.4, ease: "power3.in" });
+    }
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  btn.addEventListener("click", () => {
+    gsap.to(window, {
+      scrollTo: 0,
+      duration: 1.2,
+      ease: "power4.inOut",
+    });
+  });
+}
+
+function initNavHover() {
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    const top = link.querySelector(".nav-text--top");
+    const bottom = link.querySelector(".nav-text--bottom");
+    const bar = link.querySelector(".nav-bar");
+
+    link.addEventListener("mouseenter", () => {
+      gsap.killTweensOf([top, bottom, bar]);
+      gsap.to(top, { yPercent: -100, opacity: 0, duration: 0.45, ease: "power3.out", overwrite: true });
+      gsap.to(bottom, { yPercent: -100, opacity: 1, duration: 0.45, ease: "power3.out", overwrite: true });
+      gsap.to(bar, { scaleX: 1, duration: 0.4, ease: "power3.out", transformOrigin: "left center", overwrite: true });
+    });
+
+    link.addEventListener("mouseleave", () => {
+      gsap.killTweensOf([top, bottom, bar]);
+      gsap.to(top, { yPercent: 0, opacity: 1, duration: 0.45, ease: "power3.out", overwrite: true });
+      gsap.to(bottom, { yPercent: 0, opacity: 0, duration: 0.45, ease: "power3.out", overwrite: true });
+      gsap.to(bar, { scaleX: 0, duration: 0.35, ease: "power3.in", transformOrigin: "right center", overwrite: true });
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollToPlugin);
   initContactEmailCopy();
+  initNavHover();
+  initGoTop();
 
   document.querySelectorAll('.main-nav a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {
@@ -107,7 +160,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (!document.getElementById("intro")) {
+    const mainEl = document.getElementById("main");
+    if (mainEl) gsap.set(mainEl, { visibility: "visible" });
+    gsap.set(".main-portfolio-wrap, .hero-designer, .hero-ampersand, .hero-publisher, .main-header, .main-scroll", { opacity: 0 });
+    gsap.set(".main-title", { opacity: 0 });
     initScrollReveal();
+    if (typeof initHeroIntroAnimation === "function") initHeroIntroAnimation();
   }
 });
 

@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KIM INSEO | UI/UX Designer & Web Publisher</title>
+    <link rel="icon" type="image/svg+xml" href="img/logo 1.svg" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -44,24 +45,47 @@
         <span class="hero-mesh-blob hero-mesh-blob--2"></span>
         <span class="hero-mesh-blob hero-mesh-blob--3"></span>
         <span class="hero-mesh-blob hero-mesh-blob--4"></span>
-        <span class="hero-mesh-blob hero-mesh-blob--5"></span>
       </div>
 
-      <header class="main-header scroll-reveal">
+      <header class="main-header">
         <a href="#" class="main-logo" aria-label="홈">
-          <img src="img/main/logo.png" alt="" width="99" height="72" />
+          <img src="img/main/logo.svg" alt="" width="99" height="72" />
         </a>
         <nav class="main-nav" aria-label="주요 메뉴">
-          <a href="#about">about</a>
-          <a href="#project">project</a>
-          <a href="#archive">archive</a>
-          <a href="#contact">contact</a>
+          <a href="#about" class="nav-link">
+            <span class="nav-text-wrap">
+              <span class="nav-text nav-text--top">about</span>
+              <span class="nav-text nav-text--bottom">about</span>
+            </span>
+            <span class="nav-bar"></span>
+          </a>
+          <a href="#project" class="nav-link">
+            <span class="nav-text-wrap">
+              <span class="nav-text nav-text--top">project</span>
+              <span class="nav-text nav-text--bottom">project</span>
+            </span>
+            <span class="nav-bar"></span>
+          </a>
+          <a href="#archive" class="nav-link">
+            <span class="nav-text-wrap">
+              <span class="nav-text nav-text--top">archive</span>
+              <span class="nav-text nav-text--bottom">archive</span>
+            </span>
+            <span class="nav-bar"></span>
+          </a>
+          <a href="#contact" class="nav-link">
+            <span class="nav-text-wrap">
+              <span class="nav-text nav-text--top">contact</span>
+              <span class="nav-text nav-text--bottom">contact</span>
+            </span>
+            <span class="nav-bar"></span>
+          </a>
         </nav>
       </header>
 
-      <p class="main-subtitle scroll-reveal">UI/UX DESIGNER &amp; WEB PUBLISHER</p>
+      <p class="main-subtitle"><span class="hero-designer">UI/UX DESIGNER</span><span class="hero-ampersand"> &amp; </span><span class="hero-publisher">WEB PUBLISHER</span></p>
 
-      <div class="main-hero scroll-reveal">
+      <div class="main-hero">
         <h1 class="main-title" aria-label="INSEO">
           <span class="main-title-line">IN</span>
           <span class="main-title-line">SEO</span>
@@ -72,7 +96,7 @@
         </div>
       </div>
 
-      <div class="main-scroll scroll-reveal" aria-hidden="true">
+      <div class="main-scroll" aria-hidden="true">
         <img class="main-scroll-line" src="img/main/scroll-line.png" alt="" width="2" height="107" />
         <span class="main-scroll-text">SCROLL</span>
       </div>
@@ -126,14 +150,20 @@
                 <span>javascript - 70%</span>
               </li>
               <li class="about-skill-item scroll-reveal">
+                <span class="about-skill-icons">
+                  <img class="about-skill-icon about-skill-icon--sm" src="img/skillset-icon01.svg" alt="Cursor AI" width="30" height="30" />
+                  <img class="about-skill-icon about-skill-icon--sm" src="img/skillset-icon05.png" alt="Claude AI" width="30" height="30" />
+                </span>
                 <span>Vibe coding - 90%</span>
               </li>
             </ul>
 
             <div class="about-tool-icons scroll-reveal">
               <img src="img/about/icons/github.png" alt="GitHub" width="30" height="30" />
-              <img class="about-tool-icon-gsap" src="img/about/icons/gsap.png" alt="GSAP" width="30" height="30" />
+              <img src="img/skillset-icon04.svg" alt="GSAP" width="30" height="30" />
               <img src="img/about/icons/svg.png" alt="SVG" width="30" height="30" />
+              <img src="img/skillset-icon03.svg" alt="Bootstrap" width="36" height="36" />
+              <img src="img/skillset-icon02.svg" alt="Sass" width="30" height="30" />
             </div>
           </div>
 
@@ -154,8 +184,11 @@
 
             <div class="about-info-block scroll-reveal">
               <h3 class="about-info-title">EXPERIENCE</h3>
+              <p>UXUI AI 툴셋 활용 웹서비스 기획·디자인&퍼블리싱
+              (2026.03.12 ~ 07.03)</p>
               <p>뷰티상회 웹디자이너 (2022.05 ~ 10)</p>
               <p>고니야 홀 서비스 및 고객응대 (2021 ~ 2025)</p>
+              <p>GTQ그래픽전문가의 이해와 자격증취득 (2021.07 ~ 08.16) </p>
               <p>큐니걸스 쇼핑몰MD 인턴 (2020.04 ~ 05)</p>
               <p>단하루 쇼핑몰 인턴 (2019.04 ~ 05)</p>
             </div>
@@ -342,8 +375,20 @@
           <span class="archive-card-label">POPUP DESIGN</span>
         </button>
 
-        <button class="archive-card" type="button" data-thumb="img/archive-img10.webp" data-name="SVG ANIMATION">
-          <img class="archive-card-img" src="img/archive-img10.webp" alt="" />
+        <button
+          class="archive-card"
+          type="button"
+          data-thumb="img/svg-animation04.jpg"
+          data-name="SVG ANIMATION"
+          data-period="2DAY"
+          data-tools="PHOTOSHOP,SVG ANIMATION"
+          data-overview="SVG의 path 애니메이션과 CSS @keyframes를 활용하여 로고가 그려지는 드로잉 효과를 구현한 작업입니다.
+stroke-dasharray와 stroke-dashoffset을 이용해 선이 그려지는 애니메이션을 구현하고,
+fill 전환과 빨간 점 등장으로 브랜드 아이덴티티를 순차적으로 표현했습니다."
+          data-hero-svg="img/svg-animation.svg"
+          data-gallery-images="img/svg-animation01.jpg,img/svg-animation02.jpg,img/svg-animation03.jpg,img/svg-animation04.jpg"
+          >
+          <img class="archive-card-img" src="img/svg-animation04.jpg" alt="" />
           <span class="archive-card-overlay" aria-hidden="true"></span>
           <span class="archive-card-label">SVG ANIMATION</span>
         </button>
@@ -392,6 +437,9 @@
           data-overview="AI 툴과 Photoshop을 활용한 광고 포스터 제작 작업물입니다.
           콘셉트에 맞는 이미지 생성부터 합성, 타이포그래피 배치까지 직접 작업했으며,
           굿즈 목업으로 확장하여 브랜드 감성을 시각화했습니다."
+          data-process-images="img/ai-process01.jpg,img/ai-process02.jpg,img/ai-process03.jpg"
+          data-process-captions="sketch,1차 이미지 생성,최종 이미지 생성 결과본"
+          data-hide-badge="true"
           >
           <img class="archive-card-img" src="img/archive-img06.webp" alt="" />
           <span class="archive-card-overlay" aria-hidden="true"></span>
@@ -494,6 +542,11 @@
         </div>
       </div>
     </section>
+
+    <button class="go-top" type="button" aria-label="맨 위로 이동">
+      <span class="go-top-arrow" aria-hidden="true">↑</span>
+      <span class="go-top-label">TOP</span>
+    </button>
 
     <div class="project-overlay" aria-hidden="true">
       <div class="overlay-hero-topbar">
@@ -657,6 +710,8 @@
           <a class="overlay-cta-btn overlay-bottom-figma" href="#" target="_blank" rel="noopener">figma &#8594;</a>
         </div>
 
+        <p class="overlay-disclaimer">본 작업물은 상업적 목적이 아닌 개인 포트폴리오 용도로 제작되었습니다.</p>
+
         <nav class="overlay-footer-nav" data-section="footer-nav">
           <button class="overlay-footer-project overlay-footer-prev" type="button">
             <span class="overlay-footer-arrow" aria-hidden="true">&#8592;</span>
@@ -698,8 +753,13 @@
       <div class="archive-overlay-scroll">
         <div class="archive-overlay-hero">
           <img class="archive-overlay-hero-img" alt="" />
+          <div class="archive-overlay-svg-hero" aria-hidden="true" style="display:none"></div>
           <span class="archive-overlay-badge">100% PERSONAL</span>
           <div class="archive-overlay-gradient" aria-hidden="true"></div>
+          <div class="archive-overlay-nav">
+            <button class="archive-overlay-nav-btn archive-overlay-nav-prev" type="button" aria-label="이전 아카이브">&#8592;</button>
+            <button class="archive-overlay-nav-btn archive-overlay-nav-next" type="button" aria-label="다음 아카이브">&#8594;</button>
+          </div>
           <div class="archive-overlay-heading-block">
             <h2 class="archive-overlay-title"></h2>
             <div class="archive-overlay-tags"></div>
@@ -709,6 +769,26 @@
           <p class="archive-overlay-label">overview</p>
           <p class="archive-overlay-overview-text"></p>
         </div>
+        <div class="archive-overlay-process">
+          <p class="archive-overlay-label">sketch process</p>
+          <div class="archive-overlay-process-track">
+            <div class="archive-overlay-process-step">
+              <img class="archive-overlay-process-img" alt="" />
+              <p class="archive-overlay-process-caption"></p>
+            </div>
+            <span class="archive-overlay-process-arrow" aria-hidden="true"></span>
+            <div class="archive-overlay-process-step">
+              <img class="archive-overlay-process-img" alt="" />
+              <p class="archive-overlay-process-caption"></p>
+            </div>
+            <span class="archive-overlay-process-arrow" aria-hidden="true"></span>
+            <div class="archive-overlay-process-step">
+              <img class="archive-overlay-process-img" alt="" />
+              <p class="archive-overlay-process-caption"></p>
+            </div>
+          </div>
+        </div>
+
         <div class="archive-overlay-gallery-label-wrap">
           <p class="archive-overlay-label">gallery</p>
         </div>
@@ -718,6 +798,8 @@
           <img class="archive-overlay-gallery-img" alt="" />
           <img class="archive-overlay-gallery-img" alt="" />
         </div>
+
+        <p class="overlay-disclaimer">본 작업물은 상업적 목적이 아닌 개인 포트폴리오 용도로 제작되었습니다.</p>
       </div>
     </div>
 
@@ -725,7 +807,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/animation.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+    <script src="js/animation.js?v=3"></script>
+    <script src="js/main.js?v=3"></script>
   </body>
 </html>

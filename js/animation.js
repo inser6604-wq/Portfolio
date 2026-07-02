@@ -34,6 +34,16 @@ function initIntroAnimation() {
 
   if (!intro || !main || !track || items.length === 0 || images.length === 0) return;
 
+  // Pre-hide hero elements before #main becomes visible during the intro stair reveal.
+  // Individual initial positions (y, filter) are applied in initHeroIntroAnimation().
+  // Note: .main-portfolio-wrap (not .main-portfolio-label) is hidden here so the CSS
+  // transform: rotate(-90deg) on the label is never touched by GSAP.
+  gsap.set(
+    [".hero-designer", ".hero-ampersand", ".hero-publisher", ".main-portfolio-wrap", ".main-header", ".main-scroll"],
+    { opacity: 0 }
+  );
+  gsap.set(".main-title", { opacity: 0 });
+
   const slotHeight = items[0].offsetHeight;
 
   document.body.style.overflow = "hidden";
@@ -47,7 +57,6 @@ function initIntroAnimation() {
     onComplete: () => {
       intro.remove();
       document.body.style.overflow = "";
-      initMainScrollBounce();
       document.dispatchEvent(new CustomEvent("intro:complete"));
     },
   });
@@ -372,7 +381,7 @@ const PROJECT_DETAILS = {
     titleLines: ["Downy", "Redesign"],
     info: [
       { label: "period", value: "3days" },
-      { label: "role", value: "기획 · 디자인" },
+      { label: "role", value: "기획 · 디자인 / 100% Personal" },
       { label: "tool", value: "Figma" },
     ],
     heroImg: "img/downy-mockup copy.jpg",
@@ -387,6 +396,9 @@ const PROJECT_DETAILS = {
       faded: "NanumSquare Neo OTF",
     },
     wireframe: { base: "img/downy-wireframe.webp" },
+    preview: {
+      images: ["img/Downy-mockup01.jpg", "img/Downy-mockup02.jpg"],
+    },
     designDetails: [
       {
         tag: "HERO BANNER",
@@ -407,11 +419,11 @@ const PROJECT_DETAILS = {
           "제품을 일관성 있게 탐색할 수 있도록 카드형 레이아웃을 적용했습니다. BEST 뱃지와 View all 링크로 정보 위계를 명확히 하고, 그리드 정렬과 여백을 통해 시각적 피로감 없이 다수의 제품을 자연스럽게 노출할 수 있도록 했습니다.",
       },
     ],
-    sectionOrder: ["overview", "before-after", "color-typography", "wireframe", "design-detail"],
+    sectionOrder: ["overview", "before-after", "color-typography", "wireframe", "design-detail", "preview"],
   },
   arco: {
     figmaUrl:
-      "https://www.figma.com/design/mlNyk8zl2HXSxHw0jDAgRy/%EA%B9%80%EC%9D%B8%EC%84%9C-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4?node-id=263-7",
+      "https://www.figma.com/design/V9X6qPnM7Ec7A3u42baE54/%EA%B9%80%EC%9D%B8%EC%84%9C-%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%95%B1UI%EB%94%94%EC%9E%90%EC%9D%B8?node-id=0-1&t=d6UqbIHdNmSgYMPx-1",
     badge: "100% PERSONAL",
     badgeColor: "#9359FF",
     heroNavColor: "#0d0d0d",
@@ -419,7 +431,7 @@ const PROJECT_DETAILS = {
     titleLines: ["Arco"],
     info: [
       { label: "period", value: "1week" },
-      { label: "role", value: "기획 · 디자인 · 프로토" },
+      { label: "role", value: "기획 · 디자인 · 프로토 / 100% Personal" },
       { label: "tool", value: "Figma" },
     ],
     heroImg: "img/app-mockup.jpg",
@@ -438,20 +450,22 @@ const PROJECT_DETAILS = {
       faded: "S-Core Dream",
     },
     wireframe: { base: "img/arco-wireframe02.webp", hover: "img/arco-wireframe01.webp" },
-    finalDesignImg: "img/arco-finaldesign.webp",
-    sectionOrder: ["overview", "planning", "wireframe", "color-typography", "final-design"],
+    preview: {
+      images: ["img/arco-mockup01.jpg", "img/arco-mockup02.jpg"],
+    },
+    sectionOrder: ["overview", "planning", "wireframe", "color-typography", "preview"],
   },
   zara: {
     figmaUrl:
-      "https://www.figma.com/design/mlNyk8zl2HXSxHw0jDAgRy/%EA%B9%80%EC%9D%B8%EC%84%9C-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4?node-id=281-8",
-    siteUrl: "#",
-    githubUrl: "#",
+      "https://www.figma.com/design/aK6cCABll232WEyJ1yIcSY/4-Onepage-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=21-2&t=cokYFQYkRYKMglhO-1",
+    siteUrl: "https://inser6604-wq.github.io/onepage/",
+    githubUrl: "https://github.com/inser6604-wq/onepage.git",
     badge: "100% PERSONAL",
     tag: "PUBLISHING",
     titleLines: ["ZARA Onepage"],
     info: [
       { label: "period", value: "1week" },
-      { label: "role", value: "HTML/CSS" },
+      { label: "role", value: "기획 · 디자인 · 퍼블리싱 / 100% Personal" },
       { label: "tool", value: "VS code, Figma" },
     ],
     overview:
@@ -495,17 +509,20 @@ const PROJECT_DETAILS = {
         desc: "풀스크린 비주얼 위 상품 리스트 오버레이 → 이미지와 정보를 분리하지 않고 한 섹션 안에 압축 배치",
       },
     ],
-    sectionOrder: ["overview", "color-typography", "wireframe", "design-detail"],
+    preview: {
+      images: ["img/zara-mockup01.jpg", "img/zara-mockup02.jpg"],
+    },
+    sectionOrder: ["overview", "color-typography", "wireframe", "design-detail", "preview"],
   },
   compose: {
-    siteUrl: "#",
-    githubUrl: "#",
+    siteUrl: "https://compose.dothome.co.kr/",
+    githubUrl: "https://github.com/inser6604-wq/compose-website.git",
     badge: "100% PERSONAL",
     tag: "PUBLISHING",
     titleLines: ["Compose", "Coffee Website"],
     info: [
       { label: "period", value: "2week" },
-      { label: "role", value: "100% Personal" },
+      { label: "role", value: "기획 · 디자인 · 퍼블리싱 / 100% Personal" },
       { label: "tool", value: "HTML / CSS / JavaScript" },
     ],
     heroImg: "img/works-img05.jpg",
@@ -524,7 +541,7 @@ const PROJECT_DETAILS = {
         "img/compose/compose-storyboard09.jpg",
         "img/compose/compose-storyboard10.jpg",
       ],
-      figmaUrl: "",
+      figmaUrl: "https://www.figma.com/slides/RcMy9zbmbU1ia87SRsYNKL",
     },
     publishingDetail: {
       tabs: [
@@ -564,17 +581,20 @@ const PROJECT_DETAILS = {
         },
       ],
     },
-    sectionOrder: ["overview", "storyboard", "publishing-detail"],
+    preview: {
+      images: ["img/compose-mockup01.jpg", "img/compose-mockup02.jpg"],
+    },
+    sectionOrder: ["overview", "storyboard", "publishing-detail", "preview"],
   },
   aether: {
     siteUrl: "#",
     githubUrl: "#",
-    badge: "100% PERSONAL",
+    badge: "VIBE CODING",
     tag: "PUBLISHING",
     titleLines: ["Aether", "Landing page"],
     info: [
       { label: "period", value: "1DAY" },
-      { label: "role", value: "HTML/CSS/JS" },
+      { label: "role", value: "기획 · 디자인 / Cursor Ai" },
       { label: "tool", value: "Cursor, Supabase" },
     ],
     heroImg: "img/works-img04.jpg",
@@ -610,19 +630,23 @@ const PROJECT_DETAILS = {
         desc: "01→02→03→04 스텝 플로우로 예약부터 출발까지 복잡한 프로세스를 직관적으로 시각화했습니다.",
       },
     ],
-    sectionOrder: ["overview", "design-process", "design-detail"],
+    preview: {
+      images: ["img/aether-mockup01.jpg", "img/aether-mockup02.jpg"],
+    },
+    sectionOrder: ["overview", "design-process", "design-detail", "preview"],
   },
   jejuvegan: {
     figmaUrl:
       "https://www.figma.com/design/mlNyk8zl2HXSxHw0jDAgRy/%EA%B9%80%EC%9D%B8%EC%84%9C-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4?node-id=303-526",
     siteUrl: "#",
     githubUrl: "#",
-    badge: "100% PERSONAL",
-    tag: "TEAM",
+    badge: "TEAM PROJECT",
+    badgeColor: "#c1121f",
+    tag: "TEAM / responsive",
     titleLines: ["jeju vegan", "website"],
     info: [
       { label: "period", value: "2week" },
-      { label: "role", value: "Team Leader / 기획 · 디자인 · 퍼블리싱" },
+      { label: "role", value: "Team Leader / 기획 · 디자인 · 퍼블리싱<br>디자인, 퍼블리싱 총괄 및 메인페이지, faq 구현" },
       { label: "TEAM", value: "4 Members" },
       { label: "tool", value: "Figma / HTML / CSS / JavaScript / SupaBase" },
     ],
@@ -695,12 +719,16 @@ const PROJECT_DETAILS = {
         },
       ],
     },
-    sectionOrder: ["overview", "before-after", "planning", "color-typography", "publishing-detail"],
+    preview: {
+      images: ["img/vegan-mockup01.jpg", "img/vegan-mockup02.jpg"],
+    },
+    sectionOrder: ["overview", "before-after", "planning", "color-typography", "publishing-detail", "preview"],
   },
   timo: {
     siteUrl: "#",
     githubUrl: "#",
-    badge: "100% PERSONAL",
+    badge: "TEAM PROJECT",
+    badgeColor: "#6FE6C0",
     tag: "TEAM",
     titleLines: ["timo app"],
     info: [
@@ -1104,6 +1132,8 @@ function openProjectOverlay(card) {
   overlay.querySelector(".overlay-detail-slider").dataset.index = "0";
   document.body.style.overflow = "hidden";
 
+  initWorksViewAnimation(overlay);
+
   gsap.set(overlay, { pointerEvents: "auto" });
   gsap.to(overlay, { yPercent: 0, duration: 0.6, ease: "power3.out", overwrite: "auto" });
 }
@@ -1268,8 +1298,6 @@ function buildPublishingDetail(overlay, data) {
   }
 }
 
-let previewScrollTriggers = [];
-
 function buildPreviewSection(overlay, data) {
   const section = overlay.querySelector('[data-section="preview"]');
   if (!section) return;
@@ -1284,34 +1312,6 @@ function buildPreviewSection(overlay, data) {
 
   items.forEach((item, i) => {
     item.style.display = i < images.length ? "" : "none";
-  });
-
-  // Kill old ScrollTrigger instances before creating new ones
-  previewScrollTriggers.forEach((st) => st.kill());
-  previewScrollTriggers = [];
-
-  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const scroll = overlay.querySelector(".project-overlay-scroll");
-  const visibleItems = [...items].filter((_, i) => i < images.length);
-
-  gsap.set(visibleItems, { opacity: 0, y: 50 });
-
-  visibleItems.forEach((item, i) => {
-    const st = ScrollTrigger.create({
-      trigger: item,
-      scroller: scroll,
-      start: "top 88%",
-      onEnter: () => {
-        gsap.to(item, { opacity: 1, y: 0, duration: 0.75, delay: i * 0.12, ease: "power2.out" });
-      },
-      onLeaveBack: () => {
-        gsap.set(item, { opacity: 0, y: 50 });
-      },
-    });
-    previewScrollTriggers.push(st);
   });
 }
 
@@ -1398,8 +1398,18 @@ function closeProjectOverlay() {
     onComplete: () => {
       gsap.set(overlay, { pointerEvents: "none" });
       document.body.style.overflow = "";
+      killWorksViewAnimation();
     },
   });
+}
+
+function getAllArchiveCards() {
+  return [...document.querySelectorAll(".archive-card")];
+}
+
+function getSiblingArchiveCard(index, direction) {
+  const cards = getAllArchiveCards();
+  return cards[index + direction] || null;
 }
 
 function initArchiveOverlay() {
@@ -1408,6 +1418,16 @@ function initArchiveOverlay() {
 
   gsap.set(overlay, { yPercent: 100 });
   overlay.querySelector(".archive-overlay-close").addEventListener("click", closeArchiveOverlay);
+
+  overlay.querySelector(".archive-overlay-nav-prev").addEventListener("click", () => {
+    const sibling = getSiblingArchiveCard(Number(overlay.dataset.currentCardId), -1);
+    if (sibling) openArchiveOverlay(sibling);
+  });
+
+  overlay.querySelector(".archive-overlay-nav-next").addEventListener("click", () => {
+    const sibling = getSiblingArchiveCard(Number(overlay.dataset.currentCardId), 1);
+    if (sibling) openArchiveOverlay(sibling);
+  });
 
   document.querySelectorAll(".archive-card").forEach((card) => {
     card.addEventListener("click", () => openArchiveOverlay(card));
@@ -1420,9 +1440,41 @@ function openArchiveOverlay(card) {
 
   const thumb = card.dataset.thumb || "";
   const galleryBase = thumb.replace(/\.webp$/, "");
+  const heroSvgPath = card.dataset.heroSvg || "";
 
-  overlay.querySelector(".archive-overlay-hero-img").src = thumb;
+  const heroImgEl = overlay.querySelector(".archive-overlay-hero-img");
+  const svgHeroEl = overlay.querySelector(".archive-overlay-svg-hero");
+
+  if (heroSvgPath && svgHeroEl) {
+    heroImgEl.style.display = "none";
+    heroImgEl.src = "";
+    svgHeroEl.style.display = "flex";
+    svgHeroEl.innerHTML = "";
+    fetch(heroSvgPath)
+      .then((r) => r.text())
+      .then((svgText) => {
+        svgHeroEl.innerHTML = svgText.replace(/#151515/g, "#f4f8ff");
+      })
+      .catch(() => {
+        svgHeroEl.style.display = "none";
+        heroImgEl.style.display = "";
+        heroImgEl.src = thumb;
+      });
+  } else {
+    if (svgHeroEl) {
+      svgHeroEl.style.display = "none";
+      svgHeroEl.innerHTML = "";
+    }
+    heroImgEl.style.display = "";
+    heroImgEl.src = thumb;
+  }
+
   overlay.querySelector(".archive-overlay-title").textContent = card.dataset.name || "";
+
+  const archiveBadge = overlay.querySelector(".archive-overlay-badge");
+  if (archiveBadge) {
+    archiveBadge.style.display = card.dataset.hideBadge === "true" ? "none" : "";
+  }
 
   const tagsWrap = overlay.querySelector(".archive-overlay-tags");
   const tools = card.dataset.tools ? card.dataset.tools.split(",") : [];
@@ -1440,9 +1492,38 @@ function openArchiveOverlay(card) {
   overlay.querySelector(".archive-overlay-overview-text").textContent = card.dataset.overview || "";
   overviewBlock.style.display = card.dataset.overview ? "block" : "none";
 
+  const customGalleryImages = card.dataset.galleryImages ? card.dataset.galleryImages.split(",") : null;
   overlay.querySelectorAll(".archive-overlay-gallery-img").forEach((img, index) => {
-    img.src = `${galleryBase}-${index + 1}.webp`;
+    img.src = customGalleryImages ? (customGalleryImages[index] || "") : `${galleryBase}-${index + 1}.webp`;
   });
+
+  const processSection = overlay.querySelector(".archive-overlay-process");
+  if (processSection) {
+    const processImages = card.dataset.processImages ? card.dataset.processImages.split(",") : [];
+    const processCaptions = card.dataset.processCaptions ? card.dataset.processCaptions.split(",") : [];
+    if (processImages.length) {
+      processSection.querySelectorAll(".archive-overlay-process-img").forEach((img, i) => {
+        img.src = processImages[i] || "";
+      });
+      processSection.querySelectorAll(".archive-overlay-process-caption").forEach((cap, i) => {
+        cap.textContent = processCaptions[i] || "";
+      });
+      processSection.style.display = "block";
+    } else {
+      processSection.style.display = "none";
+    }
+  }
+
+  const cards = getAllArchiveCards();
+  const cardIndex = cards.indexOf(card);
+  overlay.dataset.currentCardId = String(cardIndex);
+
+  const prevBtn = overlay.querySelector(".archive-overlay-nav-prev");
+  const nextBtn = overlay.querySelector(".archive-overlay-nav-next");
+  if (prevBtn) prevBtn.classList.toggle("is-hidden", !getSiblingArchiveCard(cardIndex, -1));
+  if (nextBtn) nextBtn.classList.toggle("is-hidden", !getSiblingArchiveCard(cardIndex, 1));
+
+  if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
 
   overlay.scrollTop = 0;
   document.body.style.overflow = "hidden";
@@ -1467,6 +1548,64 @@ function closeArchiveOverlay() {
   });
 }
 
+function initHeroIntroAnimation() {
+  const designer = document.querySelector(".hero-designer");
+  const ampersand = document.querySelector(".hero-ampersand");
+  const publisher = document.querySelector(".hero-publisher");
+  const titleEl = document.querySelector(".main-title");
+  // Animate the WRAP, not the label — the label has CSS transform:rotate(-90deg)
+  // which GSAP would overwrite (losing rotation) if we applied y on it directly.
+  const portfolioWrap = document.querySelector(".main-portfolio-wrap");
+  const header = document.querySelector(".main-header");
+  const scrollEl = document.querySelector(".main-scroll");
+
+  if (!designer || !ampersand || !publisher || !titleEl || !portfolioWrap) return;
+
+  gsap.set(titleEl, { opacity: 0, y: 60, filter: "blur(18px)" });
+
+  // --- 초기 숨김 상태 ---
+  gsap.set([designer, publisher], { opacity: 0, y: 50, filter: "blur(12px)" });
+  gsap.set(ampersand, { opacity: 0, scale: 0.8 });
+  gsap.set(portfolioWrap, { opacity: 0 });
+  if (header) gsap.set(header, { opacity: 0 });
+  if (scrollEl) gsap.set(scrollEl, { opacity: 0 });
+
+  const tl = gsap.timeline();
+
+  // 1. UI/UX DESIGNER
+  tl.to(designer, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" });
+
+  // 2. & — 0.15s gap
+  tl.to(ampersand, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }, "+=0.15");
+
+  // 3. WEB PUBLISHER — 0.15s gap
+  tl.to(publisher, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" }, "+=0.15");
+
+  // 4. INSEO — 0.2s gap
+  tl.addLabel("inseo", "+=0.2");
+  tl.to(titleEl, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "expo.out" }, "inseo");
+
+  // 5. portfolio — 0.3s after INSEO 완료 (y는 쓰지 않음 — 부모 wrap에 transform 없어야 label의 CSS rotate 유지됨)
+  tl.to(portfolioWrap, { opacity: 1, duration: 0.8, ease: "power3.out" }, ">+0.3");
+
+  // navigation
+  if (header) {
+    tl.to(header, { opacity: 1, duration: 0.8, ease: "power2.out" }, ">+0.2");
+  }
+
+  // scroll indicator → bounce 루프 시작
+  if (scrollEl) {
+    tl.to(scrollEl, {
+      opacity: 1,
+      duration: 0.8,
+      ease: "power2.out",
+      onComplete: initMainScrollBounce,
+    }, header ? "<+0.15" : ">+0.2");
+  }
+}
+
+document.addEventListener("intro:complete", initHeroIntroAnimation);
+
 document.addEventListener("DOMContentLoaded", initIntroAnimation);
 document.addEventListener("DOMContentLoaded", initCategoryHoverFx);
 document.addEventListener("DOMContentLoaded", initCategoryClickFlash);
@@ -1480,6 +1619,8 @@ function initArchiveOverlayScrollFx() {
   const targets = [
     overlay.querySelector(".archive-overlay-overview-text"),
     ...overlay.querySelectorAll(".archive-overlay-label"),
+    ...overlay.querySelectorAll(".archive-overlay-process-step"),
+    ...overlay.querySelectorAll(".archive-overlay-process-arrow"),
     ...overlay.querySelectorAll(".archive-overlay-gallery-img"),
   ].filter(Boolean);
 
@@ -1504,3 +1645,353 @@ function initArchiveOverlayScrollFx() {
 document.addEventListener("DOMContentLoaded", initProjectOverlay);
 document.addEventListener("DOMContentLoaded", initArchiveOverlay);
 document.addEventListener("DOMContentLoaded", initArchiveOverlayScrollFx);
+
+// ─── Archive Gallery Reveal Animation ─────────────────────────────────────────
+
+function initArchiveReveal() {
+  const grid = document.querySelector(".archive-grid");
+  if (!grid || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = [...grid.querySelectorAll(".archive-card")];
+  if (!cards.length) return;
+
+  // Detect which CSS column each card is in by comparing rendered left offsets
+  function buildColumnBoundaries() {
+    const bounds = [];
+    cards.forEach((card) => {
+      const x = card.getBoundingClientRect().left;
+      if (!bounds.some((b) => Math.abs(b - x) < 30)) bounds.push(x);
+    });
+    return bounds.sort((a, b) => a - b);
+  }
+
+  const colBounds = buildColumnBoundaries();
+
+  const colOf = (card) => {
+    const x = card.getBoundingClientRect().left;
+    return colBounds.findIndex((b) => Math.abs(b - x) < 30);
+  };
+
+  const colCounts = {};
+
+  cards.forEach((card) => {
+    const col = colOf(card);
+    if (colCounts[col] === undefined) colCounts[col] = 0;
+    const cardInCol = colCounts[col]++;
+
+    // Column delay: left→center→right, plus per-card stagger within column
+    const delay = col * 0.10 + cardInCol * 0.08;
+
+    gsap.fromTo(
+      card,
+      { opacity: 0, y: 40, filter: "blur(12px)", scale: 0.98 },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        scale: 1,
+        duration: 0.9,
+        ease: "power3.out",
+        delay,
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          end: "top 40%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initArchiveReveal);
+
+// ─── Works View Page (Overlay) Animation Module ───────────────────────────────
+
+let _worksCtx = null;
+
+const _WV = {
+  ease: "power3.out",
+  dur: 0.8,
+  start: "top 88%",
+  actions: "play none none none",
+};
+
+function _wvST(trigger, scroller) {
+  return { trigger, scroller, start: _WV.start, toggleActions: _WV.actions };
+}
+
+function _wvTargets(targets) {
+  return Array.isArray(targets) ? targets.filter(Boolean) : targets;
+}
+
+function _wvFirst(targets) {
+  return Array.isArray(targets) ? targets.find(Boolean) : targets;
+}
+
+function wvRevealUp(targets, scroller, stagger) {
+  const t = _wvTargets(targets);
+  const f = _wvFirst(t);
+  if (!f) return;
+  return gsap.fromTo(t,
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, duration: _WV.dur, ease: _WV.ease, stagger: stagger || 0, scrollTrigger: _wvST(f, scroller) }
+  );
+}
+
+function wvRevealLeft(targets, scroller, stagger) {
+  const t = _wvTargets(targets);
+  const f = _wvFirst(t);
+  if (!f) return;
+  return gsap.fromTo(t,
+    { opacity: 0, x: -60 },
+    { opacity: 1, x: 0, duration: _WV.dur, ease: _WV.ease, stagger: stagger || 0, scrollTrigger: _wvST(f, scroller) }
+  );
+}
+
+function wvRevealRight(targets, scroller, stagger) {
+  const t = _wvTargets(targets);
+  const f = _wvFirst(t);
+  if (!f) return;
+  return gsap.fromTo(t,
+    { opacity: 0, x: 60 },
+    { opacity: 1, x: 0, duration: _WV.dur, ease: _WV.ease, stagger: stagger || 0, scrollTrigger: _wvST(f, scroller) }
+  );
+}
+
+function wvRevealDown(targets, scroller, stagger) {
+  const t = _wvTargets(targets);
+  const f = _wvFirst(t);
+  if (!f) return;
+  return gsap.fromTo(t,
+    { opacity: 0, y: -50 },
+    { opacity: 1, y: 0, duration: _WV.dur, ease: _WV.ease, stagger: stagger || 0, scrollTrigger: _wvST(f, scroller) }
+  );
+}
+
+function wvRevealFade(targets, scroller, stagger) {
+  const t = _wvTargets(targets);
+  const f = _wvFirst(t);
+  if (!f) return;
+  return gsap.fromTo(t,
+    { opacity: 0 },
+    { opacity: 1, duration: _WV.dur, ease: _WV.ease, stagger: stagger || 0, scrollTrigger: _wvST(f, scroller) }
+  );
+}
+
+function wvRevealZoomIn(targets, scroller, stagger) {
+  const t = _wvTargets(targets);
+  const f = _wvFirst(t);
+  if (!f) return;
+  return gsap.fromTo(t,
+    { opacity: 0, scale: 0.95 },
+    { opacity: 1, scale: 1, duration: _WV.dur, ease: _WV.ease, stagger: stagger || 0, scrollTrigger: _wvST(f, scroller) }
+  );
+}
+
+// Parallax: translateY on el relative to overlay scroller
+function wvParallax(el, scroller, yAmount) {
+  if (!el) return;
+  gsap.set(el, { willChange: "transform" });
+  return gsap.fromTo(el,
+    { y: 0 },
+    { y: yAmount || 25, ease: "none",
+      scrollTrigger: { trigger: el, scroller, start: "top bottom", end: "bottom top", scrub: 1 } }
+  );
+}
+
+// Parallax: scale 0.98→1 for large images
+function wvScaleParallax(el, scroller) {
+  if (!el) return;
+  gsap.set(el, { willChange: "transform" });
+  return gsap.fromTo(el,
+    { scale: 0.98 },
+    { scale: 1, ease: "none",
+      scrollTrigger: { trigger: el, scroller, start: "top 90%", end: "top 20%", scrub: 1 } }
+  );
+}
+
+function _wvSectionOn(overlay, key) {
+  const el = overlay.querySelector(`[data-section="${key}"]`);
+  return el && el.style.display !== "none";
+}
+
+function initWorksViewAnimation(overlay) {
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  if (_worksCtx) {
+    _worksCtx.revert();
+    _worksCtx = null;
+  }
+
+  const scroller = overlay;
+  if (!scroller) return;
+
+  _worksCtx = gsap.context(() => {
+
+    // ── Hero: entrance (every open, ScrollTrigger) ───────────────────
+    {
+      const badge   = overlay.querySelector(".overlay-hero-badge");
+      const tag     = overlay.querySelector(".overlay-hero-tag");
+      const title   = overlay.querySelector(".overlay-hero-title");
+      const infos   = [...overlay.querySelectorAll(".overlay-hero-info li")];
+      const actions = overlay.querySelector(".overlay-hero-actions");
+
+      const heroST = (el) => ({ trigger: el, scroller, start: "top bottom", toggleActions: _WV.actions });
+
+      const badgeTag = [badge, tag].filter(Boolean);
+      if (badgeTag.length) {
+        gsap.fromTo(badgeTag,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: _WV.ease, stagger: 0.1, delay: 0.35, scrollTrigger: heroST(badgeTag[0]) }
+        );
+      }
+      if (title) {
+        gsap.fromTo(title,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.9, ease: _WV.ease, delay: 0.5, scrollTrigger: heroST(title) }
+        );
+      }
+      const infoActions = [...infos, actions].filter(Boolean);
+      if (infoActions.length) {
+        gsap.fromTo(infoActions,
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.7, ease: _WV.ease, stagger: 0.08, delay: 0.65, scrollTrigger: heroST(infoActions[0]) }
+        );
+      }
+    }
+
+    // ── Hero image parallax ──────────────────────────────────────────
+    const heroMedia = overlay.querySelector(".overlay-hero-media");
+    const heroSec   = overlay.querySelector(".overlay-hero");
+    if (heroMedia && heroSec) {
+      gsap.set(heroMedia, { willChange: "transform" });
+      gsap.fromTo(heroMedia, { y: 0 }, {
+        y: 30, ease: "none",
+        scrollTrigger: { trigger: heroSec, scroller, start: "top top", end: "bottom top", scrub: 1 }
+      });
+    }
+
+    // ── Overview ─────────────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "overview")) {
+      const sec = overlay.querySelector(".overlay-overview");
+      wvRevealDown(sec.querySelector(".overlay-label"), scroller);
+      wvRevealRight(sec.querySelector(".overlay-overview-text"), scroller);
+      const skills = sec.querySelector(".overlay-overview-skills");
+      if (skills && skills.children.length) wvRevealUp([...skills.children], scroller, 0.1);
+    }
+
+    // ── Before & After ────────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "before-after")) {
+      const sec = overlay.querySelector(".overlay-before-after");
+      wvRevealDown(sec.querySelector(".overlay-label"), scroller);
+      const cols = [...sec.querySelectorAll(".overlay-before-after-col")];
+      if (cols[0]) wvRevealLeft([cols[0]], scroller);
+      if (cols[1]) wvRevealRight([cols[1]], scroller);
+      cols.forEach((col) => {
+        col.addEventListener("mouseenter", () =>
+          gsap.to(col, { scale: 1.03, duration: 0.5, ease: "power2.out", overwrite: "auto" })
+        );
+        col.addEventListener("mouseleave", () =>
+          gsap.to(col, { scale: 1, duration: 0.5, ease: "power2.out", overwrite: "auto" })
+        );
+      });
+    }
+
+    // ── Planning ──────────────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "planning")) {
+      const sec = overlay.querySelector(".overlay-planning");
+      wvRevealLeft(sec.querySelector(".overlay-label"), scroller);
+      wvRevealUp(sec.querySelector(".overlay-planning-frame"), scroller);
+    }
+
+    // ── Wireframe ─────────────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "wireframe")) {
+      const sec = overlay.querySelector(".overlay-wireframe");
+      wvRevealRight(sec.querySelector(".overlay-label"), scroller);
+      const frame = sec.querySelector(".overlay-wireframe-frame");
+      wvRevealZoomIn(frame, scroller);
+      wvParallax(frame, scroller, 15);
+    }
+
+    // ── Color & Typography ────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "color-typography")) {
+      const sec = overlay.querySelector(".overlay-color-type");
+      wvRevealDown(sec.querySelector(".overlay-label"), scroller);
+      const colorItems = [...sec.querySelectorAll(".overlay-color-list li")];
+      if (colorItems.length) wvRevealLeft(colorItems, scroller, 0.08);
+      wvRevealRight(sec.querySelector(".overlay-typography"), scroller);
+    }
+
+    // ── Design Process ────────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "design-process")) {
+      const sec = overlay.querySelector(".overlay-design-process");
+      wvRevealLeft(sec.querySelector(".overlay-label"), scroller);
+      const steps = [...sec.querySelectorAll(".overlay-process-step")];
+      if (steps.length) wvRevealUp(steps, scroller, 0.12);
+    }
+
+    // ── Storyboard ────────────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "storyboard")) {
+      const sec = overlay.querySelector(".overlay-storyboard");
+      wvRevealRight(sec.querySelector(".overlay-label"), scroller);
+      wvRevealZoomIn(sec.querySelector(".overlay-storyboard-wrap"), scroller);
+    }
+
+    // ── Publishing Detail ─────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "publishing-detail")) {
+      const sec = overlay.querySelector(".overlay-pub-detail");
+      wvRevealDown(sec.querySelector(".overlay-label"), scroller);
+      const tabs = [...sec.querySelectorAll(".overlay-pub-tab")];
+      if (tabs.length) wvRevealLeft(tabs, scroller, 0.06);
+      wvRevealRight(sec.querySelector(".overlay-pub-body"), scroller);
+    }
+
+    // ── Preview ───────────────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "preview")) {
+      const sec   = overlay.querySelector(".overlay-preview");
+      const items = [...sec.querySelectorAll(".overlay-preview-item")]
+        .filter((el) => el.style.display !== "none");
+
+      wvRevealLeft(sec.querySelector(".overlay-label"), scroller);
+
+      items.forEach((item, i) => {
+        // 홀수: 왼쪽, 짝수: 오른쪽에서 등장
+        const revealFn = i % 2 === 0 ? wvRevealLeft : wvRevealRight;
+        revealFn([item], scroller);
+        gsap.set(item, { willChange: "transform" });
+        wvParallax(item, scroller, 20);
+        item.addEventListener("mouseenter", () =>
+          gsap.to(item, { scale: 1.03, duration: 0.5, ease: "power2.out", overwrite: "auto" })
+        );
+        item.addEventListener("mouseleave", () =>
+          gsap.to(item, { scale: 1, duration: 0.5, ease: "power2.out", overwrite: "auto" })
+        );
+      });
+    }
+
+    // ── Design Detail ─────────────────────────────────────────────────
+    if (_wvSectionOn(overlay, "design-detail")) {
+      const sec = overlay.querySelector(".overlay-design-detail");
+      wvRevealRight(sec.querySelector(".overlay-label"), scroller);
+      wvRevealZoomIn(sec.querySelector(".overlay-detail-slider"), scroller);
+    }
+
+    // ── Bottom actions + Footer ───────────────────────────────────────
+    wvRevealUp(overlay.querySelector(".overlay-bottom-actions"), scroller);
+    wvRevealDown(overlay.querySelector(".overlay-footer-nav"), scroller);
+
+    ScrollTrigger.refresh();
+
+  }, overlay);
+}
+
+function killWorksViewAnimation() {
+  if (_worksCtx) {
+    _worksCtx.revert();
+    _worksCtx = null;
+  }
+}
