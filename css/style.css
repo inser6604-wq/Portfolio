@@ -515,6 +515,7 @@
     top: clamp(152px, 20vw, 200px);
     left: 24px;
     align-items: flex-start;
+    overflow: visible;
   }
 
   .main-subtitle {
@@ -529,7 +530,8 @@
   }
 
   .main-portfolio-wrap {
-    left: 1.06em;
+    left: 100%;
+    margin-left: 0.14em;
     top: 0.84em;
     width: 0.2em;
     height: 0.95em;
@@ -623,8 +625,9 @@
     }
 
     .main-portfolio-wrap {
-      left: 1.06em;
+      left: 100%;
       right: auto;
+      margin-left: 0.14em;
       top: 0.84em;
       width: 0.2em;
       height: 0.95em;
