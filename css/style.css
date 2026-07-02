@@ -1041,6 +1041,7 @@
   font-weight: 500;
   font-size: clamp(18px, 1.6vw, 24px);
   color: var(--color-text);
+  margin: 0;
 }
 
 .project-card-desc {
@@ -2162,9 +2163,47 @@
     box-sizing: border-box;
   }
 
+  .overlay-detail-next {
+    top: auto;
+    bottom: 12px;
+    right: 12px;
+    transform: none;
+  }
+
+  .overlay-detail-prev {
+    top: auto;
+    bottom: 12px;
+    left: 12px;
+    transform: none;
+  }
+
+  [data-project-id="downy"] .overlay-detail-slider {
+    padding-bottom: 52px;
+  }
+
+  [data-project-id="downy"] .overlay-detail-next {
+    bottom: 0;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   [data-project-id="downy"] .overlay-detail-slide {
     flex-direction: column;
+    align-items: stretch;
     text-align: center;
+    gap: 20px;
+    padding: 0 12px 8px;
+  }
+
+  [data-project-id="downy"] .overlay-detail-img {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+    border-radius: 4px;
   }
 
   [data-project-id="downy"] .overlay-detail-content {
@@ -2173,6 +2212,14 @@
     padding-top: 16px;
     border-left: none;
     border-top: 1px solid rgba(255, 255, 255, 0.25);
+    align-items: center;
+  }
+
+  [data-project-id="downy"] .overlay-detail-desc {
+    text-align: center;
+    font-size: clamp(13px, 3.6vw, 15px);
+    line-height: 1.7;
+    word-break: keep-all;
   }
 
   .overlay-overview-skills {

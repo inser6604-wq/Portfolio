@@ -448,10 +448,10 @@ const PROJECT_DETAILS = {
       { label: "role", value: "기획 · 디자인 / 100% Personal" },
       { label: "tool", value: "Figma" },
     ],
-    heroImg: "img/downy-mockup copy.jpg",
+    heroImg: "img/downy-mockup.jpg",
     overview:
       "기존 다우니 웹사이트는 브랜드 아이덴티티 없이 단순 마크업 수준에 머물러 있었습니다.\n레이아웃 구조를 전면 재설계하고, 다우니 고유의 부드럽고 청결한 브랜드 이미지를 시각적으로 일관성 있게 구현하는 것에 중점을 두었습니다.\n\n사용자가 브랜드를 자연스럽게 경험할 수 있도록 정보 흐름과 시각 위계를 함께 고려했습니다.",
-    beforeImg: "img/기존사이트 캡쳐.png",
+    beforeImg: "img/downy-before-capture.png",
     afterImg: "img/downy-afterimg.jpg",
     colors: ["#12284B", "#0055A0", "#252525", "#FFFFFF"],
     typographyTagline: {
@@ -823,7 +823,7 @@ const PROJECT_DETAILS = {
         },
       },
     ],
-    wireframe: { base: "img/timo/Flow chart 1.jpg", hover: "img/timo/IA 1.jpg", contain: true },
+    wireframe: { base: "img/timo/flow-chart.jpg", hover: "img/timo/ia.jpg", contain: true },
     preview: {
       images: ["img/timo/timo-mockup01.jpg", "img/timo/timo-mockup02.jpg"],
     },
@@ -1130,6 +1130,49 @@ function applySectionOrder(overlay, sectionOrder) {
   });
 }
 
+function setProjectOverlayAlts(overlay, projectName, details) {
+  const heroImg = overlay.querySelector(".overlay-hero-img");
+  if (heroImg) heroImg.alt = `${projectName} 프로젝트 대표 이미지`;
+
+  const beforeImg = overlay.querySelector(".overlay-before-img");
+  const afterImg = overlay.querySelector(".overlay-after-img");
+  if (beforeImg && details?.beforeImg) beforeImg.alt = `${projectName} 리뉴얼 전 화면`;
+  if (afterImg && details?.afterImg) afterImg.alt = `${projectName} 리뉴얼 후 화면`;
+
+  const finalImg = overlay.querySelector(".overlay-final-design-img");
+  if (finalImg?.src) finalImg.alt = `${projectName} 최종 디자인`;
+
+  overlay.querySelectorAll(".overlay-wireframe-fade-img.is-base").forEach((img) => {
+    if (img.src) img.alt = `${projectName} 와이어프레임`;
+  });
+  overlay.querySelectorAll(".overlay-wireframe-fade-img.is-hover").forEach((img) => {
+    if (img.src) img.alt = `${projectName} 정보 구조도`;
+  });
+  overlay.querySelectorAll(".overlay-wireframe-scroll-img").forEach((img) => {
+    if (img.src) img.alt = `${projectName} 와이어프레임`;
+  });
+
+  overlay.querySelectorAll(".overlay-preview-img").forEach((img, i) => {
+    if (img.src) img.alt = `${projectName} 미리보기 ${i + 1}`;
+  });
+
+  const pubImg = overlay.querySelector(".overlay-pub-img");
+  if (pubImg?.src) pubImg.alt = `${projectName} 퍼블리싱 상세`;
+}
+
+function setArchiveOverlayAlts(overlay, name) {
+  const heroImg = overlay.querySelector(".archive-overlay-hero-img");
+  if (heroImg?.src) heroImg.alt = `${name} 아카이브 대표 이미지`;
+
+  overlay.querySelectorAll(".archive-overlay-gallery-img").forEach((img, i) => {
+    if (img.src) img.alt = `${name} 갤러리 이미지 ${i + 1}`;
+  });
+
+  overlay.querySelectorAll(".archive-overlay-process-img").forEach((img, i) => {
+    if (img.src) img.alt = `${name} 제작 과정 이미지 ${i + 1}`;
+  });
+}
+
 function openProjectOverlay(card) {
   const overlay = document.querySelector(".project-overlay");
   if (!overlay || typeof gsap === "undefined") return;
@@ -1139,6 +1182,7 @@ function openProjectOverlay(card) {
 
   const category = card.querySelector(".project-card-category").textContent;
   const name = card.querySelector(".project-card-name").textContent;
+  overlay.dataset.projectName = name;
 
   overlay.querySelector(".overlay-hero-img").src = details?.heroImg || card.dataset.thumb || "";
   overlay.querySelector(".overlay-hero-tag").textContent = details?.tag || category;
@@ -1323,7 +1367,9 @@ function openProjectOverlay(card) {
   if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(true);
 
   initWorksViewAnimation(overlay);
+  setProjectOverlayAlts(overlay, name, details);
 
+  overlay.setAttribute("aria-hidden", "false");
   gsap.set(overlay, { pointerEvents: "auto" });
   gsap.to(overlay, { yPercent: 0, duration: 0.6, ease: "power3.out", overwrite: "auto" });
 }
@@ -1451,11 +1497,15 @@ function buildPublishingDetail(overlay, data) {
       imgEl.classList.remove("is-visible");
       setTimeout(() => {
         imgEl.src = images[index] || "";
+        const projectName = overlay.dataset.projectName || "프로젝트";
+        imgEl.alt = `${projectName} 퍼블리싱 상세 ${index + 1}`;
         imgEl.onload = () => imgEl.classList.add("is-visible");
         if (!images[index]) imgEl.classList.add("is-visible");
       }, 280);
     } else {
       imgEl.src = images[index] || "";
+      const projectName = overlay.dataset.projectName || "프로젝트";
+      imgEl.alt = `${projectName} 퍼블리싱 상세 ${index + 1}`;
       requestAnimationFrame(() => imgEl.classList.add("is-visible"));
     }
   }
@@ -1594,6 +1644,7 @@ function closeProjectOverlay() {
     overwrite: "auto",
     onComplete: () => {
       gsap.set(overlay, { pointerEvents: "none" });
+      overlay.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
       if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(false);
       killWorksViewAnimation();
@@ -1728,10 +1779,14 @@ function openArchiveOverlay(card) {
 
   if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
 
+  const archiveName = card.dataset.name || "Archive";
+  setArchiveOverlayAlts(overlay, archiveName);
+
   overlay.scrollTop = 0;
   document.body.style.overflow = "hidden";
   if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(true);
 
+  overlay.setAttribute("aria-hidden", "false");
   gsap.set(overlay, { pointerEvents: "auto" });
   gsap.to(overlay, { yPercent: 0, duration: 0.6, ease: "power3.out", overwrite: "auto" });
 }
@@ -1747,6 +1802,7 @@ function closeArchiveOverlay() {
     overwrite: "auto",
     onComplete: () => {
       gsap.set(overlay, { pointerEvents: "none" });
+      overlay.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
       if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(false);
     },
