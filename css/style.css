@@ -531,16 +531,17 @@
 
   .main-portfolio-wrap {
     left: 100%;
-    margin-left: 0.14em;
+    margin-left: 0.05em;
     top: 0.84em;
-    width: 0.2em;
+    width: auto;
     height: 0.95em;
     overflow: visible;
+    justify-content: flex-start;
   }
 
   .main-portfolio-label {
     transform: rotate(-90deg);
-    transform-origin: center center;
+    transform-origin: left center;
     font-size: 0.16em;
   }
 
@@ -627,11 +628,12 @@
     .main-portfolio-wrap {
       left: 100%;
       right: auto;
-      margin-left: 0.14em;
+      margin-left: 0.05em;
       top: 0.84em;
-      width: 0.2em;
+      width: auto;
       height: 0.95em;
       overflow: visible;
+      justify-content: flex-start;
     }
   }
 }
