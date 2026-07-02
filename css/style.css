@@ -525,18 +525,21 @@
 
   .main-hero {
     display: block;
+    overflow: visible;
   }
 
   .main-portfolio-wrap {
-    left: 1.08em;
-    top: 0.88em;
-    width: 0.16em;
-    height: 0.58em;
+    left: 1.06em;
+    top: 0.84em;
+    width: 0.2em;
+    height: 0.95em;
+    overflow: visible;
   }
 
   .main-portfolio-label {
     transform: rotate(-90deg);
-    font-size: 0.17em;
+    transform-origin: center center;
+    font-size: 0.16em;
   }
 
   .main-scroll {
@@ -620,9 +623,12 @@
     }
 
     .main-portfolio-wrap {
-      left: 1.08em;
+      left: 1.06em;
       right: auto;
-      top: 0.88em;
+      top: 0.84em;
+      width: 0.2em;
+      height: 0.95em;
+      overflow: visible;
     }
   }
 }
