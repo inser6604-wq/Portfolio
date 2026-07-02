@@ -29,6 +29,7 @@ function initScrollReveal() {
     // the end to the whole section's bottom instead, which is always a
     // safely-positive distance away, so onLeave/onEnterBack stay reachable.
     const useSectionEnd = section.matches("main.section");
+    const isContactSection = section.id === "contact";
 
     gsap.set(targets, { opacity: 0, y: 40 });
 
@@ -42,7 +43,11 @@ function initScrollReveal() {
           trigger: target,
           start: "top 85%",
           ...(useSectionEnd ? { endTrigger: section, end: "bottom 15%" } : { end: "bottom 15%" }),
-          toggleActions: "play reverse play reverse",
+          // Last section: don't reverse on scroll past — at page bottom every
+          // element's end fires onLeave and fades back to opacity 0 on mobile.
+          ...(isContactSection
+            ? { once: true }
+            : { toggleActions: "play reverse play reverse" }),
         },
       });
 
@@ -77,18 +82,54 @@ function initScrollReveal() {
 function initMobileNav() {
   const hamburger = document.querySelector(".nav-hamburger");
   const mobileNav = document.querySelector(".mobile-nav");
+  const goTop = document.querySelector(".go-top");
   if (!hamburger || !mobileNav) return;
 
   const bars = hamburger.querySelectorAll(".nav-hamburger-bar");
   const links = mobileNav.querySelectorAll(".mobile-nav-link");
   let isOpen = false;
+  let placeholder = null;
+
+  function liftHamburger() {
+    const rect = hamburger.getBoundingClientRect();
+
+    placeholder = document.createElement("span");
+    placeholder.className = "nav-hamburger-placeholder";
+    placeholder.setAttribute("aria-hidden", "true");
+    hamburger.after(placeholder);
+
+    document.body.appendChild(hamburger);
+    hamburger.classList.add("is-floating");
+    Object.assign(hamburger.style, {
+      position: "fixed",
+      top: `${rect.top}px`,
+      left: `${rect.left}px`,
+      width: `${rect.width}px`,
+      height: `${rect.height}px`,
+      zIndex: "501",
+      margin: "0",
+      display: "block",
+    });
+  }
+
+  function dropHamburger() {
+    if (!placeholder) return;
+    placeholder.replaceWith(hamburger);
+    placeholder = null;
+    hamburger.classList.remove("is-floating");
+    hamburger.removeAttribute("style");
+  }
 
   function openNav() {
+    liftHamburger();
     isOpen = true;
     mobileNav.classList.add("is-open");
     mobileNav.setAttribute("aria-hidden", "false");
     hamburger.setAttribute("aria-expanded", "true");
+    hamburger.setAttribute("aria-label", "메뉴 닫기");
+    document.body.classList.add("is-mobile-nav-open");
     document.body.style.overflow = "hidden";
+    if (goTop) goTop.style.visibility = "hidden";
 
     gsap.to(bars[0], { y: 10, rotate: 45, duration: 0.35, ease: "power2.inOut" });
     gsap.to(bars[1], { opacity: 0, duration: 0.2 });
@@ -104,6 +145,8 @@ function initMobileNav() {
   function closeNav(onDone) {
     isOpen = false;
     hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "메뉴 열기");
+    document.body.classList.remove("is-mobile-nav-open");
 
     gsap.to(bars[0], { y: 0, rotate: 0, duration: 0.35, ease: "power2.inOut" });
     gsap.to(bars[1], { opacity: 1, duration: 0.2, delay: 0.1 });
@@ -119,6 +162,8 @@ function initMobileNav() {
         mobileNav.classList.remove("is-open");
         mobileNav.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
+        if (goTop) goTop.style.visibility = "";
+        dropHamburger();
         if (onDone) onDone();
       },
     });
@@ -163,7 +208,9 @@ function initGoTop() {
 
   const showThreshold = window.innerHeight * 0.6;
 
-  const onScroll = () => {
+  const syncGoTopVisibility = () => {
+    if (btn.dataset.suppressed === "true") return;
+
     const scrolled = window.scrollY > showThreshold;
     if (scrolled && !btn.classList.contains("is-visible")) {
       btn.classList.add("is-visible");
@@ -174,7 +221,7 @@ function initGoTop() {
     }
   };
 
-  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", syncGoTopVisibility, { passive: true });
 
   btn.addEventListener("click", () => {
     gsap.to(window, {
@@ -183,6 +230,31 @@ function initGoTop() {
       ease: "power4.inOut",
     });
   });
+
+  window.syncGoTopVisibility = syncGoTopVisibility;
+}
+
+function setGoTopSuppressed(suppressed) {
+  const btn = document.querySelector(".go-top");
+  if (!btn) return;
+
+  if (suppressed) {
+    gsap.killTweensOf(btn);
+    btn.dataset.suppressed = "true";
+    btn.classList.remove("is-visible");
+    gsap.set(btn, { opacity: 0, y: 16 });
+    btn.style.visibility = "hidden";
+    btn.style.pointerEvents = "none";
+    return;
+  }
+
+  delete btn.dataset.suppressed;
+  btn.style.visibility = "";
+  btn.style.pointerEvents = "";
+
+  if (typeof window.syncGoTopVisibility === "function") {
+    window.syncGoTopVisibility();
+  }
 }
 
 function initNavHover() {

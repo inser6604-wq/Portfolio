@@ -246,7 +246,10 @@ function initProjectSlider() {
 
   initProjectCardInteractions(cards);
 
-  if (window.matchMedia("(max-width: 768px)").matches) return;
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    initMobileProjectSlider(track);
+    return;
+  }
 
   const categoryBoundaries = getCategoryBoundaries(track);
   const categoryEdge = parseFloat(getComputedStyle(track).paddingLeft) || 0;
@@ -291,22 +294,69 @@ function setActiveCategoryRow(category) {
 
 let activeCategory = null;
 
-// Mirrors the "slideChange -> active class" behavior from a discrete slider,
-// adapted to this scrub-driven horizontal track: the active category is
-// whichever card group currently sits at the track's left edge.
-function updateActiveCategory(self, track, boundaries, edge) {
-  const maxX = getProjectSliderScrollLength(track);
-  const currentX = maxX > 0 ? self.progress * maxX : 0;
-
+function resolveActiveCategory(currentX, boundaries, edge) {
   let category = "all";
   boundaries.forEach((boundary) => {
     if (currentX + edge > boundary.offsetLeft) category = boundary.category;
   });
+  return category;
+}
 
+function applyActiveCategory(category) {
   if (category !== activeCategory) {
     activeCategory = category;
     setActiveCategoryRow(category);
   }
+}
+
+function updateActiveCategoryFromTrackScroll(track, boundaries, edge) {
+  applyActiveCategory(resolveActiveCategory(track.scrollLeft, boundaries, edge));
+}
+
+function updateActiveCategory(self, track, boundaries, edge) {
+  const maxX = getProjectSliderScrollLength(track);
+  const currentX = maxX > 0 ? self.progress * maxX : 0;
+  applyActiveCategory(resolveActiveCategory(currentX, boundaries, edge));
+}
+
+function initMobileProjectSlider(track) {
+  const categoryBoundaries = getCategoryBoundaries(track);
+  const categoryEdge = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+
+  track.addEventListener(
+    "scroll",
+    () => updateActiveCategoryFromTrackScroll(track, categoryBoundaries, categoryEdge),
+    { passive: true }
+  );
+}
+
+function scrollMobileTrackToCategory(track, category) {
+  const targetLeft =
+    category === "all"
+      ? 0
+      : track.querySelector(`.project-card[data-category="${category}"]`)?.offsetLeft ?? 0;
+
+  track.scrollTo({ left: targetLeft, behavior: "smooth" });
+  applyActiveCategory(category === "all" ? "all" : category);
+}
+
+function scrollToProjectSectionThen(callback) {
+  const projectSection = document.getElementById("project");
+  if (!projectSection) {
+    callback();
+    return;
+  }
+
+  const rect = projectSection.getBoundingClientRect();
+  const isVisible = rect.top <= 80 && rect.bottom >= window.innerHeight * 0.3;
+
+  if (isVisible) {
+    callback();
+    return;
+  }
+
+  projectSection.scrollIntoView({ behavior: "smooth" });
+  window.setTimeout(callback, 500);
 }
 
 function initProjectSliderColorShift(section) {
@@ -347,11 +397,25 @@ function initProjectCardInteractions(cards) {
 function scrollToCategoryFirstCard(category) {
   if (category === "archive") {
     document.getElementById("archive")?.scrollIntoView({ behavior: "smooth" });
+    applyActiveCategory("archive");
     return;
   }
 
   const track = document.querySelector(".project-slider-track");
-  if (!track || !projectSliderTrigger || typeof gsap === "undefined") return;
+  if (!track) return;
+
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    const card =
+      category === "all"
+        ? track.querySelector(".project-card")
+        : track.querySelector(`.project-card[data-category="${category}"]`);
+    if (!card) return;
+
+    scrollToProjectSectionThen(() => scrollMobileTrackToCategory(track, category));
+    return;
+  }
+
+  if (!projectSliderTrigger || typeof gsap === "undefined") return;
 
   const card =
     category === "all"
@@ -646,9 +710,9 @@ const PROJECT_DETAILS = {
     titleLines: ["jeju vegan", "website"],
     info: [
       { label: "period", value: "2week" },
-      { label: "role", value: "Team Leader / 기획 · 디자인 · 퍼블리싱<br>디자인, 퍼블리싱 총괄 및 메인페이지, faq 구현" },
+      { label: "role", value: "Team Leader / 기획 · 디자인 · 퍼블리싱<br />디자인, 퍼블리싱 총괄 및<br class=\"overlay-info-br-mobile\" />메인페이지, faq 구현" },
       { label: "TEAM", value: "4 Members" },
-      { label: "tool", value: "Figma / HTML / CSS / JavaScript / SupaBase" },
+      { label: "tool", value: "Figma / HTML / CSS /<br class=\"overlay-info-br-mobile\" />JavaScript / SupaBase" },
     ],
     heroImg: "img/works-img01.jpg",
     overview:
@@ -820,58 +884,44 @@ function buildPlanningSlides(overlay, slides) {
 }
 
 // Two display modes share the .overlay-wireframe-frame container:
-// - fade mode (wireframe.hover set, e.g. Arco): two images crossfade on hover
-// - scroll mode (wireframe.hover absent, e.g. Downy): single tall image scrolls into view on hover
-function setWireframeImages(overlay, wireframe) {
-  const frame = overlay.querySelector(".overlay-wireframe-frame");
-  if (!frame) return;
+// - fade mode (wireframe.hover set, e.g. Arco): crossfade on hover (desktop) / auto (mobile)
+// - scroll mode (wireframe.hover absent, e.g. Downy): scroll on hover (desktop) / auto (mobile)
+const WIREFRAME_HINT_FADE = `
+  <div class="overlay-wireframe-hint">
+    <span class="overlay-wireframe-hint-icon" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </span>
+    <span>마우스 오버를 하면 와이어프레임이 전환됩니다</span>
+  </div>`;
 
-  frame.classList.remove("is-hovered");
-  frame.onmouseenter = null;
-  frame.onmouseleave = null;
+const WIREFRAME_HINT_SCROLL = `
+  <div class="overlay-wireframe-hint">
+    <span class="overlay-wireframe-hint-icon" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </span>
+    <span>마우스 오버시 와이어프레임이 아래로 움직입니다</span>
+  </div>`;
 
-  if (wireframe?.hover) {
-    const containClass = wireframe.contain ? " is-contain" : "";
-    frame.innerHTML = `
-      <img class="overlay-wireframe-fade-img is-base${containClass}" src="${wireframe.base}" alt="" />
-      <img class="overlay-wireframe-fade-img is-hover${containClass}" src="${wireframe.hover}" alt="" />
-      <div class="overlay-wireframe-hint">
-        <span class="overlay-wireframe-hint-icon" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </span>
-        <span>마우스 오버를 하면 와이어프레임이 전환됩니다</span>
-      </div>
-    `;
-    frame.onmouseenter = () => {
-      frame.classList.add("is-hovered");
-    };
-    frame.onmouseleave = () => {
-      frame.classList.remove("is-hovered");
-    };
-    return;
-  }
+function isMobileWireframe() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
 
-  const scrollImgStyle = wireframe?.width ? ` style="width:${wireframe.width};"` : "";
-  frame.innerHTML = `
-    <div class="overlay-wireframe-scroll">
-      <img class="overlay-wireframe-scroll-img" src="${wireframe?.base || ""}"${scrollImgStyle} alt="" />
-    </div>
-    <div class="overlay-wireframe-hint">
-      <span class="overlay-wireframe-hint-icon" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </span>
-      <span>마우스 오버시 와이어프레임이 아래로 움직입니다</span>
-    </div>
-  `;
+function initWireframeHoverFade(frame) {
+  frame.onmouseenter = () => frame.classList.add("is-hovered");
+  frame.onmouseleave = () => frame.classList.remove("is-hovered");
+}
 
+function initWireframeHoverScroll(frame, wireframe) {
   const scroller = frame.querySelector(".overlay-wireframe-scroll");
-  function getScrollDistance() {
-    return Math.max(scroller.scrollHeight - frame.offsetHeight, 0);
-  }
+  if (!scroller || typeof gsap === "undefined") return;
+
+  const getScrollDistance = () => Math.max(scroller.scrollHeight - frame.offsetHeight, 0);
+
   frame.onmouseenter = () => {
     const distance = getScrollDistance();
     if (distance <= 0) return;
-    const duration = wireframe?.scrollDuration ?? Math.min(Math.max(distance / 60, 3), 14) * 0.6;
+    const duration =
+      (wireframe?.scrollDuration ?? Math.min(Math.max(distance / 60, 3), 14)) * 0.6;
     gsap.to(scroller, {
       y: -distance,
       duration,
@@ -882,6 +932,144 @@ function setWireframeImages(overlay, wireframe) {
   frame.onmouseleave = () => {
     gsap.to(scroller, { y: 0, duration: 1, ease: "sine.out", overwrite: "auto" });
   };
+}
+
+function initWireframeAutoFade(frame) {
+  if (frame._wireframeObserver) {
+    frame._wireframeObserver.disconnect();
+    frame._wireframeObserver = null;
+  }
+
+  frame.classList.add("is-auto-fade");
+  frame.classList.remove("is-show-hover", "is-playing", "is-hovered");
+
+  frame._wireframeObserver = new IntersectionObserver(
+    ([entry]) => {
+      frame.classList.toggle("is-playing", entry.isIntersecting);
+      if (!entry.isIntersecting) frame.classList.remove("is-show-hover");
+    },
+    { threshold: 0.35 }
+  );
+  frame._wireframeObserver.observe(frame);
+}
+
+function initWireframeAutoScroll(frame, wireframe) {
+  if (frame._wireframeObserver) {
+    frame._wireframeObserver.disconnect();
+    frame._wireframeObserver = null;
+  }
+  if (frame._wireframeTween) {
+    frame._wireframeTween.kill();
+    frame._wireframeTween = null;
+  }
+
+  const scroller = frame.querySelector(".overlay-wireframe-scroll");
+  if (!scroller || typeof gsap === "undefined") return;
+
+  frame.classList.add("is-auto-scroll");
+  gsap.set(scroller, { y: 0 });
+
+  const getScrollDistance = () => Math.max(scroller.scrollHeight - frame.offsetHeight, 0);
+
+  const startScroll = () => {
+    if (frame._wireframeTween) {
+      frame._wireframeTween.kill();
+      frame._wireframeTween = null;
+    }
+
+    const distance = getScrollDistance();
+    if (distance <= 0) return;
+
+    const duration =
+      wireframe?.scrollDuration ?? Math.min(Math.max(distance / 60, 3), 14);
+
+    frame._wireframeTween = gsap.to(scroller, {
+      y: -distance,
+      duration,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      repeatDelay: 0.8,
+      overwrite: "auto",
+    });
+  };
+
+  const stopScroll = () => {
+    if (frame._wireframeTween) {
+      frame._wireframeTween.kill();
+      frame._wireframeTween = null;
+    }
+    gsap.to(scroller, { y: 0, duration: 0.6, ease: "sine.out", overwrite: "auto" });
+  };
+
+  frame._wireframeObserver = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        const img = scroller.querySelector("img");
+        if (img && !img.complete) {
+          img.addEventListener("load", startScroll, { once: true });
+        } else {
+          startScroll();
+        }
+      } else {
+        stopScroll();
+      }
+    },
+    { threshold: 0.35 }
+  );
+  frame._wireframeObserver.observe(frame);
+}
+
+function resetWireframeFrame(frame) {
+  if (frame._wireframeObserver) {
+    frame._wireframeObserver.disconnect();
+    frame._wireframeObserver = null;
+  }
+  if (frame._wireframeTween) {
+    frame._wireframeTween.kill();
+    frame._wireframeTween = null;
+  }
+
+  frame.classList.remove("is-hovered", "is-auto-fade", "is-auto-scroll", "is-playing", "is-show-hover");
+  frame.onmouseenter = null;
+  frame.onmouseleave = null;
+}
+
+function setWireframeImages(overlay, wireframe) {
+  const frame = overlay.querySelector(".overlay-wireframe-frame");
+  if (!frame) return;
+
+  resetWireframeFrame(frame);
+  const mobile = isMobileWireframe();
+
+  if (wireframe?.hover) {
+    const containClass = wireframe.contain ? " is-contain" : "";
+    frame.innerHTML = `
+      <img class="overlay-wireframe-fade-img is-base${containClass}" src="${wireframe.base}" alt="" />
+      <img class="overlay-wireframe-fade-img is-hover${containClass}" src="${wireframe.hover}" alt="" />
+      ${mobile ? "" : WIREFRAME_HINT_FADE}
+    `;
+    if (mobile) {
+      initWireframeAutoFade(frame);
+    } else {
+      initWireframeHoverFade(frame);
+    }
+    return;
+  }
+
+  const scrollImgStyle = wireframe?.width ? ` style="width:${wireframe.width};"` : "";
+  frame.innerHTML = `
+    <div class="overlay-wireframe-scroll">
+      <img class="overlay-wireframe-scroll-img" src="${wireframe?.base || ""}"${scrollImgStyle} alt="" />
+    </div>
+    ${mobile ? "" : WIREFRAME_HINT_SCROLL}
+  `;
+
+  if (mobile) {
+    initWireframeAutoScroll(frame, wireframe);
+  } else {
+    initWireframeHoverScroll(frame, wireframe);
+  }
 }
 
 function initProjectOverlay() {
@@ -1132,6 +1320,7 @@ function openProjectOverlay(card) {
   overlay.scrollTop = 0;
   overlay.querySelector(".overlay-detail-slider").dataset.index = "0";
   document.body.style.overflow = "hidden";
+  if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(true);
 
   initWorksViewAnimation(overlay);
 
@@ -1406,6 +1595,7 @@ function closeProjectOverlay() {
     onComplete: () => {
       gsap.set(overlay, { pointerEvents: "none" });
       document.body.style.overflow = "";
+      if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(false);
       killWorksViewAnimation();
     },
   });
@@ -1540,6 +1730,7 @@ function openArchiveOverlay(card) {
 
   overlay.scrollTop = 0;
   document.body.style.overflow = "hidden";
+  if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(true);
 
   gsap.set(overlay, { pointerEvents: "auto" });
   gsap.to(overlay, { yPercent: 0, duration: 0.6, ease: "power3.out", overwrite: "auto" });
@@ -1557,6 +1748,7 @@ function closeArchiveOverlay() {
     onComplete: () => {
       gsap.set(overlay, { pointerEvents: "none" });
       document.body.style.overflow = "";
+      if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(false);
     },
   });
 }
@@ -1755,6 +1947,10 @@ function wvRevealUp(targets, scroller, stagger) {
 }
 
 function wvRevealLeft(targets, scroller, stagger) {
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    return wvRevealUp(targets, scroller, stagger);
+  }
+
   const t = _wvTargets(targets);
   const f = _wvFirst(t);
   if (!f) return;
@@ -1765,6 +1961,10 @@ function wvRevealLeft(targets, scroller, stagger) {
 }
 
 function wvRevealRight(targets, scroller, stagger) {
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    return wvRevealUp(targets, scroller, stagger);
+  }
+
   const t = _wvTargets(targets);
   const f = _wvFirst(t);
   if (!f) return;
