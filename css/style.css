@@ -446,21 +446,28 @@
   display: block;
 }
 
+.main-title-line--seo {
+  position: relative;
+  width: fit-content;
+}
+
 .main-portfolio-wrap {
   position: absolute;
-  left: 1.096em;
-  top: 0.931em;
-  width: 0.161em;
-  height: 0.616em;
+  left: calc(100% + 0.07em);
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: auto;
+  height: auto;
+  pointer-events: none;
 }
 
 .main-portfolio-label {
   font-family: var(--font-display);
   font-size: 0.19em;
-  line-height: 0.837;
+  line-height: 1;
   color: #8f1022;
   text-transform: lowercase;
   transform: rotate(-90deg);
@@ -530,18 +537,10 @@
   }
 
   .main-portfolio-wrap {
-    left: 100%;
-    margin-left: 0.05em;
-    top: 0.84em;
-    width: auto;
-    height: 0.95em;
-    overflow: visible;
-    justify-content: flex-start;
+    left: calc(100% + 0.05em);
   }
 
   .main-portfolio-label {
-    transform: rotate(-90deg);
-    transform-origin: left center;
     font-size: 0.16em;
   }
 
@@ -597,10 +596,6 @@
 
 /* Safari 전용 폴백: hanging-punctuation은 Safari에서만 지원 */
 @supports (hanging-punctuation: first) {
-  .main-portfolio-wrap {
-    left: 1.13em;
-  }
-
   .about-profile {
     background: none;
     aspect-ratio: auto;
@@ -623,17 +618,6 @@
 
     .about-profile-img {
       width: clamp(200px, 60vw, 280px);
-    }
-
-    .main-portfolio-wrap {
-      left: 100%;
-      right: auto;
-      margin-left: 0.05em;
-      top: 0.84em;
-      width: auto;
-      height: 0.95em;
-      overflow: visible;
-      justify-content: flex-start;
     }
   }
 }
