@@ -7,8 +7,8 @@ const INTRO_STEPS = [
 
 const STAIR_HEIGHTS = ["21.2vh", "32.2vh", "43.6vh", "60.5vh", "80.6vh", "100vh"];
 
-const STEP_HOLD = 1.1;
-const DIAL_DURATION = 0.65;
+const STEP_HOLD = 0.5;
+const DIAL_DURATION = 0.25;
 
 function initMainScrollBounce() {
   const scroll = document.querySelector(".main-scroll");
@@ -99,29 +99,29 @@ function initIntroAnimation() {
 
   tl.to([wordSlot, ...images], {
     opacity: 0,
-    duration: 0.35,
+    duration: 0.2,
     ease: "power2.inOut",
   });
 
   tl.to(stairBars, {
     height: (index) => STAIR_HEIGHTS[index],
-    duration: 0.55,
-    stagger: 0.07,
+    duration: 0.35,
+    stagger: 0.045,
     ease: "power3.inOut",
   });
 
   tl.to(stairBars, {
     height: "100vh",
-    duration: 0.35,
+    duration: 0.2,
     ease: "power2.inOut",
   });
 
-  tl.set(main, { visibility: "visible" }, "-=0.15");
+  tl.set(main, { visibility: "visible" }, "-=0.1");
 
   tl.to(stairBars, {
     y: "-100%",
-    duration: 0.65,
-    stagger: 0.06,
+    duration: 0.45,
+    stagger: 0.04,
     ease: "power4.inOut",
   });
 
@@ -436,7 +436,7 @@ const PROJECT_DETAILS = {
     ],
     heroImg: "img/app-mockup.jpg",
     overview:
-      "기존 아르코 예술극장 모바일 앱은 복잡한 정보 구조와 불편한 예매 동선으로 원하는 공연 정보를 빠르게 찾기 어려웠습니다.\n정보 구조를 전면 재설계하고, 공연 탐색부터 예매까지 이어지는 사용자 경험을 직관적이고 일관성 있게 개선하는 데 중점을 두었습니다.",
+      "기존 아르코 예술극장 모바일 앱은 복잡한 정보 구조와 불편한 예매 동선으로\n원하는 공연 정보를 빠르게 찾기 어려웠습니다.\n정보 구조를 전면 재설계하고, 공연 탐색부터 예매까지 이어지는 사용자 경험을\n직관적이고 일관성 있게 개선하는 데 중점을 두었습니다.",
     planning: [
       { img: "img/arcoviewpage_01.webp", alt: "Background" },
       { img: "img/arcoviewpage_02.webp", alt: "User research" },
@@ -587,8 +587,8 @@ const PROJECT_DETAILS = {
     sectionOrder: ["overview", "storyboard", "publishing-detail", "preview"],
   },
   aether: {
-    siteUrl: "#",
-    githubUrl: "#",
+    siteUrl: "https://cursor-vibe-coding-kappa.vercel.app/",
+    githubUrl: "https://github.com/inser6604-wq/cursor-vibe-coding.git",
     badge: "VIBE CODING",
     tag: "PUBLISHING",
     titleLines: ["Aether", "Landing page"],
@@ -637,9 +637,9 @@ const PROJECT_DETAILS = {
   },
   jejuvegan: {
     figmaUrl:
-      "https://www.figma.com/design/mlNyk8zl2HXSxHw0jDAgRy/%EA%B9%80%EC%9D%B8%EC%84%9C-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4?node-id=303-526",
-    siteUrl: "#",
-    githubUrl: "#",
+      "https://www.figma.com/design/DsApQ6nIvzU1U7OowP8Rkh/%ED%95%9C%EB%9D%BC%EB%B4%89%ED%8C%80-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B8%B0%ED%9A%8D?node-id=0-1&t=GO0JhWAC6mpX9hvj-1",
+    siteUrl: "https://kis0503.dothome.co.kr/",
+    githubUrl: "https://github.com/inser6604-wq/jeju-vegan-project.git",
     badge: "TEAM PROJECT",
     badgeColor: "#c1121f",
     tag: "TEAM / responsive",
@@ -725,8 +725,8 @@ const PROJECT_DETAILS = {
     sectionOrder: ["overview", "before-after", "planning", "color-typography", "publishing-detail", "preview"],
   },
   timo: {
-    siteUrl: "#",
-    githubUrl: "#",
+    siteUrl: "https://timo-sigma-six.vercel.app/#login",
+    githubUrl: "https://github.com/kaeunj/timo.git",
     badge: "TEAM PROJECT",
     badgeColor: "#6FE6C0",
     tag: "TEAM",
@@ -1072,6 +1072,7 @@ function openProjectOverlay(card) {
   setOverlaySectionVisible(overlay, "design-process", Boolean(details?.designProcess?.length));
   buildDesignProcess(overlay, details?.designProcess || []);
 
+  overlay.dataset.projectId = id;
   setOverlaySectionVisible(overlay, "design-detail", Boolean(details?.designDetails?.length));
   buildDesignDetailSlides(overlay, details?.designDetails || [], details?.designDetailMode || "track");
 
@@ -1331,8 +1332,15 @@ function buildDesignDetailSlides(overlay, slides, mode = "track") {
   swiperEl.style.display = isSwiperMode ? "" : "none";
   prevBtn.style.display = isSwiperMode ? "" : "none";
 
-  const slideMarkup = (slide) => `
-        <div class="overlay-detail-slide">
+  const slideMarkup = (slide) => overlay.dataset.projectId === "downy"
+    ? `<div class="overlay-detail-slide">
+          ${slide.img ? `<img class="overlay-detail-img" src="${slide.img}" alt="${slide.tag}" />` : ""}
+          <div class="overlay-detail-content">
+            <span class="overlay-detail-tag">${slide.tag}</span>
+            <p class="overlay-detail-desc">${slide.desc}</p>
+          </div>
+        </div>`
+    : `<div class="overlay-detail-slide">
           <span class="overlay-detail-tag">${slide.tag}</span>
           ${slide.img ? `<img class="overlay-detail-img" src="${slide.img}" alt="${slide.tag}" />` : ""}
           <p class="overlay-detail-desc">${slide.desc}</p>
@@ -1469,7 +1477,12 @@ function openArchiveOverlay(card) {
     heroImgEl.src = thumb;
   }
 
-  overlay.querySelector(".archive-overlay-title").textContent = card.dataset.name || "";
+  const titleEl = overlay.querySelector(".archive-overlay-title");
+  titleEl.textContent = card.dataset.name || "";
+  titleEl.style.color = card.dataset.titleColor || "";
+  titleEl.style.textShadow = card.dataset.titleShadow === "true"
+    ? "0 2px 12px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.3)"
+    : "";
 
   const archiveBadge = overlay.querySelector(".archive-overlay-badge");
   if (archiveBadge) {
@@ -1573,34 +1586,34 @@ function initHeroIntroAnimation() {
   const tl = gsap.timeline();
 
   // 1. UI/UX DESIGNER
-  tl.to(designer, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" });
+  tl.to(designer, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "power3.out" });
 
-  // 2. & — 0.15s gap
-  tl.to(ampersand, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }, "+=0.15");
+  // 2. & — 0.05s gap
+  tl.to(ampersand, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, "+=0.05");
 
-  // 3. WEB PUBLISHER — 0.15s gap
-  tl.to(publisher, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" }, "+=0.15");
+  // 3. WEB PUBLISHER — 0.05s gap
+  tl.to(publisher, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, "+=0.05");
 
-  // 4. INSEO — 0.2s gap
-  tl.addLabel("inseo", "+=0.2");
-  tl.to(titleEl, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "expo.out" }, "inseo");
+  // 4. INSEO — 0.1s gap
+  tl.addLabel("inseo", "+=0.1");
+  tl.to(titleEl, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, "inseo");
 
-  // 5. portfolio — 0.3s after INSEO 완료 (y는 쓰지 않음 — 부모 wrap에 transform 없어야 label의 CSS rotate 유지됨)
-  tl.to(portfolioWrap, { opacity: 1, duration: 0.8, ease: "power3.out" }, ">+0.3");
+  // 5. portfolio — 0.15s after INSEO 완료 (y는 쓰지 않음 — 부모 wrap에 transform 없어야 label의 CSS rotate 유지됨)
+  tl.to(portfolioWrap, { opacity: 1, duration: 0.5, ease: "power3.out" }, ">+0.15");
 
   // navigation
   if (header) {
-    tl.to(header, { opacity: 1, duration: 0.8, ease: "power2.out" }, ">+0.2");
+    tl.to(header, { opacity: 1, duration: 0.5, ease: "power2.out" }, ">+0.1");
   }
 
   // scroll indicator → bounce 루프 시작
   if (scrollEl) {
     tl.to(scrollEl, {
       opacity: 1,
-      duration: 0.8,
+      duration: 0.5,
       ease: "power2.out",
       onComplete: initMainScrollBounce,
-    }, header ? "<+0.15" : ">+0.2");
+    }, header ? "<+0.1" : ">+0.1");
   }
 }
 

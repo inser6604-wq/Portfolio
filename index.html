@@ -81,6 +81,11 @@
             <span class="nav-bar"></span>
           </a>
         </nav>
+        <button class="nav-hamburger" type="button" aria-label="메뉴 열기" aria-expanded="false">
+          <span class="nav-hamburger-bar"></span>
+          <span class="nav-hamburger-bar"></span>
+          <span class="nav-hamburger-bar"></span>
+        </button>
       </header>
 
       <p class="main-subtitle"><span class="hero-designer">UI/UX DESIGNER</span><span class="hero-ampersand"> &amp; </span><span class="hero-publisher">WEB PUBLISHER</span></p>
@@ -107,7 +112,9 @@
 
       <div class="about-grid">
         <div class="about-left">
-          <div class="about-profile scroll-reveal"></div>
+          <div class="about-profile scroll-reveal">
+            <img class="about-profile-img" src="img/profile.jpg" alt="김인서 프로필 사진" />
+          </div>
 
           <div class="about-intro scroll-reveal">
             <p>UI/UX 디자인과 웹 퍼블리싱을 기반으로</p>
@@ -159,11 +166,11 @@
             </ul>
 
             <div class="about-tool-icons scroll-reveal">
-              <img src="img/about/icons/github.png" alt="GitHub" width="30" height="30" />
-              <img src="img/skillset-icon04.svg" alt="GSAP" width="30" height="30" />
-              <img src="img/about/icons/svg.png" alt="SVG" width="30" height="30" />
-              <img src="img/skillset-icon03.svg" alt="Bootstrap" width="36" height="36" />
-              <img src="img/skillset-icon02.svg" alt="Sass" width="30" height="30" />
+              <img src="img/about/icons/github.png" alt="GitHub" width="40" height="40" />
+              <img src="img/skillset-icon04.svg" alt="GSAP" width="40" height="40" />
+              <img src="img/about/icons/svg.png" alt="SVG" width="40" height="40" />
+              <img src="img/skillset-icon03.svg" alt="Bootstrap" width="40" height="40" />
+              <img src="img/skillset-icon02.svg" alt="Sass" width="40" height="40" />
             </div>
           </div>
 
@@ -201,7 +208,7 @@
 
     <section id="category" class="category-section" aria-label="프로젝트 카테고리">
       <ul class="category-row-list">
-        <li class="category-row" data-category="all" data-thumb="img/projects/thumb-all.jpg" data-tilt="-3">
+        <li class="category-row" data-category="all" data-thumb="img/works-img04.jpg" data-tilt="-3">
           <button class="category-row-toggle" type="button">
             <span class="category-row-name">ALL</span>
           </button>
@@ -216,12 +223,12 @@
             <span class="category-row-name">PUBLISHING</span>
           </button>
         </li>
-        <li class="category-row" data-category="team" data-thumb="img/projects/thumb-team.jpg" data-tilt="1.5">
+        <li class="category-row" data-category="team" data-thumb="img/works-img01.jpg" data-tilt="1.5">
           <button class="category-row-toggle" type="button">
             <span class="category-row-name">TEAM</span>
           </button>
         </li>
-        <li class="category-row" data-category="archive" data-thumb="img/projects/thumb-archive.jpg" data-tilt="3">
+        <li class="category-row" data-category="archive" data-thumb="img/archive-img07.webp" data-tilt="3">
           <button class="category-row-toggle" type="button">
             <span class="category-row-name">ARCHIVE</span>
           </button>
@@ -432,6 +439,7 @@ fill 전환과 빨간 점 등장으로 브랜드 아이덴티티를 순차적으
           type="button"
           data-thumb="img/archive-img06.webp"
           data-name="AI POSTER"
+          data-title-shadow="true"
           data-period="1DAY"
           data-tools="PHOTOSHOP"
           data-overview="AI 툴과 Photoshop을 활용한 광고 포스터 제작 작업물입니다.
@@ -542,6 +550,15 @@ fill 전환과 빨간 점 등장으로 브랜드 아이덴티티를 순차적으
         </div>
       </div>
     </section>
+
+    <div class="mobile-nav" role="navigation" aria-hidden="true" aria-label="모바일 메뉴">
+      <nav class="mobile-nav-inner">
+        <a href="#about" class="mobile-nav-link">about</a>
+        <a href="#project" class="mobile-nav-link">project</a>
+        <a href="#archive" class="mobile-nav-link">archive</a>
+        <a href="#contact" class="mobile-nav-link">contact</a>
+      </nav>
+    </div>
 
     <button class="go-top" type="button" aria-label="맨 위로 이동">
       <span class="go-top-arrow" aria-hidden="true">↑</span>

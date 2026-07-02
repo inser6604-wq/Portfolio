@@ -74,6 +74,73 @@ function initScrollReveal() {
   });
 }
 
+function initMobileNav() {
+  const hamburger = document.querySelector(".nav-hamburger");
+  const mobileNav = document.querySelector(".mobile-nav");
+  if (!hamburger || !mobileNav) return;
+
+  const bars = hamburger.querySelectorAll(".nav-hamburger-bar");
+  const links = mobileNav.querySelectorAll(".mobile-nav-link");
+  let isOpen = false;
+
+  function openNav() {
+    isOpen = true;
+    mobileNav.classList.add("is-open");
+    mobileNav.setAttribute("aria-hidden", "false");
+    hamburger.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+
+    gsap.to(bars[0], { y: 10, rotate: 45, duration: 0.35, ease: "power2.inOut" });
+    gsap.to(bars[1], { opacity: 0, duration: 0.2 });
+    gsap.to(bars[2], { y: -10, rotate: -45, duration: 0.35, ease: "power2.inOut" });
+
+    gsap.fromTo(
+      links,
+      { opacity: 0, y: 28 },
+      { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.08, delay: 0.18 }
+    );
+  }
+
+  function closeNav(onDone) {
+    isOpen = false;
+    hamburger.setAttribute("aria-expanded", "false");
+
+    gsap.to(bars[0], { y: 0, rotate: 0, duration: 0.35, ease: "power2.inOut" });
+    gsap.to(bars[1], { opacity: 1, duration: 0.2, delay: 0.1 });
+    gsap.to(bars[2], { y: 0, rotate: 0, duration: 0.35, ease: "power2.inOut" });
+
+    gsap.to(links, {
+      opacity: 0,
+      y: 16,
+      duration: 0.3,
+      ease: "power2.in",
+      stagger: 0.04,
+      onComplete: () => {
+        mobileNav.classList.remove("is-open");
+        mobileNav.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (onDone) onDone();
+      },
+    });
+  }
+
+  hamburger.addEventListener("click", () => {
+    if (isOpen) closeNav();
+    else openNav();
+  });
+
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const id = link.getAttribute("href");
+      if (!id || id === "#") return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      closeNav(() => target.scrollIntoView({ behavior: "smooth" }));
+    });
+  });
+}
+
 function initContactEmailCopy() {
   const emailBtn = document.querySelector(".contact-email");
   if (!emailBtn) return;
@@ -142,6 +209,7 @@ function initNavHover() {
 
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollToPlugin);
+  initMobileNav();
   initContactEmailCopy();
   initNavHover();
   initGoTop();
