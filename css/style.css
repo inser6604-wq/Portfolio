@@ -499,10 +499,16 @@
     right: 24px;
     max-width: calc(100vw - 48px);
     line-height: 1.6;
+    text-align: center;
+  }
+
+  .main-hero {
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .main-portfolio-wrap {
-    left: 1.05em;
+    left: 1.18em;
     top: 0.88em;
     width: 0.18em;
     height: 0.58em;
@@ -594,7 +600,7 @@
 
     .main-portfolio-wrap {
       left: auto;
-      right: -0.25em;
+      right: -0.38em;
       top: 0.92em;
     }
   }
