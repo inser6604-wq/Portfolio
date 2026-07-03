@@ -3624,6 +3624,20 @@
   border-radius: 4px;
 }
 
+.archive-overlay-process.is-single .archive-overlay-process-track {
+  justify-content: center;
+}
+
+.archive-overlay-process.is-single .archive-overlay-process-step {
+  flex: none;
+  width: 40%;
+}
+
+.archive-overlay-process.is-single .archive-overlay-process-img {
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
 .archive-overlay-process-caption {
   font-family: var(--font-body);
   font-size: clamp(13px, 1.1vw, 20px);

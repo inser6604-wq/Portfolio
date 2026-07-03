@@ -262,7 +262,8 @@ function initProjectSlider() {
       start: "top top",
       end: () => `+=${getProjectSliderScrollLength(track)}`,
       pin: true,
-      scrub: true,
+      scrub: 1,
+      anticipatePin: 1,
       invalidateOnRefresh: true,
       onUpdate: (self) => updateActiveCategory(self, track, categoryBoundaries, categoryEdge),
     },
@@ -1756,12 +1757,18 @@ function openArchiveOverlay(card) {
     const processImages = card.dataset.processImages ? card.dataset.processImages.split(",") : [];
     const processCaptions = card.dataset.processCaptions ? card.dataset.processCaptions.split(",") : [];
     if (processImages.length) {
-      processSection.querySelectorAll(".archive-overlay-process-img").forEach((img, i) => {
-        img.src = processImages[i] || "";
+      processSection.querySelectorAll(".archive-overlay-process-step").forEach((step, i) => {
+        const hasImg = !!processImages[i];
+        step.style.display = hasImg ? "" : "none";
+        const img = step.querySelector(".archive-overlay-process-img");
+        if (img) img.src = processImages[i] || "";
+        const cap = step.querySelector(".archive-overlay-process-caption");
+        if (cap) cap.textContent = processCaptions[i] || "";
       });
-      processSection.querySelectorAll(".archive-overlay-process-caption").forEach((cap, i) => {
-        cap.textContent = processCaptions[i] || "";
+      processSection.querySelectorAll(".archive-overlay-process-arrow").forEach((arrow, i) => {
+        arrow.style.display = (processImages[i] && processImages[i + 1]) ? "" : "none";
       });
+      processSection.classList.toggle("is-single", processImages.length === 1);
       processSection.style.display = "block";
     } else {
       processSection.style.display = "none";
