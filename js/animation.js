@@ -1174,6 +1174,8 @@ function setArchiveOverlayAlts(overlay, name) {
   });
 }
 
+let _savedScrollY = 0;
+
 function openProjectOverlay(card) {
   const overlay = document.querySelector(".project-overlay");
   if (!overlay || typeof gsap === "undefined") return;
@@ -1364,10 +1366,10 @@ function openProjectOverlay(card) {
 
   overlay.scrollTop = 0;
   overlay.querySelector(".overlay-detail-slider").dataset.index = "0";
+  _savedScrollY = window.scrollY;
+  initWorksViewAnimation(overlay);
   document.body.style.overflow = "hidden";
   if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(true);
-
-  initWorksViewAnimation(overlay);
   setProjectOverlayAlts(overlay, name, details);
 
   overlay.setAttribute("aria-hidden", "false");
@@ -1649,6 +1651,11 @@ function closeProjectOverlay() {
       document.body.style.overflow = "";
       if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(false);
       killWorksViewAnimation();
+      window.scrollTo(0, _savedScrollY);
+      requestAnimationFrame(() => {
+        window.scrollTo(0, _savedScrollY);
+        if (typeof ScrollTrigger !== "undefined") ScrollTrigger.update();
+      });
     },
   });
 }
@@ -1784,12 +1791,11 @@ function openArchiveOverlay(card) {
   if (prevBtn) prevBtn.classList.toggle("is-hidden", !getSiblingArchiveCard(cardIndex, -1));
   if (nextBtn) nextBtn.classList.toggle("is-hidden", !getSiblingArchiveCard(cardIndex, 1));
 
-  if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
-
   const archiveName = card.dataset.name || "Archive";
   setArchiveOverlayAlts(overlay, archiveName);
 
   overlay.scrollTop = 0;
+  _savedScrollY = window.scrollY;
   document.body.style.overflow = "hidden";
   if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(true);
 
@@ -1812,6 +1818,11 @@ function closeArchiveOverlay() {
       overlay.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
       if (typeof setGoTopSuppressed === "function") setGoTopSuppressed(false);
+      window.scrollTo(0, _savedScrollY);
+      requestAnimationFrame(() => {
+        window.scrollTo(0, _savedScrollY);
+        if (typeof ScrollTrigger !== "undefined") ScrollTrigger.update();
+      });
     },
   });
 }
@@ -2259,8 +2270,6 @@ function initWorksViewAnimation(overlay) {
     // ── Bottom actions + Footer ───────────────────────────────────────
     wvRevealUp(overlay.querySelector(".overlay-bottom-actions"), scroller);
     wvRevealDown(overlay.querySelector(".overlay-footer-nav"), scroller);
-
-    ScrollTrigger.refresh();
 
   }, overlay);
 }
