@@ -24,18 +24,19 @@
     <meta name="twitter:image" content="https://inser6604-wq.github.io/Portfolio/img/og-image.jpg?v=31">
     <link rel="canonical" href="https://inser6604-wq.github.io/Portfolio/">
     <link rel="icon" type="image/svg+xml" href="img/logo-favicon.svg">
-    <link rel="stylesheet" href="css/reset.css?v=36">
-    <link rel="stylesheet" href="css/common.css?v=36">
-    <link rel="stylesheet" href="css/style.css?v=36">
+    <link rel="preload" as="image" href="img/intro/designer.webp" type="image/webp">
+    <link rel="stylesheet" href="css/reset.css?v=37">
+    <link rel="stylesheet" href="css/common.css?v=37">
+    <link rel="stylesheet" href="css/style.css?v=37">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   </head>
   <body>
     <section id="intro" class="intro" aria-label="인트로 프리로더">
       <div class="intro-bg" aria-hidden="true">
-        <img class="intro-bg-img is-active" src="img/intro/designer.jpg" alt="DESIGNER 인트로 배경">
-        <img class="intro-bg-img" src="img/intro/publisher.png" alt="PUBLISHER 인트로 배경">
-        <img class="intro-bg-img" src="img/intro/uiux.jpg" alt="UI·UX 인트로 배경">
-        <img class="intro-bg-img" src="img/intro/kim-inseo.png" alt="KIM INSEO 인트로 배경">
+        <img class="intro-bg-img is-active" src="img/intro/designer.webp" alt="DESIGNER 인트로 배경" fetchpriority="high" decoding="async">
+        <img class="intro-bg-img" src="img/intro/publisher.webp" alt="PUBLISHER 인트로 배경" decoding="async">
+        <img class="intro-bg-img" src="img/intro/uiux.webp" alt="UI·UX 인트로 배경" decoding="async">
+        <img class="intro-bg-img" src="img/intro/kim-inseo.webp" alt="KIM INSEO 인트로 배경" decoding="async">
       </div>
 
       <div class="intro-word-slot" aria-live="polite">
@@ -133,8 +134,8 @@
         <div class="about-left">
           <div class="about-profile scroll-reveal">
             <picture>
-              <source media="(max-width: 768px)" srcset="img/aboutme-profile-mobile.png">
-              <img class="about-profile-img" src="img/aboutme-profile.svg" alt="김인서 프로필 사진">
+              <source media="(max-width: 768px)" type="image/webp" srcset="img/aboutme-profile-mobile.webp">
+              <img class="about-profile-img" src="img/aboutme-profile.svg" alt="김인서 프로필 사진" width="334" height="338" decoding="async">
             </picture>
           </div>
 

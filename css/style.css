@@ -806,10 +806,14 @@
     aspect-ratio: 334 / 338;
     margin-inline: auto;
     margin-bottom: 4px;
-    background-image: url("../img/aboutme-profile-mobile.png");
-    background-position: center;
-    background-size: contain;
+    background: none;
     justify-content: center;
+  }
+
+  .about-profile-img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .about-skill-item {
