@@ -806,6 +806,7 @@
     aspect-ratio: 334 / 338;
     margin-inline: auto;
     margin-bottom: 4px;
+    background-image: url("../img/aboutme-profile-mobile.png");
     background-position: center;
     background-size: contain;
     justify-content: center;
