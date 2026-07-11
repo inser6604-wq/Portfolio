@@ -218,6 +218,9 @@ function initCategoryClickFlash() {
 }
 
 let projectSliderTrigger = null;
+let projectSliderTween = null;
+let projectSliderMobileScrollHandler = null;
+let projectSliderMode = null;
 
 function getProjectSliderScrollLength(track) {
   const cards = track.querySelectorAll(".project-card");
@@ -225,6 +228,71 @@ function getProjectSliderScrollLength(track) {
   const paddingRight = parseFloat(getComputedStyle(track).paddingRight) || 0;
   const contentEnd = lastCard.offsetLeft + lastCard.offsetWidth + paddingRight;
   return Math.max(contentEnd - window.innerWidth, 0);
+}
+
+function killProjectSliderMode() {
+  if (projectSliderTween) {
+    projectSliderTween.scrollTrigger?.kill();
+    projectSliderTween.kill();
+    projectSliderTween = null;
+    projectSliderTrigger = null;
+  }
+
+  const track = document.querySelector(".project-slider-track");
+  if (!track) return;
+
+  if (projectSliderMobileScrollHandler) {
+    track.removeEventListener("scroll", projectSliderMobileScrollHandler);
+    projectSliderMobileScrollHandler = null;
+  }
+
+  if (typeof gsap !== "undefined") {
+    gsap.set(track, { clearProps: "x,transform" });
+  }
+}
+
+function setupProjectSliderMode() {
+  const section = document.querySelector(".project-slider");
+  const track = section?.querySelector(".project-slider-track");
+  if (!section || !track || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+    return;
+  }
+
+  const nextMode = window.matchMedia("(max-width: 768px)").matches ? "mobile" : "desktop";
+  if (projectSliderMode === nextMode) return;
+
+  const savedY = window.scrollY;
+  killProjectSliderMode();
+  projectSliderMode = nextMode;
+
+  if (nextMode === "mobile") {
+    initMobileProjectSlider(track);
+    ScrollTrigger.refresh();
+    window.scrollTo(0, savedY);
+    return;
+  }
+
+  const categoryBoundaries = getCategoryBoundaries(track);
+  const categoryEdge = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+
+  projectSliderTween = gsap.to(track, {
+    x: () => -getProjectSliderScrollLength(track),
+    ease: "none",
+    scrollTrigger: {
+      trigger: section,
+      start: "top top",
+      end: () => `+=${getProjectSliderScrollLength(track)}`,
+      pin: true,
+      scrub: 1,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => updateActiveCategory(self, track, categoryBoundaries, categoryEdge),
+    },
+  });
+
+  projectSliderTrigger = projectSliderTween.scrollTrigger;
+  ScrollTrigger.refresh();
+  window.scrollTo(0, savedY);
 }
 
 function initProjectSlider() {
@@ -246,30 +314,28 @@ function initProjectSlider() {
 
   initProjectCardInteractions(cards);
 
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    initMobileProjectSlider(track);
-    return;
+  // Pin after intro so start/end aren't measured while the page is still locked
+  // / mid-transition — that was causing the WORKS slider to jump over the hero.
+  const armSliderMode = () => {
+    setupProjectSliderMode();
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+  };
+
+  if (document.getElementById("intro")) {
+    document.addEventListener("intro:complete", armSliderMode, { once: true });
+  } else {
+    armSliderMode();
   }
 
-  const categoryBoundaries = getCategoryBoundaries(track);
-  const categoryEdge = parseFloat(getComputedStyle(track).paddingLeft) || 0;
-
-  const scrollTween = gsap.to(track, {
-    x: () => -getProjectSliderScrollLength(track),
-    ease: "none",
-    scrollTrigger: {
-      trigger: section,
-      start: "top top",
-      end: () => `+=${getProjectSliderScrollLength(track)}`,
-      pin: true,
-      scrub: 1,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => updateActiveCategory(self, track, categoryBoundaries, categoryEdge),
-    },
-  });
-
-  projectSliderTrigger = scrollTween.scrollTrigger;
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+  const onViewportChange = () => setupProjectSliderMode();
+  if (typeof mobileQuery.addEventListener === "function") {
+    mobileQuery.addEventListener("change", onViewportChange);
+  } else {
+    mobileQuery.addListener(onViewportChange);
+  }
 }
 
 function getCategoryBoundaries(track) {
@@ -324,11 +390,11 @@ function initMobileProjectSlider(track) {
   const categoryBoundaries = getCategoryBoundaries(track);
   const categoryEdge = parseFloat(getComputedStyle(track).paddingLeft) || 0;
 
-  track.addEventListener(
-    "scroll",
-    () => updateActiveCategoryFromTrackScroll(track, categoryBoundaries, categoryEdge),
-    { passive: true }
-  );
+  projectSliderMobileScrollHandler = () => {
+    updateActiveCategoryFromTrackScroll(track, categoryBoundaries, categoryEdge);
+  };
+
+  track.addEventListener("scroll", projectSliderMobileScrollHandler, { passive: true });
 }
 
 function scrollMobileTrackToCategory(track, category) {
@@ -442,6 +508,7 @@ const PROJECT_DETAILS = {
     figmaUrl:
       "https://www.figma.com/design/juZYlQiaWwqnBIVte538EW/2-%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A5-%E1%84%87%E1%85%B3%E1%84%85%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B3UI%E1%84%83%E1%85%B5%E1%84%8C%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AB?node-id=0-1&t=lvmnhQAMGtEeBdcj-1",
     badge: "100% PERSONAL",
+    badgeColor: "#0055A0",
     tag: "UI · UX PROJECT",
     titleLines: ["Downy", "Redesign"],
     info: [
@@ -583,6 +650,7 @@ const PROJECT_DETAILS = {
     siteUrl: "https://compose.dothome.co.kr/",
     githubUrl: "https://github.com/inser6604-wq/compose-website.git",
     badge: "100% PERSONAL",
+    badgeColor: "#FFCC00",
     tag: "PUBLISHING",
     titleLines: ["Compose", "Coffee Website"],
     info: [
@@ -655,6 +723,7 @@ const PROJECT_DETAILS = {
     siteUrl: "https://cursor-vibe-coding-kappa.vercel.app/",
     githubUrl: "https://github.com/inser6604-wq/cursor-vibe-coding.git",
     badge: "VIBE CODING",
+    badgeColor: "#4D9FFF",
     tag: "PUBLISHING",
     titleLines: ["Aether", "Landing page"],
     info: [
@@ -1691,6 +1760,25 @@ function initArchiveOverlay() {
   });
 }
 
+function initOverlayEscapeClose() {
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+
+    const archiveOverlay = document.querySelector(".archive-overlay");
+    if (archiveOverlay?.getAttribute("aria-hidden") === "false") {
+      event.preventDefault();
+      closeArchiveOverlay();
+      return;
+    }
+
+    const projectOverlay = document.querySelector(".project-overlay");
+    if (projectOverlay?.getAttribute("aria-hidden") === "false") {
+      event.preventDefault();
+      closeProjectOverlay();
+    }
+  });
+}
+
 function openArchiveOverlay(card) {
   const overlay = document.querySelector(".archive-overlay");
   if (!overlay || typeof gsap === "undefined") return;
@@ -1923,6 +2011,7 @@ function initArchiveOverlayScrollFx() {
 
 document.addEventListener("DOMContentLoaded", initProjectOverlay);
 document.addEventListener("DOMContentLoaded", initArchiveOverlay);
+document.addEventListener("DOMContentLoaded", initOverlayEscapeClose);
 document.addEventListener("DOMContentLoaded", initArchiveOverlayScrollFx);
 
 // ─── Archive Gallery Reveal Animation ─────────────────────────────────────────

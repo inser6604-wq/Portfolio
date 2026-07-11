@@ -418,6 +418,7 @@
 
 .hero-ampersand {
   display: inline-block;
+  padding-inline: 0.35em;
 }
 
 .main-hero {
@@ -607,19 +608,20 @@
   .about-profile-img {
     display: block;
     width: clamp(260px, 55%, 344px);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
+    height: auto;
+    aspect-ratio: 334 / 338;
+    object-fit: contain;
   }
 
   @media (max-width: 768px) {
     .about-profile {
       justify-content: center;
+      width: min(280px, 60vw);
+      margin-inline: auto;
     }
 
     .about-profile-img {
-      width: clamp(200px, 60vw, 280px);
+      width: 100%;
     }
   }
 }
@@ -789,10 +791,24 @@
   }
 
   .about-quote {
-    margin-left: 0;
-    margin-right: 0;
-    text-align: left;
+    margin: 0 auto 16px;
+    text-align: center;
     max-width: 100%;
+  }
+
+  .about-left {
+    gap: 28px;
+  }
+
+  .about-profile {
+    width: min(280px, 60vw);
+    max-width: none;
+    aspect-ratio: 334 / 338;
+    margin-inline: auto;
+    margin-bottom: 4px;
+    background-position: center;
+    background-size: contain;
+    justify-content: center;
   }
 
   .about-skill-item {
@@ -2526,9 +2542,8 @@
   right: clamp(20px, 4vw, 60px);
   font-family: var(--font-display);
   font-size: clamp(26px, 4.9vw, 71px);
-  color: #f4f8ff;
+  color: var(--color-accent);
   white-space: nowrap;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
 }
 
 .archive-overlay-gradient {
@@ -2736,8 +2751,8 @@
     inset: 0;
     height: auto;
     background:
-      linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.2) 62%, rgba(0, 0, 0, 0) 100%),
-      linear-gradient(0deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 48%);
+      linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.12) 55%, rgba(0, 0, 0, 0) 100%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 48%);
   }
 
   .archive-overlay-badge {
@@ -2881,6 +2896,12 @@
 
 .contact-email.is-copied::after {
   content: " (복사됨)";
+  font-size: 0.6em;
+  color: var(--color-accent);
+}
+
+.contact-email.is-failed::after {
+  content: " (복사 실패 — 메일 앱으로 이동)";
   font-size: 0.6em;
   color: var(--color-accent);
 }
@@ -3671,6 +3692,10 @@
   .archive-overlay-process-track {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .archive-overlay-process.is-single .archive-overlay-process-step {
+    width: 72%;
   }
 
   .archive-overlay-process-arrow {

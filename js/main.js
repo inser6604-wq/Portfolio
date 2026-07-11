@@ -174,6 +174,12 @@ function initMobileNav() {
     else openNav();
   });
 
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !isOpen) return;
+    event.preventDefault();
+    closeNav();
+  });
+
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       const id = link.getAttribute("href");
@@ -190,15 +196,57 @@ function initContactEmailCopy() {
   const emailBtn = document.querySelector(".contact-email");
   if (!emailBtn) return;
 
-  emailBtn.addEventListener("click", async () => {
+  const email = emailBtn.dataset.email || "";
+  let feedbackTimer = null;
+
+  function showFeedback(state) {
+    emailBtn.classList.remove("is-copied", "is-failed");
+    if (state) emailBtn.classList.add(state);
+    clearTimeout(feedbackTimer);
+    feedbackTimer = setTimeout(() => {
+      emailBtn.classList.remove("is-copied", "is-failed");
+    }, 1800);
+  }
+
+  async function copyEmail(value) {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch (_) {
+        /* fall through to legacy copy */
+      }
+    }
+
     try {
-      await navigator.clipboard.writeText(emailBtn.dataset.email);
-    } catch (err) {
+      const input = document.createElement("textarea");
+      input.value = value;
+      input.setAttribute("readonly", "");
+      input.style.cssText = "position:fixed;left:-9999px;top:0";
+      document.body.appendChild(input);
+      input.select();
+      input.setSelectionRange(0, input.value.length);
+      const ok = document.execCommand("copy");
+      document.body.removeChild(input);
+      return ok;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  emailBtn.addEventListener("click", async () => {
+    if (!email) return;
+
+    const copied = await copyEmail(email);
+    if (copied) {
+      showFeedback("is-copied");
       return;
     }
 
-    emailBtn.classList.add("is-copied");
-    setTimeout(() => emailBtn.classList.remove("is-copied"), 1500);
+    showFeedback("is-failed");
+    window.setTimeout(() => {
+      window.location.href = `mailto:${email}`;
+    }, 600);
   });
 }
 
