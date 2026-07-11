@@ -221,6 +221,9 @@ let projectSliderTrigger = null;
 let projectSliderTween = null;
 let projectSliderMobileScrollHandler = null;
 let projectSliderMode = null;
+let _sliderRefreshSavedY = 0;
+let _sliderNeedsRebuildAfterRefresh = false;
+let _sliderRefreshGuardInstalled = false;
 
 function getProjectSliderScrollLength(track) {
   const cards = track.querySelectorAll(".project-card");
@@ -251,7 +254,18 @@ function killProjectSliderMode() {
   }
 }
 
-function setupProjectSliderMode() {
+function restoreScrollAfterSliderChange(savedY) {
+  window.scrollTo(0, savedY);
+  requestAnimationFrame(() => {
+    window.scrollTo(0, savedY);
+    if (typeof ScrollTrigger !== "undefined") ScrollTrigger.update();
+    if (projectSliderTrigger && projectSliderTween) {
+      projectSliderTween.progress(projectSliderTrigger.progress);
+    }
+  });
+}
+
+function setupProjectSliderMode({ skipRefresh = false, restoreScroll = true } = {}) {
   const section = document.querySelector(".project-slider");
   const track = section?.querySelector(".project-slider-track");
   if (!section || !track || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
@@ -267,8 +281,8 @@ function setupProjectSliderMode() {
 
   if (nextMode === "mobile") {
     initMobileProjectSlider(track);
-    ScrollTrigger.refresh();
-    window.scrollTo(0, savedY);
+    if (!skipRefresh) ScrollTrigger.refresh();
+    if (restoreScroll) restoreScrollAfterSliderChange(savedY);
     return;
   }
 
@@ -291,8 +305,56 @@ function setupProjectSliderMode() {
   });
 
   projectSliderTrigger = projectSliderTween.scrollTrigger;
-  ScrollTrigger.refresh();
+  if (!skipRefresh) ScrollTrigger.refresh();
+  if (restoreScroll) restoreScrollAfterSliderChange(savedY);
+}
+
+// Refreshing while the WORKS pin is active recalculates start from position:fixed
+// and can collapse pinStart near 0 / negative — slider then appears over the hero.
+// Unpin before measurement, then rebuild after refresh finishes.
+function installProjectSliderRefreshGuard() {
+  if (_sliderRefreshGuardInstalled || typeof ScrollTrigger === "undefined") return;
+  _sliderRefreshGuardInstalled = true;
+
+  ScrollTrigger.addEventListener("refreshInit", () => {
+    const st = projectSliderTrigger;
+    if (!st || projectSliderMode !== "desktop") return;
+    if (!st.isActive && st.start >= 0) return;
+
+    _sliderRefreshSavedY = window.scrollY;
+    killProjectSliderMode();
+    projectSliderMode = null;
+    _sliderNeedsRebuildAfterRefresh = true;
+  });
+
+  ScrollTrigger.addEventListener("refresh", () => {
+    if (!_sliderNeedsRebuildAfterRefresh) {
+      // Safety net: catch corrupted pin starts after any refresh path.
+      const st = projectSliderTrigger;
+      if (st && projectSliderMode === "desktop" && st.start < window.innerHeight * 0.5) {
+        _sliderRefreshSavedY = window.scrollY;
+        killProjectSliderMode();
+        projectSliderMode = null;
+        queueMicrotask(() => syncProjectSliderAfterRebuild(_sliderRefreshSavedY));
+      }
+      return;
+    }
+
+    _sliderNeedsRebuildAfterRefresh = false;
+    const savedY = _sliderRefreshSavedY;
+    // Defer past the refresh cycle so the new scrub pin can bind to scroll.
+    queueMicrotask(() => syncProjectSliderAfterRebuild(savedY));
+  });
+}
+
+function syncProjectSliderAfterRebuild(savedY) {
+  setupProjectSliderMode({ skipRefresh: true, restoreScroll: false });
   window.scrollTo(0, savedY);
+  if (projectSliderTrigger && projectSliderTween) {
+    projectSliderTrigger.update();
+    projectSliderTween.progress(projectSliderTrigger.progress);
+  }
+  restoreScrollAfterSliderChange(savedY);
 }
 
 function initProjectSlider() {
@@ -302,6 +364,7 @@ function initProjectSlider() {
   gsap.registerPlugin(ScrollTrigger);
   if (typeof ScrollToPlugin !== "undefined") gsap.registerPlugin(ScrollToPlugin);
 
+  installProjectSliderRefreshGuard();
   initProjectSliderColorShift(section);
 
   const track = section.querySelector(".project-slider-track");
@@ -318,9 +381,6 @@ function initProjectSlider() {
   // / mid-transition — that was causing the WORKS slider to jump over the hero.
   const armSliderMode = () => {
     setupProjectSliderMode();
-    requestAnimationFrame(() => {
-      ScrollTrigger.refresh();
-    });
   };
 
   if (document.getElementById("intro")) {
@@ -570,10 +630,10 @@ const PROJECT_DETAILS = {
     overview:
       "기존 아르코 예술극장 모바일 앱은 복잡한 정보 구조와 불편한 예매 동선으로\n원하는 공연 정보를 빠르게 찾기 어려웠습니다.\n정보 구조를 전면 재설계하고, 공연 탐색부터 예매까지 이어지는 사용자 경험을\n직관적이고 일관성 있게 개선하는 데 중점을 두었습니다.",
     planning: [
-      { img: "img/arcoviewpage_01.webp", alt: "Background" },
-      { img: "img/arcoviewpage_02.webp", alt: "User research" },
-      { img: "img/arcoviewpage_03.webp", alt: "Persona & Journey Map" },
-      { img: "img/arcoviewpage_04.webp", alt: "Pain Points & Solution" },
+      { img: "img/arcoviewpage_01.jpg", alt: "Background" },
+      { img: "img/arcoviewpage_02.jpg", alt: "User research" },
+      { img: "img/arcoviewpage_03.jpg", alt: "Persona & Journey Map" },
+      { img: "img/arcoviewpage_04.jpg", alt: "Pain Points & Solution" },
     ],
     colors: ["#9F7BFF", "#C6B0FF", "#0F0F14", "#F2F2F2", "#C3C3C3", "#8A8AA0", "#6B6B78"],
     typographyTagline: {
@@ -788,7 +848,7 @@ const PROJECT_DETAILS = {
     overview:
       "기존에는 제주 지역의 비건 식당 정보가 여러 플랫폼에 분산되어 있어 원하는 정보를 빠르게 찾기 어려웠으며, 여행 동선까지 함께 고려한 서비스도 부족했습니다.\n\n이를 개선하기 위해 지도 기반으로 정보를 통합하고, 비건 여행객과 제주 방문객이 식당과 여행 코스를 직관적으로 탐색할 수 있는 사용자 경험을 설계했습니다. 또한 반응형 웹을 구현하여 PC, Tablet, Mobile 환경에서도 일관된 사용성과 접근성을 제공하는 데 중점을 두었습니다.",
     beforeImg: "img/jejuvegan/jejuvegan-before.jpg",
-    afterImg: "img/jejuvegan/jejuvegan-after.jpg",
+    afterImg: "img/jejuvegan/jejuvegan-detail01.jpg",
     planning: [
       { img: "img/jejuvegan/jejuvegan-planning01.jpg", alt: "기획 01" },
       { img: "img/jejuvegan/jejuvegan-planning02.jpg", alt: "기획 02" },
