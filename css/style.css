@@ -971,6 +971,7 @@
 
 .project-slider {
   --slider-edge: clamp(48px, 9.5vw, 160px);
+  --slider-scroll: 0px;
   position: relative;
   height: 100vh;
   overflow: hidden;
@@ -984,6 +985,22 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+/* Desktop: sticky runway instead of ScrollTrigger pin — avoids pinStart
+   collapsing to the hero after refresh/resize. */
+@media (min-width: 769px) {
+  .project-slider {
+    height: calc(100vh + var(--slider-scroll));
+    overflow: visible;
+  }
+
+  .project-slider-pin {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 .project-slider-title {

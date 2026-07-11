@@ -221,13 +221,13 @@ let projectSliderTrigger = null;
 let projectSliderTween = null;
 let projectSliderMobileScrollHandler = null;
 let projectSliderMode = null;
-let _sliderRefreshSavedY = 0;
-let _sliderNeedsRebuildAfterRefresh = false;
-let _sliderRefreshGuardInstalled = false;
+let projectSliderScrollHandler = null;
+let projectSliderResizeHandler = null;
 
 function getProjectSliderScrollLength(track) {
   const cards = track.querySelectorAll(".project-card");
   const lastCard = cards[cards.length - 1];
+  if (!lastCard) return 0;
   const paddingRight = parseFloat(getComputedStyle(track).paddingRight) || 0;
   const contentEnd = lastCard.offsetLeft + lastCard.offsetWidth + paddingRight;
   return Math.max(contentEnd - window.innerWidth, 0);
@@ -238,42 +238,76 @@ function killProjectSliderMode() {
     projectSliderTween.scrollTrigger?.kill();
     projectSliderTween.kill();
     projectSliderTween = null;
-    projectSliderTrigger = null;
+  }
+  projectSliderTrigger = null;
+
+  if (projectSliderScrollHandler) {
+    window.removeEventListener("scroll", projectSliderScrollHandler);
+    projectSliderScrollHandler = null;
   }
 
-  const track = document.querySelector(".project-slider-track");
-  if (!track) return;
+  if (projectSliderResizeHandler) {
+    window.removeEventListener("resize", projectSliderResizeHandler);
+    projectSliderResizeHandler = null;
+  }
 
-  if (projectSliderMobileScrollHandler) {
+  const section = document.querySelector(".project-slider");
+  const track = document.querySelector(".project-slider-track");
+
+  if (section) section.style.removeProperty("--slider-scroll");
+
+  if (projectSliderMobileScrollHandler && track) {
     track.removeEventListener("scroll", projectSliderMobileScrollHandler);
     projectSliderMobileScrollHandler = null;
   }
 
-  if (typeof gsap !== "undefined") {
+  if (track && typeof gsap !== "undefined") {
     gsap.set(track, { clearProps: "x,transform" });
   }
 }
 
 function restoreScrollAfterSliderChange(savedY) {
   window.scrollTo(0, savedY);
-  requestAnimationFrame(() => {
-    window.scrollTo(0, savedY);
-    if (typeof ScrollTrigger !== "undefined") ScrollTrigger.update();
-    if (projectSliderTrigger && projectSliderTween) {
-      projectSliderTween.progress(projectSliderTrigger.progress);
-    }
-  });
+  requestAnimationFrame(() => window.scrollTo(0, savedY));
 }
 
-function setupProjectSliderMode({ skipRefresh = false, restoreScroll = true } = {}) {
-  const section = document.querySelector(".project-slider");
-  const track = section?.querySelector(".project-slider-track");
-  if (!section || !track || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+function syncProjectSliderRunway(section, track) {
+  const length = getProjectSliderScrollLength(track);
+  section.style.setProperty("--slider-scroll", `${length}px`);
+  return length;
+}
+
+function updateDesktopProjectSlider(section, track, categoryBoundaries, categoryEdge) {
+  const length = getProjectSliderScrollLength(track);
+  if (length <= 0) {
+    gsap.set(track, { x: 0 });
     return;
   }
 
+  const start = section.offsetTop;
+  const scrollY = window.scrollY || window.pageYOffset;
+  const progress = Math.min(1, Math.max(0, (scrollY - start) / length));
+  gsap.set(track, { x: -length * progress });
+
+  // Fake a ScrollTrigger-like object for category jump helpers.
+  if (projectSliderTrigger) {
+    projectSliderTrigger.start = start;
+    projectSliderTrigger.end = start + length;
+    projectSliderTrigger.progress = progress;
+  }
+
+  updateActiveCategory({ progress }, track, categoryBoundaries, categoryEdge);
+}
+
+function setupProjectSliderMode() {
+  const section = document.querySelector(".project-slider");
+  const track = section?.querySelector(".project-slider-track");
+  if (!section || !track || typeof gsap === "undefined") return;
+
   const nextMode = window.matchMedia("(max-width: 768px)").matches ? "mobile" : "desktop";
-  if (projectSliderMode === nextMode) return;
+  if (projectSliderMode === nextMode && (nextMode === "mobile" || projectSliderScrollHandler)) {
+    return;
+  }
 
   const savedY = window.scrollY;
   killProjectSliderMode();
@@ -281,91 +315,53 @@ function setupProjectSliderMode({ skipRefresh = false, restoreScroll = true } = 
 
   if (nextMode === "mobile") {
     initMobileProjectSlider(track);
-    if (!skipRefresh) ScrollTrigger.refresh();
-    if (restoreScroll) restoreScrollAfterSliderChange(savedY);
+    restoreScrollAfterSliderChange(savedY);
     return;
   }
 
   const categoryBoundaries = getCategoryBoundaries(track);
   const categoryEdge = parseFloat(getComputedStyle(track).paddingLeft) || 0;
 
-  projectSliderTween = gsap.to(track, {
-    x: () => -getProjectSliderScrollLength(track),
-    ease: "none",
-    scrollTrigger: {
-      trigger: section,
-      start: "top top",
-      end: () => `+=${getProjectSliderScrollLength(track)}`,
-      pin: true,
-      scrub: 1,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => updateActiveCategory(self, track, categoryBoundaries, categoryEdge),
-    },
-  });
+  syncProjectSliderRunway(section, track);
 
-  projectSliderTrigger = projectSliderTween.scrollTrigger;
-  if (!skipRefresh) ScrollTrigger.refresh();
-  if (restoreScroll) restoreScrollAfterSliderChange(savedY);
-}
+  // Manual scroll drive + CSS sticky. Avoids ScrollTrigger pin/refresh entirely —
+  // that combo was repeatedly collapsing WORKS onto the hero on desktop.
+  projectSliderTrigger = {
+    start: section.offsetTop,
+    end: section.offsetTop + getProjectSliderScrollLength(track),
+    progress: 0,
+  };
 
-// Refreshing while the WORKS pin is active recalculates start from position:fixed
-// and can collapse pinStart near 0 / negative — slider then appears over the hero.
-// Unpin before measurement, then rebuild after refresh finishes.
-function installProjectSliderRefreshGuard() {
-  if (_sliderRefreshGuardInstalled || typeof ScrollTrigger === "undefined") return;
-  _sliderRefreshGuardInstalled = true;
+  projectSliderScrollHandler = () => {
+    updateDesktopProjectSlider(section, track, categoryBoundaries, categoryEdge);
+  };
 
-  ScrollTrigger.addEventListener("refreshInit", () => {
-    const st = projectSliderTrigger;
-    if (!st || projectSliderMode !== "desktop") return;
-    if (!st.isActive && st.start >= 0) return;
+  let resizeTimer = null;
+  projectSliderResizeHandler = () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      const y = window.scrollY;
+      syncProjectSliderRunway(section, track);
+      updateDesktopProjectSlider(section, track, categoryBoundaries, categoryEdge);
+      window.scrollTo(0, y);
+    }, 100);
+  };
 
-    _sliderRefreshSavedY = window.scrollY;
-    killProjectSliderMode();
-    projectSliderMode = null;
-    _sliderNeedsRebuildAfterRefresh = true;
-  });
-
-  ScrollTrigger.addEventListener("refresh", () => {
-    if (!_sliderNeedsRebuildAfterRefresh) {
-      // Safety net: catch corrupted pin starts after any refresh path.
-      const st = projectSliderTrigger;
-      if (st && projectSliderMode === "desktop" && st.start < window.innerHeight * 0.5) {
-        _sliderRefreshSavedY = window.scrollY;
-        killProjectSliderMode();
-        projectSliderMode = null;
-        queueMicrotask(() => syncProjectSliderAfterRebuild(_sliderRefreshSavedY));
-      }
-      return;
-    }
-
-    _sliderNeedsRebuildAfterRefresh = false;
-    const savedY = _sliderRefreshSavedY;
-    // Defer past the refresh cycle so the new scrub pin can bind to scroll.
-    queueMicrotask(() => syncProjectSliderAfterRebuild(savedY));
-  });
-}
-
-function syncProjectSliderAfterRebuild(savedY) {
-  setupProjectSliderMode({ skipRefresh: true, restoreScroll: false });
-  window.scrollTo(0, savedY);
-  if (projectSliderTrigger && projectSliderTween) {
-    projectSliderTrigger.update();
-    projectSliderTween.progress(projectSliderTrigger.progress);
-  }
+  window.addEventListener("scroll", projectSliderScrollHandler, { passive: true });
+  window.addEventListener("resize", projectSliderResizeHandler);
+  updateDesktopProjectSlider(section, track, categoryBoundaries, categoryEdge);
   restoreScrollAfterSliderChange(savedY);
 }
 
 function initProjectSlider() {
   const section = document.querySelector(".project-slider");
-  if (!section || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+  if (!section || typeof gsap === "undefined") return;
 
-  gsap.registerPlugin(ScrollTrigger);
+  if (typeof ScrollTrigger !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+  }
   if (typeof ScrollToPlugin !== "undefined") gsap.registerPlugin(ScrollToPlugin);
-
-  installProjectSliderRefreshGuard();
-  initProjectSliderColorShift(section);
 
   const track = section.querySelector(".project-slider-track");
   const cards = track.querySelectorAll(".project-card");
@@ -377,9 +373,10 @@ function initProjectSlider() {
 
   initProjectCardInteractions(cards);
 
-  // Pin after intro so start/end aren't measured while the page is still locked
-  // / mid-transition — that was causing the WORKS slider to jump over the hero.
   const armSliderMode = () => {
+    if (typeof initProjectSliderColorShift === "function") {
+      initProjectSliderColorShift(section);
+    }
     setupProjectSliderMode();
   };
 
@@ -390,12 +387,32 @@ function initProjectSlider() {
   }
 
   const mobileQuery = window.matchMedia("(max-width: 768px)");
-  const onViewportChange = () => setupProjectSliderMode();
+  const onViewportChange = () => {
+    projectSliderMode = null;
+    setupProjectSliderMode();
+  };
   if (typeof mobileQuery.addEventListener === "function") {
     mobileQuery.addEventListener("change", onViewportChange);
   } else {
     mobileQuery.addListener(onViewportChange);
   }
+
+  window.addEventListener(
+    "load",
+    () => {
+      if (projectSliderMode !== "desktop") return;
+      const y = window.scrollY;
+      syncProjectSliderRunway(section, track);
+      updateDesktopProjectSlider(
+        section,
+        track,
+        getCategoryBoundaries(track),
+        parseFloat(getComputedStyle(track).paddingLeft) || 0
+      );
+      window.scrollTo(0, y);
+    },
+    { once: true }
+  );
 }
 
 function getCategoryBoundaries(track) {
