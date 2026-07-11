@@ -651,7 +651,7 @@ const PROJECT_DETAILS = {
     figmaUrl:
       "https://www.figma.com/design/aK6cCABll232WEyJ1yIcSY/4-Onepage-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=21-2&t=cokYFQYkRYKMglhO-1",
     siteUrl: "https://inser6604-wq.github.io/onepage/",
-    githubUrl: "https://github.com/inser6604-wq/onepage.git",
+    githubUrl: "https://github.com/inser6604-wq/zara",
     badge: "100% PERSONAL",
     tag: "PUBLISHING",
     titleLines: ["ZARA Onepage"],
@@ -708,7 +708,7 @@ const PROJECT_DETAILS = {
   },
   compose: {
     siteUrl: "https://compose.dothome.co.kr/",
-    githubUrl: "https://github.com/inser6604-wq/compose-website.git",
+    githubUrl: "https://github.com/inser6604-wq/compose",
     badge: "100% PERSONAL",
     badgeColor: "#FFCC00",
     tag: "PUBLISHING",
@@ -781,7 +781,7 @@ const PROJECT_DETAILS = {
   },
   aether: {
     siteUrl: "https://cursor-vibe-coding-kappa.vercel.app/",
-    githubUrl: "https://github.com/inser6604-wq/cursor-vibe-coding.git",
+    githubUrl: "https://github.com/inser6604-wq/aether",
     badge: "VIBE CODING",
     badgeColor: "#4D9FFF",
     tag: "PUBLISHING",
@@ -833,7 +833,7 @@ const PROJECT_DETAILS = {
     figmaUrl:
       "https://www.figma.com/design/DsApQ6nIvzU1U7OowP8Rkh/%ED%95%9C%EB%9D%BC%EB%B4%89%ED%8C%80-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B8%B0%ED%9A%8D?node-id=0-1&t=GO0JhWAC6mpX9hvj-1",
     siteUrl: "https://kis0503.dothome.co.kr/",
-    githubUrl: "https://github.com/inser6604-wq/jeju-vegan-project.git",
+    githubUrl: "https://github.com/inser6604-wq/jejuvegan",
     badge: "TEAM PROJECT",
     badgeColor: "#c1121f",
     tag: "TEAM / responsive",
@@ -920,7 +920,7 @@ const PROJECT_DETAILS = {
   },
   timo: {
     siteUrl: "https://timo-sigma-six.vercel.app/#login",
-    githubUrl: "https://github.com/kaeunj/timo.git",
+    githubUrl: "https://github.com/inser6604-wq/timo",
     badge: "TEAM PROJECT",
     badgeColor: "#6FE6C0",
     tag: "TEAM",
