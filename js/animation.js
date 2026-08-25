@@ -668,14 +668,14 @@ const PROJECT_DETAILS = {
     figmaUrl:
       "https://www.figma.com/design/aK6cCABll232WEyJ1yIcSY/4-Onepage-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=21-2&t=cokYFQYkRYKMglhO-1",
     siteUrl: "https://inser6604-wq.github.io/onepage/",
-    githubUrl: "https://github.com/inser6604-wq/zara",
+    githubUrl: "https://github.com/inser6604-wq/onepage",
     badge: "100% PERSONAL",
     tag: "PUBLISHING",
     titleLines: ["ZARA Onepage"],
     info: [
       { label: "period", value: "1week" },
       { label: "role", value: "기획 · 디자인 · 퍼블리싱 / 100% Personal" },
-      { label: "tool", value: "VS code, Figma" },
+      { label: "tool", value: "Figma / HTML / CSS" },
     ],
     overview:
       "기존 ZARA 웹사이트는 이미지 중심으로 구성되어 있었지만, 제품에 대한 정보 전달이 부족해 사용자가 필요한 내용을 직관적으로 파악하기 어려웠습니다.\n원페이지 레이아웃으로 콘텐츠를 재구성하고, 정보의 우선순위와 시각적 계층을 정리하여 브랜드 경험과 사용성을 함께 개선하는 데 중점을 두었습니다.",
@@ -725,7 +725,7 @@ const PROJECT_DETAILS = {
   },
   compose: {
     siteUrl: "https://compose.dothome.co.kr/",
-    githubUrl: "https://github.com/inser6604-wq/compose",
+    githubUrl: "https://github.com/inser6604-wq/compose-website",
     badge: "100% PERSONAL",
     badgeColor: "#FFCC00",
     tag: "PUBLISHING",
@@ -733,7 +733,7 @@ const PROJECT_DETAILS = {
     info: [
       { label: "period", value: "2week" },
       { label: "role", value: "기획 · 디자인 · 퍼블리싱 / 100% Personal" },
-      { label: "tool", value: "HTML / CSS / JavaScript" },
+      { label: "tool", value: "Figma / HTML / CSS / JavaScript" },
     ],
     heroImg: "img/works-img05.jpg",
     overview:
@@ -798,15 +798,15 @@ const PROJECT_DETAILS = {
   },
   aether: {
     siteUrl: "https://cursor-vibe-coding-kappa.vercel.app/",
-    githubUrl: "https://github.com/inser6604-wq/aether",
+    githubUrl: "https://github.com/inser6604-wq/cursor-vibe-coding",
     badge: "VIBE CODING",
     badgeColor: "#4D9FFF",
     tag: "PUBLISHING",
     titleLines: ["Aether", "Landing page"],
     info: [
       { label: "period", value: "1DAY" },
-      { label: "role", value: "기획 · 디자인 / Cursor Ai" },
-      { label: "tool", value: "Cursor, Supabase" },
+      { label: "role", value: "기획 · 디자인 / Cursor Ai / Chat Gpt" },
+      { label: "tool", value: "Cursor / Chat Gpt / Supabase" },
     ],
     heroImg: "img/works-img04.jpg",
     overview:
@@ -850,7 +850,7 @@ const PROJECT_DETAILS = {
     figmaUrl:
       "https://www.figma.com/design/DsApQ6nIvzU1U7OowP8Rkh/%ED%95%9C%EB%9D%BC%EB%B4%89%ED%8C%80-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B8%B0%ED%9A%8D?node-id=0-1&t=GO0JhWAC6mpX9hvj-1",
     siteUrl: "https://kis0503.dothome.co.kr/",
-    githubUrl: "https://github.com/inser6604-wq/jejuvegan",
+    githubUrl: "https://github.com/inser6604-wq/jeju-vegan-project",
     badge: "TEAM PROJECT",
     badgeColor: "#c1121f",
     tag: "TEAM / responsive",
@@ -937,7 +937,7 @@ const PROJECT_DETAILS = {
   },
   timo: {
     siteUrl: "https://timo-sigma-six.vercel.app/#login",
-    githubUrl: "https://github.com/inser6604-wq/timo",
+    githubUrl: "https://github.com/kaeunj/timo",
     badge: "TEAM PROJECT",
     badgeColor: "#6FE6C0",
     tag: "TEAM",
