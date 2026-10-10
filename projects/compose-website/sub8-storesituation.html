@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴포즈커피-전국매장현황</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header include-html="header.html"></header>
+
+  <div class="goto-top">
+    <a href="#">
+      <img class="before" src="image/gototop-before.png" alt="goto-top-img">
+      <img class="after" src="image/gototop-after.png" alt="goto-top-img">
+    </a>
+  </div>
+
+  <div class="storesituation-bg">
+  <h2>store-situation</h2>
+  </div>
+
+  <div class="top-common">
+    <div class="location">
+      <a href="index.html">홈</a>
+      <span>&gt; 가맹점 및 매출현황 &gt;</span>
+      <span>전국 매장 현황</span>
+    </div>
+    <div class="sub-header scroll-item left-in">
+      <h2>전국 매장 현황</h2>
+    </div>
+  </div>
+  
+    <div id="wrap">
+    <section class="store-section">
+      <div class="store-summary">
+        <div class="summary-card scroll-item up-in">
+          <p class="summary-label">전국 매장 수</p>
+          <p class="summary-number">3,215<span>개</span></p>
+        </div>
+        <div class="summary-card scroll-item up-in delay1">
+          <p class="summary-label">신규 오픈</p>
+          <p class="summary-number">247<span>개</span></p>
+        </div>
+        <div class="summary-card scroll-item up-in delay2">
+          <p class="summary-label">누적 계약 건수</p>
+          <p class="summary-number">4,102<span>개</span></p>
+        </div>
+      </div>
+
+      <div class="store-bar scroll-item up-in delay3">
+
+        <div class="bar-card">
+          <p class="region-label">서울</p>
+          <div class="bar-track">
+            <div class="bar-fill" style="--w: 32%"></div>
+          </div>
+          <p class="region-percent">32%</p>
+        </div>
+        
+        <div class="bar-card">
+          <p class="region-label">경기</p>
+          <div class="bar-track">
+            <div class="bar-fill" style="--w: 28%"></div>
+          </div>
+          <p class="region-percent">28%</p>
+        </div>
+
+        <div class="bar-card">
+          <p class="region-label">인천</p>
+          <div class="bar-track">
+            <div class="bar-fill" style="--w: 8%"></div>
+          </div>
+          <p class="region-percent">8%</p>
+        </div>
+
+        <div class="bar-card">
+          <p class="region-label">부산</p>
+          <div class="bar-track">
+            <div class="bar-fill" style="--w: 7%"></div>
+          </div>
+          <p class="region-percent">7%</p>
+        </div>
+
+        <div class="bar-card">
+          <p class="region-label">대구</p>
+          <div class="bar-track">
+            <div class="bar-fill" style="--w: 5%"></div>
+          </div>
+          <p class="region-percent">5%</p>
+        </div>
+        
+        <div class="bar-card">
+          <p class="region-label">대전</p>
+          <div class="bar-track">
+            <div class="bar-fill" style="--w: 4%"></div>
+          </div>
+          <p class="region-percent">4%</p>
+        </div>
+
+        <div class="bar-card">
+          <p class="region-label">광주</p>
+          <div class="bar-track">
+            <div class="bar-fill" style="--w: 4%"></div>
+          </div>
+          <p class="region-percent">4%</p>
+        </div>
+
+        <div class="bar-card">
+          <p class="region-label">기타</p>
+          <div class="bar-track">
+            <div class="bar-fill" style="--w: 12%"></div>
+          </div>
+          <p class="region-percent">12%</p>
+        </div>
+
+      </div>
+
+    <div class="store-slider scroll-item right-in delay4">
+      <h3 class="slider-title">지역별 가맹점</h3>
+      <div class="slider-wrap">
+        <button type="button" class="slider-btn prev" aria-label="이전 슬라이드">&#8249;</button>
+        <div class="slider-viewport">
+          <div class="slider-track">
+            <div class="slide">
+              <div class="slide-img"><img src="image/store-img01.jpg" alt="강남점"></div>
+              <p class="slide-name">강남점</p>
+            </div>
+            <div class="slide">
+              <div class="slide-img"><img src="image/store-img02.jpg" alt="홍대점"></div>
+              <p class="slide-name">홍대점</p>
+            </div>
+            <div class="slide">
+              <div class="slide-img"><img src="image/store-img03.jpg" alt="신촌점"></div>
+              <p class="slide-name">신촌점</p>
+            </div>
+            <div class="slide">
+              <div class="slide-img"><img src="image/store-img04.jpg" alt="명동점"></div>
+              <p class="slide-name">명동점</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="slider-btn next" aria-label="다음 슬라이드">&#8250;</button>
+      </div>
+    </div>
+
+    </section>
+
+  <footer include-html="footer.html"></footer>
+    </div>
+    <script src="js/includeHTML.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/sub-script.js"></script>
+    <script src="js/scroll.js"></script>
+    <script>
+      includeHTML(function () {
+        initAll();
+        if (typeof initMenu === 'function') initMenu();
+      });
+    </script>
+</body>
+</html>

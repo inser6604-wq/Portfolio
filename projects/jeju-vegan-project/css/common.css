@@ -1,0 +1,393 @@
+@import url(font.css);
+
+.page {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.section-title,
+.hero-title,
+.page-title,
+.home-hero-title {
+  font-family: "A2Z", sans-serif;
+  font-weight: 700;
+}
+
+body,
+p,
+span,
+a,
+button,
+input {
+  font-family: "Pretendard", sans-serif;
+}
+.inner {
+  width: min(100% - 40px, 1400px);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 120px 0;
+}
+
+.section-head {
+  margin-bottom: 44px;
+}
+
+.section-title {
+  color: #111;
+  font-size: 3.6rem;
+  line-height: 1.2;
+}
+
+.section-desc {
+  margin-top: 14px;
+  color: #53615b;
+  font-size: 1.5rem;
+  line-height: 1.7;
+}
+/* sub페이지 공통사항 css - 히어로, 타이틀, 브래드크럼 */
+.sub-hero {
+  position: relative;
+  min-height: 53rem;
+}
+
+.sub-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+.sub-hero .inner {
+  position: relative;
+  z-index: 1;
+  min-height: 53rem;
+}
+
+.sub-hero-content {
+  position: absolute;
+  left: 0;
+  top: 58%;
+  transform: translateY(-50%);
+}
+
+/* about·map 제외 — 헤더 펼침(20rem) 아래에 텍스트 배치 */
+.page:not(.page-about):not(.page-map) .sub-hero-content {
+  top: 22rem;
+}
+
+.page:not(.page-about):not(.page-map) .sub-hero-content:not(.sr) {
+  transform: none;
+}
+
+.sub-hero-title {
+  font-family: "A2Z", sans-serif;
+  font-size: 3.8rem;
+  color: #163525;
+}
+
+.sub-hero-subtitle {
+  margin-top: 2rem;
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.breadcrumb {
+  padding: 3rem 0 8rem;
+  font-size: 1.4rem;
+  color: #888;
+}
+
+.breadcrumb span + span,
+.breadcrumb a + span,
+.breadcrumb span + a {
+  margin-left: 0.4rem;
+}
+
+.breadcrumb a:hover {
+  color: #2d6a4f;
+}
+
+.breadcrumb .current {
+  color: #2d6a4f;
+  font-weight: 600;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+}
+
+.col {
+  flex: 1 1 0;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem 6rem;
+  color: #2D6A4F;
+  border: 2px solid #2D6A4F;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  color: #fff;
+  background-color: #2D6A4F;
+}
+.btn-line {
+  min-width: 118px;
+  height: 40px;
+  padding: 0 22px;
+  border: 1px solid #ff8a1d;
+  background: #fff;
+  color: #ff7a00;
+}
+
+.btn-text {
+  min-width: auto;
+  height: auto;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.btn-sm {
+  min-width: 82px;
+  height: 30px;
+  padding: 0 14px;
+  font-size: 1.2rem;
+}
+
+.btn-lg {
+  min-width: 320px;
+  height: 65px;
+  padding: 0 36px;
+  font-size: 1.6rem;
+}
+
+.btn-go-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  border-radius: 50%;
+  background: #2d6a4f;
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(45, 106, 79, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(16px);
+  z-index: 20;
+}
+
+.btn-go-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.btn-go-top .iconify {
+  font-size: 2.6rem;
+}
+
+.card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  background: #fff;
+}
+
+.card-img,
+.img-box {
+  overflow: hidden;
+}
+
+.card-img img,
+.img-box img,
+.thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-title {
+  color: #111;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.card-desc {
+  color: #5d6963;
+  line-height: 1.6;
+}
+
+.badge,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.badge {
+  min-height: 24px;
+  padding:  8px 20px;
+  font-size: 1.4rem;
+}
+
+.badge-vegan {
+  background: #ff7a00;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+
+.badge-course {
+  background: #2d6a4f;
+  color: #fff;
+}
+
+.tag-list {
+  position: absolute;
+  top: 1.6rem;
+  left: 1.6rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.tag {
+  padding: 1rem 2rem;
+  border-radius: 99.9rem;
+  background: #fff;
+  color: #2d6a4f;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  border: 1px solid #d8e0db;
+  border-radius: 999px;
+  background: #fff;
+  color: #111;
+}
+
+.form-input,
+.form-select {
+  height: 48px;
+  padding: 0 18px;
+}
+
+.form-textarea {
+  min-height: 140px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  resize: vertical;
+}
+
+.hide {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.show {
+  display: block;
+}
+
+.pc-only {
+  display: block;
+}
+
+.mo-only {
+  display: none;
+}
+
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s ease;
+}
+
+.like-btn:hover,
+.like-btn.is-active {
+  color: #ff7a00;
+}
+
+.like-icon {
+  font-size: 26px;
+}
+
+.home-course-heart {
+  font-size: 2rem;
+}
+
+
+/* ── 스크롤 애니메이션 ── */
+.sr {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+  will-change: opacity, transform;
+}
+
+.sr.sr-up    { transform: translateY(30px); }
+.sr.sr-down  { transform: translateY(-30px); }
+.sr.sr-left  { transform: translateX(-30px); }
+.sr.sr-right { transform: translateX(30px); }
+
+.sr.is-visible {
+  opacity: 1;
+  transform: none;
+}

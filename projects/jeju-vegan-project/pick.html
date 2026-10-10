@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko" style="overflow-x:hidden">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비건지도 | 오늘의 비건 pick</title>
+  <style>html{visibility:hidden}</style>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="./image/favicon.svg">
+</head>
+<body>
+<div id="wrap">
+  <header include-html="include/header.html"></header>
+  <main id="container" class="page page-pick">
+    <section class="sub-hero pick-hero">
+      <div class="inner">
+        <div class="sub-hero-content sr sr-right" data-sr-delay="0.05">
+          <h2 class="sub-hero-title">오늘의 비건 PICK</h2>
+          <p class="sub-hero-subtitle sr sr-right" data-sr-delay="0.1">제주비건 팀이 오늘 직접 고른 비건 메뉴 추천, <br>매일 새로운 맛집과 메뉴를 소개합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+    <nav class="breadcrumb sr">
+      <div class="inner">
+        <a href="index.html">홈</a>
+        <span>&gt;</span>
+        <a href="pick.html">여행코스</a>
+        <span>&gt;</span>
+        <span class="current">오늘의 비건 pick</span>
+      </div>
+    </nav>
+    <div class="inner">
+      <section class="pick-today">
+
+        <div class="pick-submenu sr">
+          <ul>
+            <li><a href="pick.html" class="active">오늘의 비건 pick</a></li>
+            <li><a href="course.html">비건 여행 코스</a></li>
+          </ul>
+        </div>
+
+        <div class="pick-layout">
+          <div class="pick-img img-box sr sr-left">
+            <img src="./image/vegan-pick-img08.png" alt="제주흑보리">
+          </div>
+
+          <div class="pick-content sr sr-right">
+            <div class="pick-info">
+              <span class="badge badge-vegan">완전비건</span>
+              <h2 class="pick-title">제주 흑보리 비건 플레이트</h2>
+              <p class="pick-sub-title">제주 비건 플레이트 전문점 - 제주시 연동</p>
+            </div>
+
+            <div class="tag-list">
+              <span class="tag">글루텐프리</span>
+              <span class="tag">단체석</span>
+              <span class="tag">주차가능</span>
+              <span class="tag">예약가능</span>
+            </div>
+
+            <div class="pick-address">
+              · 제주시 연동 123-4번지
+            </div>
+
+            <div class="pick-list">
+              <div class="pick-list-item">
+                <span class="badge badge-open">영업중</span>
+                <span>11:00 - 21:00 월요일 휴무</span>
+              </div>
+
+              <div class="pick-list-item">
+                <span>· 1인 15,000 - 22,000원</span>
+              </div>
+
+              <div class="pick-list-item">
+                <span>· 찜 128</span>
+              </div>
+            </div>
+
+            <div class="pick-actions">
+              <a href="map.html" class="btn pick-btn-map">지도에서 보기</a>
+              <a href="#" class="btn pick-btn-like">찜하기</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pick-rest">
+        <h3 class="section-title sr">오늘의 추천맛집 & 메뉴 </h3>
+
+        <div class="tab sr">
+          <div class="tab-list">
+            <button class="tab-btn active">전체</button>
+            <button class="tab-btn">제주시</button>
+            <button class="tab-btn">서귀포</button>
+            <button class="tab-btn">애월</button>
+            <button class="tab-btn">한림</button>
+            <span class="tab-sep">|</span>
+            <div class="tab-option">
+              <button class="tab-btn">완전비건</button>
+              <button class="tab-btn">비건옵션</button>
+              <button class="tab-btn">현재 영업중</button>
+            </div>
+          </div>
+        </div>
+
+        <ul class="card-list"></ul>
+        <div class="card-more-wrap sr">
+          <button type="button" class="card-more-btn">
+            <img class="card-more-icon" src="image/map-down-icon.svg" alt="">
+            <span class="card-more-label">더보기</span>
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer include-html="include/footer.html"></footer>
+  </div>
+  <button type="button" id="goTopBtn" class="btn btn-go-top" aria-label="위로 이동">
+    <span class="iconify" data-icon="mdi:chevron-up" aria-hidden="true"></span>
+  </button>
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/includeHTML.js"></script>
+  <script src="js/pick.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+*,
+*::before,
+*::after{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  font-size:62.5%;
+}
+
+html,
+body{
+  width:100%;
+  max-width:100%;
+  height:100%;
+  overflow-x:clip;
+}
+
+body{
+  font-family:"Pretendard", sans-serif;
+}
+
+#wrap{
+  max-width:100%;
+  overflow-x:clip;
+}
+
+article,aside,details,summary,figcaption,figure,
+footer,header,hgroup,main,nav,section{
+  display:block;
+}
+
+li{
+  list-style:none;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  max-width:100%;
+  vertical-align:top;
+}
+
+button{
+  border:0;
+  background:transparent;
+  cursor:pointer;
+}
+
+input,
+textarea,
+select,
+button{
+  font:inherit;
+}
+
+table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+fieldset,
+legend{
+  border:0;
+}

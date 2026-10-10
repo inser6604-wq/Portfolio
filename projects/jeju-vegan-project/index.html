@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비건지도 | 홈</title>
+  <style>html{visibility:hidden}</style>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="./image/favicon.svg">
+  <meta property="og:title" content="제주 비건 지도">
+  <meta property="og:description" content="제주 비건 맛집, 어디로 가볼까요?">
+  <meta property="og:image" content="https://kis0503.dothome.co.kr/image/og.png">
+  <meta property="og:url" content="https://kis0503.dothome.co.kr/">
+</head>
+<body>
+  <div id="wrap">
+    <header include-html="include/header.html"></header>
+
+    <main id="container" class="page page-index">
+      <section class="home-hero">
+        <div class="home-hero-slides">
+          <div class="home-hero-slide home-hero-slide--search is-active">
+            <img src="image/main-hero-img.svg" alt= "main-slider-image01">
+          </div>
+          <div class="home-hero-slide">
+            <img src="image/main-hero.svg" alt= "main-slider-image02">
+          </div>
+          <div class="home-hero-slide home-hero-slide--fresh">
+            <img src="image/main-hero03.png" alt="제주 제철 비건 식재료">
+          </div>
+        </div>
+
+        <div class="inner home-hero-inner home-hero-inner--search is-visible">
+          <div class="home-hero-search-copy sr sr-up" data-sr-delay="0.1">
+            <h1 class="home-hero-search-title"><span>제주 비건 맛집</span>, 어디로 가볼까요?</h1>
+            <p class="home-hero-search-desc"><span>찾고 싶은 메뉴</span>를 입력하면 제주 비건 맛집을 지도에서 바로 확인할 수 있어요.</p>
+            <form class="home-hero-search-form" action="pick.html" method="get">
+              <label for="hero-search-input" class="hide">메뉴 검색</label>
+              <input
+                type="search"
+                id="hero-search-input"
+                name="q"
+                class="home-hero-search-input"
+                placeholder="파스타, 샐러드, 브런치, 디저트...">
+              <button type="submit" class="btn home-hero-search-btn" aria-label="검색">
+                <span class="iconify" data-icon="mdi:chevron-right" aria-hidden="true"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="inner home-hero-inner home-hero-inner--main">
+          <div class="home-hero-content sr sr-up" data-sr-delay="0.2">
+            <p class="home-hero-subtitle">제주에서 발견하는 더 건강하고 지속 가능한 라이프 스타일</p>
+            <h2 class="home-hero-title">EAT<br><span>VEGAN</span><br>IN JEJU</h2>
+            <a href="map.html" class="btn btn-primary">비건 지도 보기</a>
+          </div>
+        </div>
+
+        <div class="inner home-hero-inner home-hero-inner--fresh">
+          <div class="home-hero-fresh-copy sr sr-up" data-sr-delay="0.2">
+            <h2 class="home-hero-fresh-title bebas-neue-regular">
+              <span class="home-hero-fresh-line">FRESH</span>
+              <span class="home-hero-fresh-line home-hero-fresh-line--accent"><span class="home-hero-fresh-dash" aria-hidden="true">—</span> FROM</span>
+              <span class="home-hero-fresh-line">JEJU</span>
+            </h2>
+            <p class="home-hero-fresh-desc">
+              제주의 제철 식재료로 완성한 건강한 비건 한 끼.<br>
+              신선한 자연의 맛을 그대로 담아냈습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="home-hero-bar">
+          <div class="inner home-hero-bar-inner">
+            <p class="home-hero-counter" aria-live="polite">
+              <span class="home-hero-current">01</span>
+              <span class="home-hero-counter-sep" aria-hidden="true">—</span>
+              <span class="home-hero-total">03</span>
+            </p>
+            <div class="home-hero-nav">
+              <button type="button" class="btn home-hero-nav-btn home-hero-prev" aria-label="이전 슬라이드">
+                <span class="iconify" data-icon="mdi:chevron-left" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn home-hero-nav-btn home-hero-next" aria-label="다음 슬라이드">
+                <span class="iconify" data-icon="mdi:chevron-right" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-pick section">
+        <div class="inner">
+          <div class="section-head">
+            <h2 class="section-title sr sr-left" data-sr-delay="0.05">오늘의 비건 <span>PICK</span></h2>
+            <a href="pick.html" class="btn btn-primary sr sr-up" data-sr-delay="0.1">VIEW MORE</a>
+          </div> 
+          <ul class="home-pick-content card-list sr sr-left" data-sr-delay="0.12">
+            <li class="home-pick-main card place-card sr sr-left" data-sr-delay="0.18">
+              <a href="pick.html">
+                <div class="home-pick-main-img card-img img-box">
+                  <img src="image/vegan-pick-img01.png" alt="제주 흑보리 비건 플레이트">
+                </div>
+                <div class="home-pick-main-info card-body">
+                  <span class="badge badge-vegan">오늘의 PICK</span>
+                  <h3 class="home-pick-main-title card-title">제주 흑보리 비건 플레이트</h3>
+                  <p class="home-pick-main-desc card-desc">고소한
+                  <span>제주 흑보리와 신선한 채소</span>로 완성한 건강한 한 끼</p>
+                  <p class="home-pick-main-place">Jeju Veggie's · 제주시내</p>
+                </div>
+              </a>
+            </li>
+            
+            <li class="home-pick-side card place-card sr sr-right" data-sr-delay="0.3">
+                <div class="home-pick-side-img card-img img-box">
+                  <img src="image/vegan-pick-img02.png" alt="제주 바당 비건라면">
+                </div>
+                <div class="home-pick-side-info card-body">
+                  <span class="home-pick-side-place">Five Seventh 성산 · 구좌</span>
+                  <h3 class="home-pick-side-title card-title">제주 바당 비건라면</h3>
+                  <p class="home-pick-side-desc card-desc"><span>해물 없는 해물라면</span>깊고 얼큰한 국물 맛은 그대로,
+                    <br><span>식물성 재료</span>로 담백하게</p>
+                </div>
+            </li>
+
+            <li class="home-pick-side card place-card sr sr-right" data-sr-delay="0.35">
+                <div class="home-pick-side-img card-img img-box">
+                  <img src="image/vegan-pick-img03.png" alt="한라 비건 무스케이크">
+                </div>
+                <div class="home-pick-side-info card-body">
+                  <span class="home-pick-side-place">And유 Café 애월 · 한림권</span>
+                  <h3 class="home-pick-side-title card-title">한라 비건 무스케이크</h3>
+                  <p class="home-pick-side-desc card-desc"><span>계란과 우유 없이</span>만든 달콤한 디저트로 마무리하세요.</p>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="home-course section">
+        <div class="inner">
+          <div class="section-head">
+            <h2 class="section-title sr sr-up" data-sr-delay="0.05">여행코스</h2>
+            <p class="section-desc sr sr-up" data-sr-delay="0.08"><span>제주를 맛있게 걷는 방법</span>, 비건 식당, 카페, 자연 스팟을 따라 하루를 채우는 특별한 제주 여행 코스.</p>
+            <a href="course.html" class="btn btn-line sr sr-right" data-sr-delay="0.12">전체보기</a>
+          </div>
+
+          <ul class="home-course-content card-list">
+            <li class="course-card card sr sr-up" data-sr-delay="0.15">
+              <a href="course.html" class="card-link-overlay" aria-label="서귀포 코스 상세보기"></a>
+              <div class="card-img home-course-img img-box">
+                <div class="tag-list">
+                  <span class="tag">#샐러드</span>
+                  <span class="tag">#파스타</span>
+                </div>
+                <img src="image/main-course-card-img01.jpg" alt="서귀포 코스">
+              </div>
+              <div class="card-body home-course-body">
+                <h3 class="card-title home-course-title">서귀포 코스</h3>
+                <p class="card-desc home-course-desc">자연과 로컬 비건 맛집을 함께 즐기는 여행</p>
+                <button type="button" class="btn like-btn" aria-label="서귀포 코스 좋아요">
+                  <span class="iconify like-icon" data-icon="mdi:heart-outline" aria-hidden="true"></span>
+                  <span class="like-count">102</span>
+                </button>
+              </div>
+            </li>
+
+            <li class="course-card card sr sr-up" data-sr-delay="0.2">
+              <a href="course.html" class="card-link-overlay" aria-label="협재 금능 코스 상세보기"></a>
+              <div class="card-img home-course-img img-box">
+                <div class="tag-list">
+                  <span class="tag">#브런치</span>
+                  <span class="tag">#디저트</span>
+                </div>
+                <div class="btn home-course-view">BEST COURSE</div>
+                <img src="image/main-course-card-img02.jpg" alt="협재금능코스">
+              </div>
+              <div class="card-body home-course-body">
+                <h3 class="card-title home-course-title">협재 · 금능 코스</h3>
+                <p class="card-desc home-course-desc">에메랄드빛 해변과 감성 비건 스팟 탐방</p>
+                <button type="button" class="btn like-btn is-active" aria-label="협재 금능 코스 좋아요">
+                  <span class="iconify like-icon" data-icon="mdi:heart" aria-hidden="true"></span>
+                  <span class="like-count">182</span>
+                </button>
+              </div>
+            </li>
+
+            <li class="course-card card sr sr-up" data-sr-delay="0.25">
+              <a href="course.html" class="card-link-overlay" aria-label="한라산 코스 상세보기"></a>
+              <div class="card-img home-course-img img-box">
+                <div class="tag-list">
+                  <span class="tag">#건강식</span>
+                  <span class="tag">#포케</span>
+                </div>
+                <img src="image/main-course-card-img03.jpg" alt="한라산 코스">
+              </div>
+              <div class="card-body home-course-body">
+                <h3 class="card-title home-course-title">한라산 코스</h3>
+                <p class="card-desc home-course-desc">등산 후 즐기는 건강한 비건 식사와 휴식</p>
+                <button type="button" class="btn like-btn" aria-label="한라산 코스 좋아요">
+                  <span class="iconify like-icon" data-icon="mdi:heart-outline" aria-hidden="true"></span>
+                  <span class="like-count">56</span>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="home-map section">
+        <div class="inner">
+          <div class="section-head">
+            <h2 class="section-title sr sr-left" data-sr-delay="0.05">VEGAN MAP</h2>
+            <p class="section-desc sr sr-left" data-sr-delay="0.1">146개의 비건 스팟을 한눈에 탐색해보세요.</p>
+            <a href="map.html" class="btn btn-line sr sr-left" data-sr-delay="0.15">비건지도 보기</a>
+          </div>
+
+          <div class="home-map-visual sr sr-up" data-sr-delay="0.1">
+            <div class="map-wrapper">
+              <img src="image/main-mapbefore.png" alt="제주 비건 지도">
+              
+              <button class="main-map-pin sr sr-up" data-sr-delay="0.5" data-location="jeju">
+                <img src="image/mappin-orange.svg" alt="제주시">
+                <span>제주시</span>
+              </button>
+              <button class="main-map-pin sr sr-up" data-sr-delay="0.7" data-location="aewol">
+                <img src="image/mappin-orange.svg" alt="애월">
+                <span>애월</span>
+              </button>
+              <button class="main-map-pin sr sr-up" data-sr-delay="0.9" data-location="hallim">
+                <img src="image/mappin-orange.svg" alt="한림">
+                <span>한림</span>
+              </button>
+              <button class="main-map-pin sr sr-up" data-sr-delay="1.1" data-location="hyeopjae">
+                <img src="image/mappin-orange.svg" alt="협재">
+                <span>협재</span>
+              </button>
+              <button class="main-map-pin sr sr-up" data-sr-delay="1.3" data-location="seogwipo">
+                <img src="image/mappin-orange.svg" alt="서귀포">
+                <span>서귀포</span>
+              </button>
+              <button class="main-map-pin sr sr-up" data-sr-delay="2" data-location="seongsan">
+                <img src="image/mappin-orange.svg" alt="성산">
+                <span>성산</span>
+              </button>
+            </div>
+          </div>
+
+          <ul class="home-map-stats card-list">
+            <li class="notice-card card sr sr-up" data-sr-delay="0.2">
+              <strong data-count="146" data-suffix="+">0</strong>
+              <span class="home-map-stat-label"><span class="home-map-stat-emoji" aria-hidden="true">📍</span>Spots</span>
+            </li>
+            <li class="notice-card card sr sr-up" data-sr-delay="0.34">
+              <strong data-count="48">0</strong>
+              <span class="home-map-stat-label"><span class="home-map-stat-emoji" aria-hidden="true">🍽</span>Cafes</span>
+            </li>
+            <li class="notice-card card sr sr-up" data-sr-delay="0.48">
+              <strong data-count="32">0</strong>
+              <span class="home-map-stat-label"><span class="home-map-stat-emoji" aria-hidden="true">🗺</span>Featured Course</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="home-together section">
+        <div class="inner">
+          <div class="section-head">
+            <h2 class="section-title sr sr-left" data-sr-delay="0.2">"취향은 달라도 식사는 함께"</h2>
+            <p class="section-desc sr sr-left" data-sr-delay="0.25"><span>비건과 논비건 모두가 만족</span>할 수 있는 식당을 추천해드릴게요.<br>함께하는 식사도 더 쉽고 즐겁게.</p>
+          </div>
+
+          <div class="home-together-visual img-box sr sr-right" data-sr-delay="0.1">
+            <img src="image/main-eat-together-img.jpg" alt="함께 나누는 비건 식탁">
+            <strong>EAT<br>TOGETHER</strong>
+          </div>
+
+          <div class="home-together-tag-list sr sr-left" data-sr-delay="0.3">
+            <span class="tag">#논비건동반</span>
+            <span class="tag">#가족외식</span>
+            <span class="tag">#친구모임</span>
+            <span class="tag">#맛집추천</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-join section">
+        <div class="inner">
+          <div class="section-head">
+            <h2 class="section-title sr sr-right" data-sr-delay="0.05">함께 만들어요</h2>
+            <p class="section-desc sr sr-right" data-sr-delay="0.1">제주의 <span>숨은 비건 맛집과 새로운 스팟</span>을 공유해주세요.
+            <br>당신의 제보가 더 많은 사람들에게 건강한 선택지를 전합니다.<br><span>사장님은 가게를 등록하고, 방문객은 새로운 맛집을 제보</span>할 수 있습니다.</p>
+          </div>
+
+          <div class="home-join-content">
+            <div class="home-join-visual img-box sr sr-left" data-sr-delay="0.1">
+              <img src="image/main-bottom-with.jpg" alt="손 마주잡으려는 두 사람">
+            </div>
+            <div class="home-join-actions sr sr-right" data-sr-delay="0.2">
+              <a href="submit.html" class="btn btn-main-bottom">사장님 가게 등록할게요</a>
+              <a href="submit.html" class="btn btn-main-bottom">내가 아는 비건 맛집 제보할게요</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <section class="home-subscribe section">
+          <div class="inner">
+            <div class="home-subscribe-content">
+              <div class="home-subscribe-left">
+                <h2 class="section-title sr sr-right" data-sr-delay="0.2">
+                  새로운 <span>비건 스팟</span>,<br>
+                  제일 먼저 알려드릴게요
+                </h2>
+
+                <p class="section-desc sr sr-right" data-sr-delay="0.28">
+                  제주의 새 비건식당, 오늘의 pick을 이메일로 받아보세요.
+                </p>
+              </div>
+
+              <div class="home-subscribe-right sr sr-up" data-sr-delay="0.3">
+                <form class="home-subscribe-form">
+                  <label for="home-subscribe-email" class="hide">이메일</label>
+                  <input
+                    type="email"
+                    id="home-subscribe-email"
+                    class="form-input"
+                    placeholder="이메일 주소를 입력해 주세요">
+                  <button type="submit" class="btn btn-primary">구독하기</button>
+                </form>
+
+                <p class="home-subscribe-note">
+                  구독시 개인정보 처리 방침에 동의하는 것으로 간주합니다.<br>
+                  언제든지 구독을 취소할 수 있어요.
+                </p>
+              </div>
+            </div>
+          </div>
+          </section>
+        </main>
+
+    <footer include-html="include/footer.html"></footer>
+  </div>
+
+  <button type="button" id="goTopBtn" class="btn btn-go-top" aria-label="위로 이동">
+    <span class="iconify" data-icon="mdi:chevron-up" aria-hidden="true"></span>
+  </button>
+
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="js/includeHTML.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

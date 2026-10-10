@@ -1,0 +1,135 @@
+/* ===================================================
+   layout.css — 페이지 공통 레이아웃 구조
+   =================================================== */
+
+/* ── 페이지 내부 스크롤 영역 ── */
+
+.page-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 var(--page-px);
+}
+
+.page-body--no-pad {
+  padding: 0;
+}
+
+/* ── 섹션 헤더 (제목 + 더보기) ── */
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) 0 var(--space-3);
+}
+
+.section-header__title {
+  font-family: var(--font-title);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.section-header__more {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+/* ── 리스트 컨테이너 ── */
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-bottom: var(--space-5);
+}
+
+/* ── 구분선 ── */
+
+.divider {
+  height: 1px;
+  background-color: var(--color-divider);
+  margin: 0 calc(var(--page-px) * -1);
+}
+
+/* ── 빈 상태 ── */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--page-px);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ── 앱 헤더 + 뒤로가기 공통 패턴 ── */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 var(--page-px);
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-header__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: calc(var(--space-2) * -1);
+  flex-shrink: 0;
+}
+
+.page-header__title {
+  flex: 1;
+  font-family: var(--font-title);
+  font-size: var(--text-xl);
+  text-align: center;
+}
+
+.page-header__action {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+/* ── 탭 바 ── */
+
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.tab-bar__item {
+  flex: 1;
+  height: 44px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tab-bar__item--active {
+  color: var(--color-black);
+  font-weight: 700;
+  border-bottom-color: var(--color-black);
+}
+
+/* ── 반응형 ── */
+
+@media (min-width: 390px) {}
+
+@media (min-width: 430px) {}
+
+@media (min-width: 768px) {}

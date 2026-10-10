@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비건지도 | FAQ</title>
+  <style>html{visibility:hidden}</style>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="./image/favicon.svg">
+</head>
+<body>
+  <div id="wrap">
+    <header include-html="include/header.html"></header>
+
+    <main id="container" class="page page-faq">
+
+      <!-- 히어로 -->
+      <section class="sub-hero faq-hero">
+        <div class="inner">
+          <div class="sub-hero-content sr sr-right" data-sr-delay="0.05">
+            <h1 class="sub-hero-title">자주 묻는 질문</h1>
+            <p class="sub-hero-subtitle sr sr-right" data-sr-delay="0.1">
+              제주 비건 지도 이용 중 궁금한 내용을 검색하거나<br>카테고리별로 찾아보세요.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="breadcrumb">
+        <div class="inner">
+          <a href="index.html">홈</a>
+          <span>&gt;</span>
+          <span class="current">FAQ</span>
+        </div>
+      </nav>
+
+      <!-- 필터 + 검색 + FAQ 목록 -->
+      <section class="faq-body section">
+        <div class="inner">
+
+          <!-- 카테고리 탭 -->
+          <div class="tab faq-tab">
+            <ul class="tab-list sr sr-right" data-sr-delay="0.14" role="tablist" aria-label="FAQ 카테고리">
+              <li role="presentation">
+                <button type="button" class="tab-btn js-tab-btn active" id="faq-tab-all" data-tab="all" role="tab" aria-selected="true" aria-controls="faq-tabpanel">
+                  <span class="tab-btn-text sr sr-up" data-sr-delay="0.16">전체</span>
+                </button>
+              </li>
+              <li role="presentation">
+                <button type="button" class="tab-btn js-tab-btn" id="faq-tab-service" data-tab="service" role="tab" aria-selected="false" aria-controls="faq-tabpanel">
+                  <span class="tab-btn-text sr sr-up" data-sr-delay="0.18">서비스 이용</span>
+                </button>
+              </li>
+              <li role="presentation">
+                <button type="button" class="tab-btn js-tab-btn" id="faq-tab-register" data-tab="register" role="tab" aria-selected="false" aria-controls="faq-tabpanel">
+                  <span class="tab-btn-text sr sr-up" data-sr-delay="0.20">가게 등록</span>
+                </button>
+              </li>
+              <li role="presentation">
+                <button type="button" class="tab-btn js-tab-btn" id="faq-tab-tip" data-tab="tip" role="tab" aria-selected="false" aria-controls="faq-tabpanel">
+                  <span class="tab-btn-text sr sr-up" data-sr-delay="0.22">맛집 제보</span>
+                </button>
+              </li>
+              <li role="presentation">
+                <button type="button" class="tab-btn js-tab-btn" id="faq-tab-travel" data-tab="travel" role="tab" aria-selected="false" aria-controls="faq-tabpanel">
+                  <span class="tab-btn-text sr sr-up" data-sr-delay="0.24">여행 정보</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 검색바 -->
+          <div class="faq-search">
+            <form class="faq-search-form" action="#" method="get" novalidate>
+              <label for="faq-search-input" class="hide">FAQ 검색</label>
+              <span class="faq-search-icon sr sr-up" data-sr-delay="0.18" aria-hidden="true">
+                <span class="iconify" data-icon="mdi:magnify"></span>
+              </span>
+              <input
+                type="search"
+                id="faq-search-input"
+                class="faq-search-input sr sr-up"
+                data-sr-delay="0.20"
+                placeholder="검색어를 입력하세요."
+                autocomplete="off"
+              >
+              <button type="submit" class="faq-search-btn sr sr-up" data-sr-delay="0.22" aria-label="검색">
+                <span class="iconify" data-icon="mdi:arrow-right" aria-hidden="true"></span>
+              </button>
+            </form>
+          </div>
+
+          <!-- FAQ 그룹 목록 -->
+          <div class="faq-content" id="faq-tabpanel" role="tabpanel" aria-labelledby="faq-tab-all">
+
+            <!-- 서비스 이용 -->
+            <div class="faq-group" data-panel="service">
+              <h2 class="faq-group-title">
+                <span class="faq-group-icon" aria-hidden="true">🌱</span>
+                서비스 이용
+              </h2>
+              <ul class="faq-list">
+                <li class="faq-item active sr sr-up" data-sr-delay="0.14">
+                  <button class="faq-question js-faq-question" aria-expanded="true">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up" data-sr-delay="0.14">제주 비건 지도는 어떤 서비스인가요?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>제주 비건 지도는 제주도 전역의 비건 식당, 카페, 베이커리, 여행 코스를 한눈에 확인할 수 있는 서비스입니다.<br>지역별 검색과 추천 코스를 통해 제주 여행을 더욱 쉽고 편리하게 계획할 수 있습니다.</p>
+                  </div>
+                </li>
+                <li class="faq-item sr sr-up" data-sr-delay="0.15">
+                  <button class="faq-question js-faq-question" aria-expanded="false">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up">회원가입 없이 이용할 수 있나요?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>네, 회원가입 없이도 비건 지도 탐색과 추천 코스 확인이 가능합니다. 다만 가게 등록이나 맛집 제보 등 일부 참여형 기능은 별도의 정보 입력이 필요할 수 있습니다.</p>
+                  </div>
+                </li>
+                <li class="faq-item sr sr-up" data-sr-delay="0.24">
+                  <button class="faq-question js-faq-question" aria-expanded="false">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up" data-sr-delay="0.28">제주도 전 지역 정보를 확인할 수 있나요?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>제주시, 애월, 한림, 협재, 성산, 서귀포 등 제주 전역의 비건 스팟 정보를 제공하고 있습니다. 지속적인 제보와 업데이트를 통해 더 많은 지역의 정보를 확장하고 있습니다.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 가게 등록 -->
+            <div class="faq-group" data-panel="register">
+              <h3 class="faq-group-title">
+                <span class="faq-group-icon" aria-hidden="true">🧾</span>
+                가게 등록
+              </h3>
+              <ul class="faq-list">
+                <li class="faq-item sr sr-up" data-sr-delay="0.30">
+                  <button class="faq-question js-faq-question" aria-expanded="false">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up" data-sr-delay="0.30">가게 등록은 어떻게 하나요?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>가게 등록 페이지에서 매장명, 위치, 대표 메뉴, 사진 등의 정보를 입력하여 신청할 수 있습니다. 등록된 정보는 운영진 검수 후 지도에 반영되며, 보다 정확한 정보 제공을 위해 확인 과정이 진행됩니다.</p>
+                  </div>
+                </li>
+                <li class="faq-item sr sr-up" data-sr-delay="0.32">
+                  <button class="faq-question js-faq-question" aria-expanded="false">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up" data-sr-delay="0.32">완전 비건 식당만 등록 가능한가요?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>아닙니다. 완전 비건 식당뿐만 아니라 비건 메뉴를 제공하는 일반 식당, 카페, 베이커리 등도 등록 가능합니다. 다양한 이용자가 자신에게 맞는 장소를 찾을 수 있도록 폭넓은 정보를 제공하고 있습니다.</p>
+                  </div>
+                </li>
+                <li class="faq-item sr sr-up" data-sr-delay="0.34">
+                  <button class="faq-question js-faq-question" aria-expanded="false">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up" data-sr-delay="0.34">등록 후 바로 지도에 노출되나요?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>등록된 정보는 정확성과 최신성을 유지하기 위해 검수 과정을 거친 후 반영됩니다. 검수 기간은 상황에 따라 달라질 수 있으며, 승인 완료 후 지도에서 확인할 수 있습니다.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 맛집 제보 -->
+            <div class="faq-group" data-panel="tip">
+              <h3 class="faq-group-title">
+                <span class="faq-group-icon" aria-hidden="true">✏️</span>
+                맛집 제보
+              </h3>
+              <ul class="faq-list">
+                <li class="faq-item sr sr-up" data-sr-delay="0.36">
+                  <button class="faq-question js-faq-question" aria-expanded="false">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up" data-sr-delay="0.36">새로운 비건 맛집을 제보할 수 있나요?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>네, 아직 등록되지 않은 비건 식당이나 카페를 발견했다면 누구나 제보할 수 있습니다. 제보된 내용은 운영진 검토 후 확인 과정을 거쳐 서비스에 추가됩니다.</p>
+                  </div>
+                </li>
+                <li class="faq-item sr sr-up" data-sr-delay="0.38">
+                  <button class="faq-question js-faq-question" aria-expanded="false">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up" data-sr-delay="0.38">잘못된 정보가 등록되어 있어요.</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>영업시간, 메뉴 정보, 위치 정보 등이 실제와 다를 경우 제보 기능을 통해 알려주세요. 보다 정확한 정보를 제공하기 위해 내용을 확인한 후 신속하게 수정하겠습니다.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 여행 정보 -->
+            <div class="faq-group" data-panel="travel">
+              <h3 class="faq-group-title">
+                <span class="faq-group-icon" aria-hidden="true">🧳</span>
+                여행 정보
+              </h3>
+              <ul class="faq-list">
+                <li class="faq-item sr sr-up" data-sr-delay="0.40">
+                  <button class="faq-question js-faq-question" aria-expanded="false">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up" data-sr-delay="0.40">비건 여행 코스는 어떤 기준으로 선정되나요?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>추천 코스는 비건 식당과 카페뿐만 아니라 제주를 대표하는 관광지와 자연 명소를 함께 고려하여 구성됩니다. 이동 동선과 여행 만족도를 고려해 하루 일정으로 편하게 즐길 수 있도록 설계했습니다.</p>
+                  </div>
+                </li>
+                <li class="faq-item sr sr-up" data-sr-delay="0.42">
+                  <button class="faq-question js-faq-question" aria-expanded="false">
+                    <span class="faq-q-mark">Q.</span>
+                    <span class="faq-question-text sr sr-up" data-sr-delay="0.42">논비건과 함께 방문하기 좋은 장소도 찾을 수 있나요?</span>
+                    <span class="faq-icon" aria-hidden="true">
+                      <span class="iconify" data-icon="mdi:chevron-down"></span>
+                    </span>
+                  </button>
+                  <div class="faq-answer sr sr-up">
+                    <p>네, 비건과 논비건이 함께 식사할 수 있는 장소도 함께 소개하고 있습니다. 상세 페이지의 태그와 매장 정보를 통해 다양한 식단을 고려한 장소를 쉽게 확인할 수 있습니다.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer include-html="include/footer.html"></footer>
+  </div>
+  
+  <button type="button" id="goTopBtn" class="btn btn-go-top" aria-label="위로 이동">
+    <span class="iconify" data-icon="mdi:chevron-up" aria-hidden="true"></span>
+  </button>
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="js/includeHTML.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

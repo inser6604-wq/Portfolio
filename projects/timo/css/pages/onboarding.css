@@ -1,0 +1,175 @@
+/* ===================================================
+   onboarding.css — 온보딩 1·2·3 화면
+   =================================================== */
+
+/* ── 페이지 기본 ── */
+
+[data-page="onboarding-1"],
+[data-page="onboarding-2"],
+[data-page="onboarding-3"] {
+  background-color: var(--color-bg-base);
+  overflow: hidden;
+}
+
+/* ── 로고 헤더 ── */
+
+.onboarding__header {
+  padding: 16px 24px;
+  flex-shrink: 0;
+}
+
+.onboarding__logo {
+  height: 39px;
+  width: auto;
+  display: block;
+}
+
+/* ── 콘텐츠 영역 ── */
+
+.onboarding__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px 24px;
+  gap: 40px;
+  min-height: 0;
+}
+
+.onboarding__illustration {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* onboarding-3 일러스트는 원본 비율이 더 와이드해 다른 화면보다 크게 보여줘야
+   인물이 양쪽으로 잘리지 않는다 */
+.onboarding__illustration--wide {
+  max-width: 100%;
+}
+
+.onboarding__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.onboarding__title {
+  font-family: var(--font-title);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-align: center;
+  line-height: 1.25;
+}
+
+.onboarding__subtitle {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: 1.625;
+}
+
+/* ── 하단 영역 ── */
+
+.onboarding__footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px 40px;
+  gap: 32px;
+}
+
+/* ── 버튼 ── */
+
+.onboarding__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.onboarding__btn:active {
+  background-color: var(--color-primary-dark);
+  transform: scale(0.98);
+}
+
+/* ── 화면 전환 트랜지션 (다음/시작하기 클릭 시) ── */
+
+.onboarding-slide-out {
+  animation: onboarding-slide-out 320ms ease-in forwards;
+}
+
+.onboarding-slide-in {
+  animation: onboarding-slide-in 320ms ease-out forwards;
+}
+
+@keyframes onboarding-slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-32px);
+    opacity: 0;
+  }
+}
+
+@keyframes onboarding-slide-in {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onboarding-slide-out,
+  .onboarding-slide-in {
+    animation: none !important;
+  }
+}
+
+/* ── 반응형 ── */
+
+@media (min-width: 390px) {
+  .onboarding__illustration {
+    max-width: 300px;
+  }
+
+  .onboarding__illustration--wide {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 430px) {
+  .onboarding__illustration {
+    max-width: 320px;
+  }
+
+  .onboarding__illustration--wide {
+    max-width: 100%;
+  }
+}

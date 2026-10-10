@@ -1,0 +1,1632 @@
+/* about.html + submit.html */
+
+.page-about {
+  overflow: hidden;
+  background: #fbfaf6;
+}
+
+.about-eyebrow,
+.submit-eyebrow {
+  display: block;
+  margin-bottom: 14px;
+  color: #ff7a00;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.about-hero {
+  background: url("../image/about-hero1.jpg") center center / cover no-repeat;
+}
+
+.about-hero::after {
+  background: linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.97) 35%, rgba(255,255,255,0.4) 60%, rgba(255,255,255,0.05) 100%);
+}
+
+.page-about .breadcrumb {
+  background: #fff;
+  padding-bottom: 0;
+}
+
+.about-hero-copy {
+  width: min(100%, 560px);
+}
+
+.about-hero-desc {
+  width: min(100%, 450px);
+}
+
+.about-hero-desc .br-dt {
+  display: block;
+}
+
+.about-hero-actions,
+.about-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2.4rem;
+}
+
+.about-btn {
+  min-width: 12.8rem;
+  height: 4rem;
+  padding: 0 1.8rem;
+  border-radius: 999px;
+  font-size: 1.3rem;
+}
+
+.about-btn-primary {
+  background: #2d6a4f;
+  color: #fff;
+}
+
+.about-btn-line {
+  border: 1px solid #cfd9d3;
+  background: rgba(255, 255, 255, 0.88);
+  color: #2d6a4f;
+}
+
+.about-split,
+.about-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  align-items: center;
+  gap: 72px;
+}
+
+.about-split-reverse {
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+}
+
+.about-copy {
+  max-width: 560px;
+}
+
+.about-text {
+  margin-top: 16px;
+  color: #53615b;
+  font-size: 1.5rem;
+  line-height: 1.8;
+}
+
+.page-about .section-title {
+  line-height: 1.45;
+}
+
+.about-story {
+  background: #fff;
+}
+
+.about-story-visual,
+.about-community-visual,
+.about-org-visual,
+.about-principle-visual {
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 18px 42px rgba(47, 70, 55, 0.12);
+}
+
+.about-work {
+  background: #fbfaf6;
+}
+
+.about-work-head {
+  max-width: 600px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.about-center-head {
+  text-align: center;
+}
+
+.about-center-head .section-desc {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-card-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.about-info-card {
+  padding: 32px 24px;
+  border: none;
+  background: transparent;
+}
+
+.about-icon {
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: rgba(45, 106, 79, 0.09);
+  color: #2d6a4f;
+}
+
+.about-icon .iconify {
+  font-size: 2.4rem;
+}
+
+.about-info-card:nth-child(2) .about-icon,
+.about-info-card:nth-child(4) .about-icon {
+  background: rgba(45, 106, 79, 0.09);
+  color: #2d6a4f;
+}
+
+.about-info-card .card-title {
+  font-size: 1.7rem;
+}
+
+.about-info-card .card-desc {
+  margin-top: 12px;
+  font-size: 1.35rem;
+}
+
+.about-principles {
+  position: relative;
+  background: url("../image/about-people.png") center center / cover no-repeat;
+}
+
+.about-principles::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 28, 18, 0.75);
+}
+
+.about-principles.section {
+  padding: 72px 0;
+}
+
+.about-principles .inner {
+  position: relative;
+  z-index: 1;
+}
+
+.about-principles-head {
+  max-width: 700px;
+}
+
+.about-principles .about-eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.about-principles .section-title {
+  color: #fff;
+  line-height: 1.3;
+}
+
+.about-principles .section-desc {
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 18px;
+}
+
+.principles-card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 52px;
+  list-style: none;
+  padding: 0;
+}
+
+.principles-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 28px;
+}
+
+.principles-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.principles-icon .iconify {
+  font-size: 3rem;
+}
+
+.principles-card h3 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.principles-card p {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+}
+
+.about-feature {
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1fr);
+}
+
+.about-org-visual {
+  aspect-ratio: 400 / 173;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.about-org-visual img {
+  width: auto;
+  height: auto;
+  max-width: 40%;
+  object-fit: contain;
+}
+
+.about-story-visual {
+  aspect-ratio: 1802 / 1160;
+}
+
+.about-check-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+  color: #415047;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.about-check-list li {
+  position: relative;
+  padding-left: 28px;
+}
+
+.about-check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2d6a4f;
+}
+
+.about-community {
+  background: #fff;
+}
+
+.about-community-visual {
+  aspect-ratio: 1.55 / 1;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.about-stats li {
+  padding-top: 18px;
+  border-top: 1px solid #dfe7e1;
+}
+
+.about-stats strong {
+  display: block;
+  color: #2d6a4f;
+  font-size: 3.4rem;
+  line-height: 1;
+}
+
+.about-stats span {
+  display: block;
+  margin-top: 10px;
+  color: #53615b;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.about-organization {
+  background: #fbfaf6;
+}
+
+.about-organization .section-title {
+  color: #163525;
+}
+
+.about-cta {
+  padding: 44px 0;
+  background: #2d6a4f;
+  color: #fff;
+}
+
+.about-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+}
+
+.about-cta h2 {
+  color: #fff;
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.about-cta p {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.5rem;
+}
+
+.about-cta-actions {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.about-btn-orange {
+  background: #ff7a00;
+  color: #fff;
+}
+
+.about-btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+@media (max-width: 1200px) {
+  .about-card-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-split,
+  .about-split-reverse,
+  .about-feature {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .about-cta-inner {
+    display: block;
+  }
+
+  .about-cta-actions {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-about .sub-hero,
+  .page-about .sub-hero .inner {
+    min-height: auto;
+  }
+
+  .page-about .sub-hero .inner {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 12rem;
+    padding-bottom: 4rem;
+    box-sizing: border-box;
+  }
+
+  .page-about .sub-hero-content {
+    position: static;
+    transform: none;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-about .sub-hero-title {
+    font-size: 2.2rem;
+    line-height: 1.25;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .page-about .about-hero-copy {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .page-about .about-hero-desc {
+    margin-top: 1.2rem;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .page-about .about-hero-desc .br-dt {
+    display: none;
+  }
+
+  .page-about .section-title br,
+  .page-about .section-desc br,
+  .page-about .about-text br {
+    display: none;
+  }
+
+  .page-about .section-desc,
+  .page-about .about-text {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .about-text {
+    font-size: 1.4rem;
+    line-height: 1.55;
+  }
+
+  .about-info-card .card-title {
+    font-size: 1.5rem;
+  }
+
+  .about-info-card .card-desc {
+    font-size: 1.3rem;
+  }
+
+  .about-stats strong {
+    font-size: 2.4rem;
+  }
+
+  .about-stats span {
+    font-size: 1.2rem;
+  }
+
+  .about-cta h2 {
+    font-size: 2.2rem;
+  }
+
+  .about-cta p {
+    font-size: 1.4rem;
+    line-height: 1.55;
+  }
+
+  .about-principles .section-desc {
+    font-size: 1.4rem;
+  }
+
+  .about-split,
+  .about-split-reverse,
+  .about-feature {
+    gap: 28px;
+  }
+
+  .about-card-list,
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats li {
+    text-align: center;
+  }
+
+  .about-info-card {
+    min-height: auto;
+    text-align: center;
+  }
+
+  .about-hero-actions {
+    gap: 8px;
+    margin-top: 1.8rem;
+  }
+
+  .about-hero-actions .about-btn {
+    flex: 0 1 auto;
+    width: auto;
+    height: 3.2rem;
+    min-width: 0;
+    padding: 0 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .principles-card-list {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .principles-card {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-about .about-hero-desc {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .about-work-head {
+    text-align: left;
+    margin-inline: 0;
+  }
+
+  .page-about .section-desc,
+  .about-text {
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+
+  .about-info-card .card-title {
+    font-size: 1.4rem;
+  }
+
+  .about-info-card .card-desc {
+    font-size: 1.2rem;
+  }
+
+  .about-stats strong {
+    font-size: 2.2rem;
+  }
+
+  .about-cta p {
+    font-size: 1.3rem;
+  }
+
+  .about-principles .section-desc {
+    font-size: 1.3rem;
+  }
+
+  .about-org-visual {
+    aspect-ratio: 3 / 2;
+  }
+
+  .about-cta-actions {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .about-cta-actions .about-btn {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    max-width: none;
+    height: 3.4rem;
+    padding: 0 0.8rem;
+    font-size: 1.15rem;
+  }
+
+  .about-hero-actions .about-btn {
+    height: 3rem;
+    padding: 0 1rem;
+    font-size: 1.05rem;
+  }
+}
+
+
+/* ================================================================
+   submit.html
+   ================================================================ */
+
+.page-submit {
+  background: #fbfaf6;
+}
+
+.submit-hero {
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+}
+
+.submit-hero::after {
+  background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%);
+}
+
+.page-submit .sub-hero-title {
+  color: #fff;
+  font-weight: 500;
+}
+
+.page-submit .sub-hero-subtitle {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+#tab-store:checked ~ .submit-hero {
+  background-image: url("../image/submit-img.jpg");
+  background-position: center;
+}
+
+#tab-report:checked ~ .submit-hero {
+  background-image: url("../image/main-eat-together-img.jpg");
+}
+
+.submit-form {
+  padding-top: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.submit-form .inner {
+  max-width: 1200px;
+}
+
+.submit-hero-head {
+  display: none;
+}
+
+.submit-hero-desc {
+  width: 100%;
+  max-width: 100%;
+}
+
+.submit-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 0 4rem;
+  background: #fbfaf6;
+}
+
+.submit-tabs label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17rem;
+  height: 3.8rem;
+  padding: 0 2.4rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #2d6a4f;
+  background: #fff;
+  color: #2d6a4f;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.35s ease;
+}
+
+.submit-tabs label:hover:not(.active) {
+  background: #edf5f0;
+}
+
+#tab-store:checked ~ .submit-tabs label[for="tab-store"],
+#tab-report:checked ~ .submit-tabs label[for="tab-report"] {
+  background: #2d6a4f;
+  color: #fff;
+  border-color: #2d6a4f;
+}
+
+.page-submit .breadcrumb {
+  background: #fbfaf6;
+  padding-bottom: 5rem;
+}
+
+.submit-crumb-store,
+.submit-crumb-report {
+  display: none;
+}
+
+#tab-store:checked ~ .breadcrumb .submit-crumb-store {
+  display: inline;
+}
+
+#tab-report:checked ~ .breadcrumb .submit-crumb-report {
+  display: inline;
+}
+
+#tab-store:checked ~ .submit-hero .submit-store-hero,
+#tab-report:checked ~ .submit-hero .submit-report-hero {
+  display: block;
+}
+
+/* ── 탭 기반 콘텐츠 전환 ── */
+.submit-store-content,
+.submit-report-content {
+  display: none;
+}
+
+#tab-store:checked ~ .submit-form .submit-store-content {
+  display: block;
+}
+
+#tab-report:checked ~ .submit-form .submit-report-content {
+  display: block;
+}
+
+/* ── 공통 폼 카드 ── */
+.submit-stage {
+  padding: 32px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid #e5ece3;
+  box-shadow: 0 20px 42px rgba(47, 70, 55, 0.06);
+}
+
+.submit-field {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.submit-field label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2d6a4f;
+}
+
+.submit-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.page-submit .form-input,
+.page-submit .form-select {
+  position: static;
+  top: auto;
+  left: auto;
+  width: 100%;
+  height: 48px;
+  min-height: auto;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid #d8e0db;
+  box-sizing: border-box;
+  background: #fff;
+  color: #111;
+}
+
+.page-submit input.form-input[type="text"],
+.page-submit input.form-input[type="tel"],
+.page-submit input.form-input[type="date"] {
+  font-size: 1.5rem;
+}
+
+.page-submit .form-textarea {
+  min-height: 140px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  resize: vertical;
+  font-size: 1.5rem;
+}
+
+/* 사진 업로드 아이템 (맛집 제보 사용) */
+.submit-photo-item {
+  position: relative;
+  min-height: 160px;
+  padding: 22px;
+  border: 2px dashed #d8e0db;
+  border-radius: 24px;
+  background: #fbfaf6;
+  color: #6f7f74;
+  font-size: 1.45rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.submit-photo-item input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .submit-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-submit .sub-hero-subtitle br {
+    display: block;
+  }
+
+  .submit-hero-title {
+    word-break: keep-all;
+  }
+
+  .submit-tabs {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    padding-inline: 1.4rem;
+    box-sizing: border-box;
+  }
+
+  .submit-tabs label {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .submit-stage {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 60px 0;
+  }
+
+
+  .submit-stage {
+    border-radius: 22px;
+    padding: 20px;
+  }
+
+  .submit-field label {
+    font-size: 1.25rem;
+  }
+}
+
+
+/* ================================================================
+   가게 등록 위자드
+   ================================================================ */
+
+/* ── 진행 표시 ── */
+.wizard-progress {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.wp-track {
+  position: absolute;
+  top: 24px;
+  left: 28px;
+  right: 28px;
+  height: 3px;
+  background: #e4ebe6;
+  border-radius: 2px;
+}
+
+.wp-fill {
+  height: 100%;
+  background: #ff7a00;
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.4s ease;
+}
+
+.wp-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.wp-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.wp-num {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #d8e0db;
+  background: #fff;
+  color: #aaa;
+  font-size: 1.6rem;
+  font-weight: 700;
+  transition: all 0.35s ease;
+}
+
+.wp-label {
+  font-size: 1.3rem;
+  color: #aaa;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.35s ease;
+}
+
+.wp-step--active .wp-num {
+  background: #ff7a00;
+  border-color: #ff7a00;
+  color: #fff;
+}
+
+.wp-step--active .wp-label {
+  color: #ff7a00;
+  font-weight: 700;
+}
+
+.wp-step--done .wp-num {
+  background: #ff7a00;
+  border-color: #ff7a00;
+  color: transparent;
+}
+
+.wp-step--done .wp-num::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.wp-step--done .wp-label {
+  color: #ff7a00;
+}
+
+/* 진행 표시: 카드 안 상단에 구분선 */
+.wizard-card .wizard-progress {
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* ── 위자드 레이아웃 ── */
+.wizard-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 36px;
+  align-items: start;
+}
+
+/* ── 단계별 패널 헤더 ── */
+.wizard-step-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.wizard-step-title h2 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.wizard-step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.ws-icon-1 { background: #fff0e6; color: #ff7a00; }
+.ws-icon-2 { background: #e9f1dc; color: #2d6a4f; }
+.ws-icon-3 { background: #e9f1dc; color: #2d6a4f; }
+.ws-icon-4 { background: #f0f0f0; color: #888; }
+
+/* ── 힌트 박스 ── */
+.wizard-hint {
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 1.45rem;
+  line-height: 1.6;
+  margin-top: 24px;
+}
+
+.wizard-hint--orange {
+  background: #fff4ec;
+  color: #b84e00;
+  border-left: 3px solid #ff7a00;
+}
+
+.wizard-hint--green {
+  background: #f0f7ee;
+  color: #2d5c3f;
+  border-left: 3px solid #4caf7d;
+}
+
+/* ── 사진 업로드 드롭존 ── */
+.wizard-photo-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 200px;
+  padding: 40px 24px;
+  border: 2px dashed #d8e0db;
+  border-radius: 18px;
+  background: #fafcfb;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.wizard-photo-drop:hover {
+  border-color: #2d6a4f;
+  background: #f4f9f6;
+}
+
+.wizard-photo-icon {
+  font-size: 4rem;
+  color: #c0cfc5;
+}
+
+.wizard-photo-label {
+  font-size: 1.55rem;
+  color: #415047;
+  font-weight: 500;
+}
+
+.wizard-photo-drop small {
+  color: #7b857d;
+  font-size: 1.3rem;
+}
+
+.wizard-photo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 20px;
+  border: 1px solid #d8e0db;
+  border-radius: 999px;
+  background: #fff;
+  color: #415047;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* ── 이전/다음 버튼 ── */
+.wizard-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.wizard-prev-btn {
+  background: transparent;
+  border: none;
+  color: #7b857d;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 4px;
+  margin-right: auto;
+  transition: color 0.2s ease;
+}
+
+.wizard-prev-btn:hover {
+  color: #415047;
+}
+
+.wizard-next-btn {
+  min-width: 120px;
+  height: 46px;
+  padding: 0 28px;
+  background: #ff7a00;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.wizard-next-btn:hover {
+  background: #e06c00;
+}
+
+.wizard-submit-btn {
+  min-width: 160px;
+  height: 46px;
+  padding: 0 28px;
+  background: #2d6a4f;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.wizard-submit-btn:hover {
+  background: #245a41;
+}
+
+/* ── 위자드 사이드바 ── */
+.wizard-sidebar {
+  display: grid;
+  gap: 16px;
+  align-self: start;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.wizard-guide-box,
+.wizard-approve-box,
+.wizard-progress-box {
+  padding: 22px 24px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid #e4ebe6;
+}
+
+.wizard-approve-box {
+  background: #f7f3e9;
+  border-color: #e5dcc8;
+}
+
+.wizard-guide-box h3,
+.wizard-approve-box h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 14px;
+}
+
+.wizard-guide-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.wizard-guide-list li {
+  position: relative;
+  padding-left: 22px;
+  color: #415047;
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.wizard-guide-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2d6a4f;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.wizard-approve-box p {
+  color: #53615b;
+  font-size: 1.45rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.wizard-approve-box strong {
+  color: #111;
+  font-weight: 800;
+}
+
+.wizard-progress-label {
+  font-size: 1.3rem;
+  color: #7b857d;
+  margin-bottom: 10px;
+}
+
+.wizard-progress-track {
+  height: 8px;
+  background: #e4ebe6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.wizard-progress-fill {
+  height: 100%;
+  background: #ff7a00;
+  border-radius: 4px;
+  width: 25%;
+  transition: width 0.4s ease;
+}
+
+.wizard-progress-count {
+  margin-top: 8px;
+  text-align: right;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #415047;
+}
+
+
+/* ================================================================
+   맛집 제보 폼
+   ================================================================ */
+
+.report-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 36px;
+  align-items: start;
+}
+
+.report-stage-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.report-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: #e9f1dc;
+  color: #2d6a4f;
+  font-size: 2.4rem;
+  flex-shrink: 0;
+}
+
+.report-stage-label {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.2;
+}
+
+.report-stage-desc {
+  margin-top: 6px;
+  font-size: 1.4rem;
+  color: #7b857d;
+  line-height: 1.6;
+}
+
+.field-note {
+  color: #7b857d;
+  font-size: 1.3rem;
+}
+
+.report-photo-upload {
+  min-height: 140px;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.report-photo-icon {
+  font-size: 3.2rem;
+  color: #aab8af;
+}
+
+.photo-select-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  height: 34px;
+  padding: 0 18px;
+  border: 1px solid #d8e0db;
+  background: #fff;
+  color: #2d6a4f;
+  border-radius: 999px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.report-process-box {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 22px;
+  border-radius: 18px;
+  background: #e9f1dc;
+  margin-top: 28px;
+}
+
+.process-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2d6a4f;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.report-process-box strong {
+  display: block;
+  color: #2d6a4f;
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.report-process-box p {
+  color: #415047;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.report-submit-cta {
+  margin-top: 48px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-report-submit {
+  min-width: 180px;
+  height: 54px;
+  padding: 0 36px;
+  border-radius: 999px;
+  border: none;
+  background: #2d6a4f;
+  color: #fff;
+  font-size: 1.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.btn-report-submit:hover {
+  background: #245a41;
+}
+
+/* ── 제보 사이드바 ── */
+.report-guide-sidebar {
+  display: grid;
+  gap: 16px;
+}
+
+.report-guide-section {
+  padding: 22px 24px;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid #e4ebe6;
+}
+
+.report-guide-section h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+.report-guide-section p {
+  font-size: 1.45rem;
+  color: #53615b;
+  line-height: 1.7;
+}
+
+.report-help-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.report-help-list li {
+  position: relative;
+  padding-left: 18px;
+  color: #415047;
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.report-help-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2d6a4f;
+}
+
+.report-community-box {
+  background: #f7f3e9;
+  border-color: #e5dcc8;
+}
+
+.report-community-box a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #2d6a4f;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.report-tip-box {
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: #fff8f0;
+  border: 1px solid #ffe0bb;
+}
+
+.report-tip-box > strong {
+  display: block;
+  color: #ff7a00;
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.report-tip-box p {
+  color: #415047;
+  font-size: 1.4rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.report-tip-box a {
+  color: #2d6a4f;
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .wizard-layout,
+  .report-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-guide-sidebar {
+    grid-template-columns: repeat(2, 1fr);
+    order: -1;
+  }
+
+  .report-tip-box {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-submit,
+  .submit-form,
+  .submit-form .inner,
+  .submit-store-content,
+  .submit-report-content,
+  .wizard-layout,
+  .report-form-grid {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .page-submit .submit-stage,
+  .page-submit .wizard-card,
+  .page-submit .report-left,
+  .page-submit .wizard-sidebar,
+  .page-submit .report-guide-sidebar {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .page-submit .wizard-progress {
+    overflow: hidden;
+  }
+
+  .report-guide-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-label {
+    font-size: 1.05rem;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
+  }
+
+  .wizard-submit-btn {
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wp-track {
+    top: 18px;
+    left: 18px;
+    right: 18px;
+  }
+
+  .wp-num {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+
+  .wp-label {
+    font-size: 0.85rem;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .wizard-nav {
+    flex-wrap: wrap;
+  }
+
+  .wizard-next-btn,
+  .wizard-submit-btn {
+    min-width: 0;
+  }
+
+  .report-submit-cta {
+    justify-content: stretch;
+  }
+
+  .btn-report-submit {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.submit-success {
+  text-align: center;
+  padding: 8rem 2rem;
+}
+.submit-success-icon {
+  width: 7.2rem;
+  height: 7.2rem;
+  border-radius: 50%;
+  background: #4caf50;
+  color: #fff;
+  font-size: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2.4rem;
+}
+.submit-success h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 1.2rem;
+}
+.submit-success p {
+  font-size: 1.6rem;
+  color: #5d6963;
+  line-height: 1.8;
+}
+.submit-success-retry {
+  margin-top: 2.4rem;
+  padding: 1.2rem 3.2rem;
+  background: #2d6a4f;
+  color: #fff;
+  border: none;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+}

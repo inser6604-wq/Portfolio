@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="image/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <title>비건지도 | 식당 목록</title>
+</head>
+<body>
+  <header include-html="include/header.html"></header>
+
+  <main id="container" class="page page-map">
+    <!-- hero -->
+    <section class="map-hero">
+        <div class="map-inner">
+          <div class="map-hero-content">
+            <h1 class="sub-hero-title map-hero-title ">JEJU VEGAN MAP</h1>
+          </div>
+        </div>
+      </section>
+
+    <nav class="breadcrumb">
+      <div class="inner">
+        <a href="index.html">홈</a>
+        <span>&gt;</span>
+        <a href="map.html">비건 지도</a>
+        <span>&gt;</span>
+        <span class="current">식당 목록</span>
+      </div>
+    </nav>
+
+    <!-- 지도  -->
+    <section class="map-spot-content">
+      <div class="inner map-sopt-inner">
+        <div class="map-section-head section-head sr sr-up">
+          <h2 class="section-title">비건 지도</h2>
+          <p class="section-desc">취향에 맞는 제주 비건 스팟을 추천해드려요</p>
+        </div>
+        <!-- 비주얼 및 필터 -->
+        <div class="map-scroll-wrap sr sr-up" data-sr-delay="0.15">
+        <div class="map-main-content">
+          <div class="map-main-content-inner inner">
+            <div class="map-filter">
+              <div class="map-filter-inner">
+                <div class="map-search search">
+                  <input id= "map-search-placeholder" type="text" placeholder="지역, 식당이름을 입력">
+                  <button><img src="image/map-search-icon.svg" alt="search-icon"></button>
+                </div>
+                <div class="map-filter-sub-inner">
+                  <div class="map-filter-title">
+                    <p>어떤 식당을 찾고 계신가요?</p>
+                    <p>맞춤 추천 설정</p>
+                  </div>
+                  <button class="map-reset" id="map-reset">
+                    <img src="image/map-reset-icon.svg" alt="reset-icon">
+                    <span>초기화</span>
+                  </button>
+                  <div class="map-setting">
+                    <div class="map-filter1">
+                    <p class="map-filter-name">영업정보</p>
+                    <div class="map-filter1-in">
+                      <button class="map-btn btn btn-sm">영업 중</button>
+                      <button class="map-btn btn btn-sm">영업 마감</button>
+                    </div>
+                    </div>
+                    <div class="map-filter2">
+                    <p class="map-filter-name">인원</p>
+                    <div class="map-filter2-in">
+                      <button class="map-btn btn btn-sm">#혼밥</button>
+                      <button class="map-btn btn btn-sm">#논비건 동행</button>
+                      <button class="map-btn btn btn-sm">#가족 외식</button>
+                      <button class="map-btn btn btn-sm">#아이 동반</button>
+                    </div>
+                    </div>
+                    <div class="map-filter3">
+                    <p class="map-filter-name">비건의 정도</p>
+                    <div class="map-filter3-in">
+                      <button class="map-btn btn btn-sm">🌱 완전 비건</button>
+                      <button class="map-btn btn btn-sm">🥗 비건 옵션</button>
+                      <button class="map-btn btn btn-sm">🍽️ 베지테리언</button>
+                      <button class="map-btn btn btn-sm">🍖 논비건</button>
+                    </div>
+                    </div>
+                    <div class="map-filter4">
+                    <p class="map-filter-name">그 외</p>
+                    <div class="map-filter4-in">
+                      <button class="map-btn btn btn-sm">🫘 글루텐프리</button>
+                      <button class="map-btn btn btn-sm">🐾 반려동물 동반</button>
+                      <button class="map-btn btn btn-sm">🚗 주차가능</button>
+                    </div>
+                    </div>
+                    <div class="map-filter5">
+                    <p class="map-filter-name">추천 코스</p>
+                    <div class="map-filter5-in">
+                      <button class="map-btn map-course-btn btn btn-sm">
+                        <img src="image/course-hanlasan.png" alt="한라산">한라산 코스
+                      </button>
+                      <button class="map-btn map-course-btn btn btn-sm">
+                        <img src="image/course-seo.png" alt="서귀포">서귀포 코스
+                      </button>
+                      <button class="map-btn map-course-btn btn btn-sm">
+                        <img src="image/course-hyeopjae.png" alt="협재·금능">협재·금능 코스
+                      </button>
+                      <button class="map-btn map-course-btn btn btn-sm">
+                        <img src="image/course-hanlim.png" alt="한림공원">한림공원 코스
+                      </button>
+                    </div>
+                    </div>
+                  </div>
+                  <a href="#none" class="map-apply">
+                    <img src="image/map-send-icon.svg" alt="send-icon">
+                    <p>필터 적용하기</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="#none" class="map-filter-tab tab tab-btn">
+              <img class="map-filter-tab-icon" src="image/map-filter-tap-arrow-icon.svg" alt="map-filter-tap">
+            </a>
+            <ul class="map-pin-list">
+            <li class="map-pin map-pin1" data-restaurant-name="카페901">
+              <a href="#none">
+                <img src="image/mappin-green.svg" alt="mappin-green">
+              </a>
+              <div class="map-in-card card">
+                <div class="map-in-info-head">
+                  <div class="map-in-info-title">
+                    <p class="map-info-name">cafe 901</p>
+                    <p class="map-info-cur">영업 중</p>
+                  </div>
+                  <p class="map-info-time">09:00~18:00 | 매주 화요일 휴무</p>
+                </div>
+                <img class="map-info-img" src="image/map-list1.jpg" alt="card1">
+              </div>
+            </li>
+            <li class="map-pin map-pin2" data-restaurant-name="그날의조각">
+              <a href="#none">
+                <img src="image/mappin-green.svg" alt="mappin-green">
+              </a>
+              <div class="map-in-card card">
+                <div class="map-in-info-head">
+                  <div class="map-in-info-title">
+                    <p class="map-info-name">그날의 조각</p>
+                    <p class="map-info-cur">영업 중</p>
+                  </div>
+                  <p class="map-info-time">화-토 11:00-18:00 | 매주 일,월 휴무</p>
+                </div>
+                <img class="map-info-img" src="image/map-list2.jpg" alt="card2">
+              </div>
+            </li>
+            <li class="map-pin map-pin3" data-restaurant-name="루루비건">
+              <a href="#none">
+                <img src="image/mappin-green.svg" alt="mappin-green">
+              </a>
+              <div class="map-in-card card">
+                <div class="map-in-info-head">
+                  <div class="map-in-info-title">
+                    <p class="map-info-name">루루비건</p>
+                    <p class="map-info-cur">영업 중</p>
+                  </div>
+                  <p class="map-info-time">09:00~16:00 | 휴무 인스타 사전 확인</p>
+                </div>
+                <img class="map-info-img" src="image/map-list3.jpg" alt="card3">
+              </div>
+            </li>
+            <li class="map-pin map-pin4" data-restaurant-name="비건테이블 바람">
+              <a href="#none">
+                <img src="image/mappin-green.svg" alt="mappin-green">
+              </a>
+              <div class="map-in-card card">
+                <div class="map-in-info-head">
+                  <div class="map-in-info-title">
+                    <p class="map-info-name">비건테이블 바람</p>
+                    <p class="map-info-cur">영업 중</p>
+                  </div>
+                  <p class="map-info-time">10:00~15:00 | 매주 토,일 휴무</p>
+                </div>
+                <img class="map-info-img" src="image/map-list4.jpg" alt="card4">
+              </div>
+            </li>
+            <li class="map-pin map-pin5" data-restaurant-name="AND유CAFE">
+              <a href="#none">
+                <img src="image/mappin-green.svg" alt="mappin-green">
+              </a>
+              <div class="map-in-card card">
+                <div class="map-in-info-head">
+                  <div class="map-in-info-title">
+                    <p class="map-info-name">AND유CAFE</p>
+                    <p class="map-info-cur">영업 중</p>
+                  </div>
+                  <p class="map-info-time">09:00-17:00 | 매주 화,수 휴무</p>
+                </div>
+                <img class="map-info-img" src="image/map-list5.png" alt="card5">
+              </div>
+            </li>
+            <li class="map-pin map-pin6" data-restaurant-name="다소니 Dasoni">
+              <a href="#none">
+                <img src="image/mappin-green.svg" alt="mappin-green">
+              </a>
+              <div class="map-in-card card">
+                <div class="map-in-info-head">
+                  <div class="map-in-info-title">
+                    <p class="map-info-name">다소니 Dasoni</p>
+                    <p class="map-info-cur">영업 중</p>
+                  </div>
+                  <p class="map-info-time">월-토 11:00-21:00 | 매주 일 휴무</p>
+                </div>
+                <img class="map-info-img" src="image/map-list6.jpg" alt="card6">
+              </div>
+            </li>
+            <li class="map-pin map-pin7" data-restaurant-name="러빙헛">
+              <a href="#none">
+                <img src="image/mappin-green.svg" alt="mappin-green">
+              </a>
+              <div class="map-in-card card">
+                <div class="map-in-info-head">
+                  <div class="map-in-info-title">
+                    <p class="map-info-name">러빙헛</p>
+                    <p class="map-info-cur">영업 중</p>
+                  </div>
+                  <p class="map-info-time">수-일 12:00-16:00 | 매주 월,화 휴무</p>
+                </div>
+                <img class="map-info-img" src="image/map-list7.jpg" alt="card7">
+              </div>
+            </li>
+            <li class="map-pin map-pin8" data-restaurant-name="선샤인워크">
+              <a href="#none">
+                <img src="image/mappin-green.svg" alt="mappin-green">
+              </a>
+              <div class="map-in-card card">
+                <div class="map-in-info-head">
+                  <div class="map-in-info-title">
+                    <p class="map-info-name">선샤인워크</p>
+                    <p class="map-info-cur map-cur-end">영업 마감</p>
+                  </div>
+                  <p class="map-info-time">화~일 11:00~16:00 | 매주 월,목,금 휴무</p>
+                </div>
+                <img class="map-info-img" src="image/map-list8.jpg" alt="card8">
+              </div>
+            </li>
+            <li class="map-pin map-pin9" data-restaurant-name="숲속의 도토리">
+              <a href="#none">
+                <img src="image/mappin-green.svg" alt="mappin-green">
+              </a>
+              <div class="map-in-card card">
+                <div class="map-in-info-head">
+                  <div class="map-in-info-title">
+                    <p class="map-info-name">숲속의 도토리</p>
+                    <p class="map-info-cur map-cur-end">영업 마감</p>
+                  </div>
+                  <p class="map-info-time">화-일 11:00-20:00 | 매주 월 휴무</p>
+                </div>
+                <img class="map-info-img" src="image/map-list9.png" alt="card9">
+              </div>
+            </li>
+          </ul>
+          </div>
+          
+        </div>
+        </div><!-- /.map-scroll-wrap -->
+      </div>
+    </section>
+    
+    <!-- map-list -->
+    <section class="map-list-content section">
+      <h2 class="map-section-title section-title sr sr-up">식당 리스트</h2>
+      <ul class="map-card-list card-list" aria-live="polite"></ul>
+      <p class="map-empty-message" hidden>조건에 맞는 식당을 찾지 못했어요. 검색어나 필터를 다시 확인해 주세요.</p>
+      <!-- 더보기 -->
+        <button class="map-list-tab tab-btn active sr sr-up" data-sr-delay="0.15">
+          <img class="map-list-tap-icon" src="image/map-down-icon.svg" alt="down-icon">
+          <span class="map-list-tab-label">더보기</span>
+        </button>
+    </section>
+  </main>
+
+  <footer include-html="include/footer.html"></footer>
+
+  <button type="button" id="goTopBtn" class="btn btn-go-top" aria-label="위로 이동">
+    <span class="iconify" data-icon="mdi:chevron-up" aria-hidden="true"></span>
+  </button>
+
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/includeHTML.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/scroll.js"></script>
+
+</body>
+</html>

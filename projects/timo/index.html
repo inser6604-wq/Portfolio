@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+  <title>TIMO — Team In, Move on</title>
+
+  <!-- CDN 폰트 --> 
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/S-CoreDream/S-CoreDream.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/pages/onboarding.css" />
+  <link rel="stylesheet" href="css/pages/auth.css" />
+  <link rel="stylesheet" href="css/pages/quiz.css" />
+  <link rel="stylesheet" href="css/pages/home.css" />
+  <link rel="stylesheet" href="css/pages/project.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/community.css" />
+  <link rel="stylesheet" href="css/pages/mypage.css" />
+  <link rel="stylesheet" href="css/pages/profile.css" />
+  <link rel="stylesheet" href="css/pages/review.css" />
+</head>
+<body>
+
+  <!-- ① 앱 전체 래퍼 -->
+  <div id="app">
+
+    <!-- ③ 페이지 섹션 (16개) -->
+
+    <!-- [인증 플로우] -->
+
+    <!-- ── 온보딩 1 ── -->
+    <section data-page="onboarding-1" class="page" aria-label="온보딩 1">
+      <div class="onboarding__header">
+        <img src="assets/images/logo.svg" alt="TIMO" class="onboarding__logo" />
+      </div>
+
+      <div class="onboarding__content">
+        <img
+          src="assets/images/onboarding01.svg"
+          alt=""
+          class="onboarding__illustration"
+          aria-hidden="true"
+        />
+        <div class="onboarding__text">
+          <h2 class="onboarding__title">함께할 팀원을<br>찾고 있나요?</h2>
+          <p class="onboarding__subtitle">
+            공모전, 해커톤, 사이드 프로젝트까지<br>
+            나와 잘 맞는 팀원을 만나보세요.
+          </p>
+        </div>
+      </div>
+
+      <div class="onboarding__footer">
+        <button class="onboarding__btn" id="onboarding-1-next">시작하기</button>
+        <div class="pagination-dots" aria-label="페이지 1/3">
+          <div class="pagination-dots__dot pagination-dots__dot--active"></div>
+          <div class="pagination-dots__dot"></div>
+          <div class="pagination-dots__dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 온보딩 2 ── -->
+    <section data-page="onboarding-2" class="page" aria-label="온보딩 2">
+      <div class="onboarding__header">
+        <img src="assets/images/logo.svg" alt="TIMO" class="onboarding__logo" />
+      </div>
+
+      <div class="onboarding__content">
+        <img
+          src="assets/images/onboarding02.svg"
+          alt=""
+          class="onboarding__illustration"
+          aria-hidden="true"
+        />
+        <div class="onboarding__text">
+          <h2 class="onboarding__title">성향이 맞는 사람과<br>협업해보세요</h2>
+          <p class="onboarding__subtitle">
+            협업 스타일과 역량을 기반으로<br>
+            팀원을 추천해드릴게요.
+          </p>
+        </div>
+      </div>
+
+      <div class="onboarding__footer">
+        <button class="onboarding__btn" id="onboarding-2-next">다음</button>
+        <div class="pagination-dots" aria-label="페이지 2/3">
+          <div class="pagination-dots__dot"></div>
+          <div class="pagination-dots__dot pagination-dots__dot--active"></div>
+          <div class="pagination-dots__dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 온보딩 3 ── -->
+    <section data-page="onboarding-3" class="page" aria-label="온보딩 3">
+      <div class="onboarding__header">
+        <img src="assets/images/logo.svg" alt="TIMO" class="onboarding__logo" />
+      </div>
+
+      <div class="onboarding__content">
+        <img
+          src="assets/images/onboarding03.svg"
+          alt=""
+          class="onboarding__illustration onboarding__illustration--wide"
+          aria-hidden="true"
+        />
+        <div class="onboarding__text">
+          <h2 class="onboarding__title">테스트를 통해 성향파악을 해요</h2>
+          <p class="onboarding__subtitle">
+            간단한 질문으로 나의 협업 성향을 분석하고,<br>
+            잘 맞는 팀원을 만나보세요.
+          </p>
+        </div>
+      </div>
+
+      <div class="onboarding__footer">
+        <button class="onboarding__btn" id="onboarding-3-next">다음</button>
+        <div class="pagination-dots" aria-label="페이지 3/3">
+          <div class="pagination-dots__dot"></div>
+          <div class="pagination-dots__dot"></div>
+          <div class="pagination-dots__dot pagination-dots__dot--active"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 로그인 ── -->
+    <section data-page="login" class="page" aria-label="로그인">
+      <div class="auth-login">
+
+        <!-- 로고 -->
+        <div class="auth-login__logo-section">
+          <img src="assets/images/logo2.png" alt="TIMO" class="auth-login__logo-img" />
+          <p class="auth-login__tagline">Team In, Move on</p>
+        </div>
+
+        <!-- 이메일/비밀번호 폼 -->
+        <form class="auth-login__form" id="login-form" novalidate>
+          <div class="auth-form__group">
+            <label class="auth-form__label" for="login-email">이메일</label>
+            <input
+              type="email"
+              id="login-email"
+              class="auth-form__input"
+              placeholder="이메일을 입력하세요"
+              autocomplete="email"
+            />
+          </div>
+          <div class="auth-form__group">
+            <label class="auth-form__label" for="login-password">비밀번호</label>
+            <input
+              type="password"
+              id="login-password"
+              class="auth-form__input"
+              placeholder="비밀번호를 입력하세요"
+              autocomplete="current-password"
+            />
+          </div>
+          <div class="auth-login__submit-wrap">
+            <button type="submit" class="auth-btn--dark">로그인</button>
+          </div>
+        </form>
+
+        <!-- 비밀번호 찾기 -->
+        <div class="auth-login__extras">
+          <button class="auth-login__forgot" type="button">비밀번호를 잊으셨나요?</button>
+        </div>
+
+        <!-- 구분선 -->
+        <div class="auth-divider">
+          <span class="auth-divider__line"></span>
+          <span class="auth-divider__text">또는</span>
+          <span class="auth-divider__line"></span>
+        </div>
+
+        <!-- 소셜 로그인 -->
+        <div class="auth-social">
+          <button class="auth-social__btn auth-social__btn--google" type="button" data-social="google">
+            <img src="assets/icons/google-icon.svg" alt="" class="auth-social__icon" aria-hidden="true" />
+            <span>Google로 로그인</span>
+          </button>
+          <button class="auth-social__btn auth-social__btn--kakao" type="button" data-social="kakao">
+            <img src="assets/icons/kakaotalk-icon.svg" alt="" class="auth-social__icon" aria-hidden="true" />
+            <span>카카오로 로그인</span>
+          </button>
+        </div>
+
+        <!-- 회원가입 유도 -->
+        <p class="auth-login__signup-cta">
+          계정이 없으신가요?
+          <button class="auth-login__signup-link" type="button" id="go-signup">회원가입</button>
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ── 회원가입 ── -->
+    <section data-page="signup" class="page" aria-label="회원가입">
+      <div class="auth-signup">
+
+        <!-- 뒤로가기 -->
+        <button class="auth-signup__back" type="button" id="signup-back" aria-label="뒤로가기">
+          <img src="assets/icons/back-icon.svg" alt="" aria-hidden="true" />
+        </button>
+
+        <!-- 제목 -->
+        <h1 class="auth-signup__title">회원가입</h1>
+        <p class="auth-signup__subtitle">TIMO와 함께 팀을 만들어보세요</p>
+
+        <!-- 폼 -->
+        <form class="auth-signup__form" id="signup-form" novalidate>
+          <div class="auth-form__group">
+            <label class="auth-form__label" for="signup-nickname">닉네임</label>
+            <input
+              type="text"
+              id="signup-nickname"
+              class="auth-form__input"
+              placeholder="닉네임을 입력하세요"
+              autocomplete="nickname"
+            />
+          </div>
+          <div class="auth-form__group">
+            <label class="auth-form__label" for="signup-email">이메일</label>
+            <input
+              type="email"
+              id="signup-email"
+              class="auth-form__input"
+              placeholder="이메일을 입력하세요"
+              autocomplete="email"
+            />
+          </div>
+          <div class="auth-form__group">
+            <label class="auth-form__label" for="signup-password">비밀번호</label>
+            <input
+              type="password"
+              id="signup-password"
+              class="auth-form__input"
+              placeholder="비밀번호를 입력하세요"
+              autocomplete="new-password"
+            />
+          </div>
+          <div class="auth-form__group">
+            <label class="auth-form__label" for="signup-password-confirm">비밀번호 확인</label>
+            <input
+              type="password"
+              id="signup-password-confirm"
+              class="auth-form__input"
+              placeholder="비밀번호를 다시 입력하세요"
+              autocomplete="new-password"
+            />
+          </div>
+          <div class="auth-signup__submit-wrap">
+            <button type="submit" class="auth-btn--dark">회원가입</button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- [성향 테스트 플로우] — JS(QuizPage)가 렌더링 -->
+    <section data-page="quiz-1"      class="page" aria-label="성향테스트 1단계"></section>
+    <section data-page="quiz-2"      class="page" aria-label="성향테스트 2단계"></section>
+    <section data-page="quiz-3"      class="page" aria-label="성향테스트 3단계"></section>
+    <section data-page="quiz-result" class="page" aria-label="성향테스트 결과"></section>
+
+    <!-- [메인 플로우] -->
+    <section data-page="home" class="page" aria-label="홈">
+      <header class="home__header">
+        <div class="home__header-top">
+          <div class="home__greeting">
+            <p class="home__greeting-hello">안녕하세요 👋</p>
+            <p class="home__greeting-name" id="home-username">님</p>
+          </div>
+          <div class="home__header-actions">
+            <button class="icon-btn" type="button" data-action="open-notification" aria-label="알림">
+              <img src="assets/icons/notice-icon.svg" alt="" aria-hidden="true" />
+              <span class="icon-btn__badge" id="home-notification-badge" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+        <div class="home__mascot" aria-hidden="true">
+          <img src="assets/images/maintimo.svg" alt="" />
+        </div>
+        <div class="search-bar">
+          <img src="assets/icons/search-icon.svg" alt="" class="search-bar__icon" aria-hidden="true" />
+          <input
+            type="text"
+            class="search-bar__input"
+            id="home-search-input"
+            placeholder="공모전, 프로젝트, 팀원 검색"
+            autocomplete="off"
+          />
+        </div>
+      </header>
+
+      <div class="home__scroll">
+        <p class="home__tagline" id="home-tagline"></p>
+        <div class="project-banner" id="home-banner">
+          <div class="project-banner__decor" aria-hidden="true"></div>
+          <span class="project-banner__badge"></span>
+          <h2 class="project-banner__title"></h2>
+          <p class="project-banner__desc"></p>
+          <p class="project-banner__meta"></p>
+          <button class="project-banner__cta" type="button">
+            <span>지금 지원하기</span>
+            <img src="assets/icons/banner-next-icon.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+
+        <section class="home__section">
+          <div class="home__section-head">
+            <h2 class="home__section-title">🔥 인기 공모전</h2>
+            <span class="home__section-more" data-action="go-projects">더보기</span>
+          </div>
+          <div class="contest-card-list" id="home-contest-list"></div>
+        </section>
+
+        <section class="home__section">
+          <div class="home__section-head">
+            <h2 class="home__section-title">⭐ 지금 주목받는 프로젝트</h2>
+            <span class="home__section-more" data-action="go-projects">더보기</span>
+          </div>
+          <div class="active-contest-list" id="home-active-contest-list"></div>
+        </section>
+
+        <section class="recruit-card">
+          <div class="home__section-head">
+            <h2 class="home__section-title">🤝 팀원 모집 중</h2>
+            <span class="home__section-more" data-action="go-projects">더보기</span>
+          </div>
+
+          <div class="filter-chip-group" id="home-filter-chips" role="tablist" aria-label="프로젝트 카테고리 필터">
+            <button class="filter-chip filter-chip--active" type="button" data-category="all" role="tab" aria-selected="true">전체</button>
+            <button class="filter-chip" type="button" data-category="공모전" role="tab" aria-selected="false">공모전</button>
+            <button class="filter-chip" type="button" data-category="프로젝트" role="tab" aria-selected="false">프로젝트</button>
+            <button class="filter-chip" type="button" data-category="해커톤" role="tab" aria-selected="false">해커톤</button>
+            <button class="filter-chip" type="button" data-category="사이드 프로젝트" role="tab" aria-selected="false">사이드</button>
+            <button class="filter-chip" type="button" data-category="창업" role="tab" aria-selected="false">창업</button>
+          </div>
+
+          <div class="recruit-row-list" id="home-recruit-list"></div>
+        </section>
+      </div>
+    </section>
+
+    <section data-page="project-list" class="page" aria-label="프로젝트 목록">
+      <header class="proj-list-header">
+        <div class="proj-list-header__top">
+          <h1 class="proj-list-header__title">프로젝트</h1>
+          <button class="icon-btn" type="button" data-action="open-notification" aria-label="알림">
+            <img src="assets/icons/notice-icon.svg" alt="" aria-hidden="true" />
+            <span class="icon-btn__badge" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="search-bar">
+          <img src="assets/icons/search-icon.svg" alt="" class="search-bar__icon" aria-hidden="true" />
+          <input
+            type="text"
+            class="search-bar__input"
+            id="project-list-search-input"
+            placeholder="프로젝트 검색"
+            autocomplete="off"
+          />
+        </div>
+      </header>
+
+      <div class="proj-list-filters">
+        <div class="filter-chip-group" id="project-list-filter-chips" role="tablist" aria-label="프로젝트 카테고리 필터">
+          <button class="filter-chip filter-chip--active" type="button" data-category="all" role="tab" aria-selected="true">전체</button>
+          <button class="filter-chip" type="button" data-category="공모전" role="tab" aria-selected="false">공모전</button>
+          <button class="filter-chip" type="button" data-category="프로젝트" role="tab" aria-selected="false">프로젝트</button>
+          <button class="filter-chip" type="button" data-category="해커톤" role="tab" aria-selected="false">해커톤</button>
+          <button class="filter-chip" type="button" data-category="사이드 프로젝트" role="tab" aria-selected="false">사이드 프로젝트</button>
+          <button class="filter-chip" type="button" data-category="창업" role="tab" aria-selected="false">창업</button>
+        </div>
+      </div>
+
+      <div class="proj-list-body">
+        <p class="proj-list-count" id="project-list-count"></p>
+        <div class="proj-list-cards" id="project-list-cards"></div>
+      </div>
+    </section>
+
+    <section data-page="project-detail" class="page" aria-label="프로젝트 상세">
+      <div class="detail__hero">
+        <div class="detail__hero-bg" id="detail-hero-bg" aria-hidden="true"></div>
+        <div class="detail__hero-actions">
+          <button class="icon-btn icon-btn--dark" type="button" data-action="back" aria-label="뒤로가기">
+            <span class="icon-btn-icon icon-btn-icon--back" aria-hidden="true"></span>
+          </button>
+          <div class="detail__hero-actions-right">
+            <button class="icon-btn icon-btn--dark" type="button" data-action="bookmark" aria-label="북마크">
+              <span class="icon-btn-icon icon-btn-icon--bookmark" aria-hidden="true"></span>
+            </button>
+            <button class="icon-btn icon-btn--dark" type="button" data-action="share" aria-label="공유">
+              <span class="icon-btn-icon icon-btn-icon--share" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail__body">
+        <div class="detail__badges">
+          <span class="cat-badge" id="detail-cat-badge"></span>
+          <span class="recruit-status" id="detail-status"></span>
+        </div>
+        <h1 class="detail__title" id="detail-title"></h1>
+
+        <div class="info-grid">
+          <div class="info-grid__item">
+            <img src="assets/icons/deadline-icon.svg" alt="" class="info-grid__icon" aria-hidden="true" />
+            <span class="info-grid__label">마감일</span>
+            <span class="info-grid__value" id="detail-deadline"></span>
+          </div>
+          <div class="info-grid__item">
+            <img src="assets/icons/teampeople-icon.svg" alt="" class="info-grid__icon" aria-hidden="true" />
+            <span class="info-grid__label">팀원 수</span>
+            <span class="info-grid__value" id="detail-team-size"></span>
+          </div>
+          <div class="info-grid__item">
+            <img src="assets/icons/time-icon.svg" alt="" class="info-grid__icon" aria-hidden="true" />
+            <span class="info-grid__label">기간</span>
+            <span class="info-grid__value" id="detail-duration"></span>
+          </div>
+        </div>
+
+        <section class="detail__card">
+          <h2 class="detail__card-title">프로젝트 소개</h2>
+          <p class="detail__description" id="detail-description"></p>
+        </section>
+
+        <section class="detail__card">
+          <h2 class="detail__card-title">모집 직군</h2>
+          <div class="role-badge-list" id="detail-role-list"></div>
+        </section>
+      </div>
+
+      <div class="fixed-action-bar">
+        <span class="fixed-action-bar__applicants">
+          <img class="fixed-action-bar__applicants-icon" src="assets/icons/support-person-icon.svg" alt="" aria-hidden="true" />
+          <span id="detail-applicants"></span>
+        </span>
+        <button class="fixed-action-bar__apply" type="button" data-action="go-apply">지원하기</button>
+      </div>
+    </section>
+
+    <section data-page="project-apply" class="page" aria-label="프로젝트 지원">
+      <header class="apply-header">
+        <button class="app-header__back" type="button" data-action="back" aria-label="뒤로가기">
+          <img src="assets/icons/back-icon.svg" alt="" aria-hidden="true" />
+        </button>
+        <h1 class="apply-header__title">프로젝트 지원</h1>
+      </header>
+
+      <div class="apply-target">
+        <span class="apply-target__label">지원 프로젝트</span>
+        <p class="apply-target__name" id="apply-target-name"></p>
+      </div>
+
+      <form class="apply-form" id="apply-form" novalidate>
+        <div class="apply-form__group">
+          <label class="apply-form__label" for="apply-motivation">지원 동기 <span class="apply-form__required">*</span></label>
+          <textarea
+            class="apply-form__textarea"
+            id="apply-motivation"
+            placeholder="이 프로젝트에 지원하는 이유를 적어주세요"
+          ></textarea>
+        </div>
+
+        <div class="apply-form__group">
+          <label class="apply-form__label" for="apply-portfolio">포트폴리오 링크</label>
+          <div class="apply-form__input-wrap">
+            <img src="assets/icons/link-clip-icon.svg" alt="" class="apply-form__input-icon" aria-hidden="true" />
+            <input class="apply-form__input" type="url" id="apply-portfolio" placeholder="https://..." />
+          </div>
+        </div>
+
+        <div class="apply-form__group">
+          <label class="apply-form__label" for="apply-intro">자기소개 <span class="apply-form__required">*</span></label>
+          <textarea
+            class="apply-form__textarea apply-form__textarea--lg"
+            id="apply-intro"
+            placeholder="간단한 자기소개를 작성해주세요"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="apply-form__submit">지원 완료</button>
+      </form>
+    </section>
+
+    <section data-page="apply-complete" class="page success-page" aria-label="지원 완료">
+      <div class="success">
+        <div class="success-visual" id="success-visual">
+          <div class="success-visual__breathe">
+            <div class="success-visual__badge">
+              <img src="assets/images/timodone.svg" alt="" class="success-visual__badge-img" />
+            </div>
+          </div>
+        </div>
+        <h1 class="success__title">지원이 완료되었어요!</h1>
+        <p class="success__desc">프로젝트 팀에서 검토 후 연락드릴 예정이에요.</p>
+      </div>
+
+      <div class="success-actions">
+        <button type="button" class="success-actions__btn success-actions__btn--outline" data-action="go-home">홈으로 이동</button>
+        <button type="button" class="success-actions__btn success-actions__btn--primary" data-action="go-applications">내 지원 내역 보기</button>
+      </div>
+    </section>
+
+    <!-- ── 커뮤니티 목록 ── -->
+    <section data-page="community" class="page" aria-label="커뮤니티">
+      <div class="comm-page">
+        <!-- 헤더 + 탭 -->
+        <div class="comm-header">
+          <div class="comm-header__top">
+            <h1 class="comm-header__title">커뮤니티</h1>
+            <button class="icon-btn" type="button" data-action="open-notification" aria-label="알림">
+              <img src="assets/icons/notice-icon.svg" alt="" aria-hidden="true" />
+              <span class="icon-btn__badge" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="comm-tabs" role="tablist" aria-label="커뮤니티 탭">
+            <button class="comm-tabs__item comm-tabs__item--active" data-comm-tab="free"    role="tab" aria-selected="true"  type="button">자유게시판</button>
+            <button class="comm-tabs__item"                         data-comm-tab="contest" role="tab" aria-selected="false" type="button">공모전 정보</button>
+            <button class="comm-tabs__item"                         data-comm-tab="review"  role="tab" aria-selected="false" type="button">프로젝트 후기</button>
+            <div class="comm-tabs__indicator" id="comm-tabs-indicator" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- 게시글 목록 -->
+        <div class="comm-list" id="comm-list" role="list"></div>
+      </div>
+    </section>
+
+    <!-- ── 커뮤니티 게시글 작성 ── -->
+    <section data-page="community-write" class="page" aria-label="게시글 작성">
+      <div class="comm-write">
+        <header class="comm-write__header">
+          <button class="comm-write__back" type="button" data-action="back" aria-label="뒤로가기">
+            <img src="assets/icons/back-icon.svg" alt="" aria-hidden="true" />
+          </button>
+          <h1 class="comm-write__title">게시글 작성</h1>
+          <div class="comm-write__header-right"></div>
+        </header>
+
+        <div class="comm-write__body">
+          <div class="comm-write__section">
+            <p class="comm-write__label">게시판 선택</p>
+            <div class="comm-write__cat-group">
+              <button class="comm-write__cat-btn comm-write__cat-btn--active" data-cat="free" type="button">자유게시판</button>
+              <button class="comm-write__cat-btn" data-cat="contest" type="button">공모전 정보</button>
+              <button class="comm-write__cat-btn" data-cat="review" type="button">프로젝트 후기</button>
+            </div>
+          </div>
+
+          <form class="comm-write__form" id="comm-write-form" novalidate>
+            <div class="comm-write__section">
+              <p class="comm-write__label">제목 <span class="comm-write__required">*</span></p>
+              <input class="comm-write__input" type="text" id="comm-write-title-input" placeholder="제목을 입력하세요" maxlength="100" />
+            </div>
+            <div class="comm-write__section">
+              <p class="comm-write__label">내용 <span class="comm-write__required">*</span></p>
+              <textarea class="comm-write__textarea" id="comm-write-content-input" placeholder="내용을 입력하세요" maxlength="2000"></textarea>
+            </div>
+            <button type="submit" class="comm-write__submit">등록</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 커뮤니티 게시글 상세 ── -->
+    <section data-page="community-post" class="page" aria-label="커뮤니티 게시글">
+      <div class="comm-post">
+        <!-- 헤더 -->
+        <div class="comm-post__header">
+          <button class="comm-post__back" type="button" data-action="back" aria-label="뒤로가기">
+            <img src="assets/icons/back-icon.svg" alt="" aria-hidden="true" />
+          </button>
+          <span class="comm-post__header-title">게시글</span>
+          <button class="comm-post__more" type="button" aria-label="더보기">
+            <img src="assets/icons/dotdotdot-icon.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+
+        <!-- 본문 스크롤 -->
+        <div class="comm-post__body" id="comm-post-body">
+          <!-- community.js 로 동적 렌더링 -->
+        </div>
+
+        <!-- 댓글 입력 -->
+        <div class="comm-post__input-bar">
+          <div class="comm-post__input-avatar" style="background-color:var(--color-primary-light);">김</div>
+          <div class="comm-post__input-wrap">
+            <input class="comm-post__input" id="comm-comment-input" type="text" placeholder="댓글을 입력하세요..." maxlength="200" />
+          </div>
+          <button class="comm-post__send-btn" id="comm-comment-send" type="button">등록</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 마이페이지 ── -->
+    <section data-page="mypage" class="page" aria-label="마이페이지">
+      <div class="myp-page">
+        <!-- 헤더 -->
+        <div class="myp-header">
+          <h1 class="myp-header__title">나의 프로필</h1>
+          <button class="myp-header__settings" type="button" data-action="open-notification" aria-label="알림">
+            <img src="assets/icons/notice-icon.svg" alt="" aria-hidden="true" />
+            <span class="icon-btn__badge" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <!-- 본문 -->
+        <div class="myp-body">
+          <!-- 프로필 -->
+          <div class="myp-profile">
+            <div class="myp-profile__top">
+              <div class="myp-profile__avatar-wrap">
+                <img src="assets/icons/profile.svg" alt="프로필" class="myp-profile__avatar-img" />
+              </div>
+              <div class="myp-profile__info">
+                <span class="myp-profile__name">김티모</span>
+                <span class="myp-profile__role">디자이너</span>
+                <span class="myp-profile__type-badge">🏅 계획러</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 통계 -->
+          <div class="myp-stats">
+            <button class="myp-stats__item" type="button" data-myp-stat="saved-posts" aria-label="저장한 게시글 보기">
+              <span class="myp-stats__num">0</span>
+              <span class="myp-stats__label">저장한 게시글</span>
+            </button>
+            <button class="myp-stats__item" type="button" data-myp-stat="received-review" aria-label="받은 리뷰 보기">
+              <span class="myp-stats__num">12</span>
+              <span class="myp-stats__label">받은 리뷰</span>
+            </button>
+            <button class="myp-stats__item" type="button" data-myp-stat="written-review" aria-label="작성 리뷰 보기">
+              <span class="myp-stats__num">8</span>
+              <span class="myp-stats__label">작성 리뷰</span>
+            </button>
+          </div>
+
+          <!-- 참여 중인 프로젝트 -->
+          <div>
+            <div class="myp-section-head">
+              <span class="myp-section-head__title">참여 중인 프로젝트</span>
+              <button class="myp-section-head__more" type="button" data-action="go-my-projects">더보기</button>
+            </div>
+            <div class="myp-project-list">
+              <!-- 카드 1 -->
+              <div class="myp-pcard">
+                <div class="myp-pcard__left">
+                  <div class="myp-pcard__icon myp-pcard__icon--green">🤖</div>
+                  <div class="myp-pcard__info">
+                    <span class="myp-pcard__name">AI 기반 운동 루틴 추천 서비스</span>
+                    <span class="myp-pcard__sub">해커톤 · 디자이너</span>
+                  </div>
+                </div>
+                <div class="myp-pcard__right">
+                  <span class="myp-pcard__deadline myp-pcard__deadline--urgent">D - 3</span>
+                  <span class="myp-pcard__status myp-pcard__status--active">진행중</span>
+                </div>
+              </div>
+              <!-- 카드 2 -->
+              <div class="myp-pcard">
+                <div class="myp-pcard__left">
+                  <div class="myp-pcard__icon myp-pcard__icon--orange">📱</div>
+                  <div class="myp-pcard__info">
+                    <span class="myp-pcard__name">캠퍼스 커뮤니티 플랫폼</span>
+                    <span class="myp-pcard__sub">사이드 프로젝트 · 디자이너</span>
+                  </div>
+                </div>
+                <div class="myp-pcard__right">
+                  <span class="myp-pcard__deadline myp-pcard__deadline--normal">D - 8</span>
+                  <span class="myp-pcard__status myp-pcard__status--active">진행중</span>
+                </div>
+              </div>
+              <!-- 카드 3 -->
+              <div class="myp-pcard">
+                <div class="myp-pcard__left">
+                  <div class="myp-pcard__icon myp-pcard__icon--purple">💡</div>
+                  <div class="myp-pcard__info">
+                    <span class="myp-pcard__name">소셜 커머스 플랫폼 MVP</span>
+                    <span class="myp-pcard__sub">사이드 프로젝트 · 디자이너</span>
+                  </div>
+                </div>
+                <div class="myp-pcard__right">
+                  <span class="myp-pcard__deadline myp-pcard__deadline--normal">D - 30</span>
+                  <span class="myp-pcard__status myp-pcard__status--active">진행중</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 로그아웃 -->
+          <div class="myp-logout-wrap">
+            <button type="button" class="myp-logout-btn" id="myp-logout-btn">로그아웃</button>
+          </div>
+        </div><!-- /.myp-body -->
+      </div>
+    </section>
+
+    <!-- ── 참여 프로젝트 전체 화면 ── -->
+    <section data-page="my-projects" class="page" aria-label="참여 프로젝트">
+      <div class="myproj-page">
+        <header class="myproj-header">
+          <button class="myproj-header__back" type="button" data-action="back" aria-label="뒤로가기">
+            <img src="assets/icons/back-icon.svg" alt="" aria-hidden="true" />
+          </button>
+          <h1 class="myproj-header__title">참여 프로젝트</h1>
+          <div style="width:40px;flex-shrink:0;"></div>
+        </header>
+        <div class="myproj-body" id="my-projects-list"></div>
+      </div>
+    </section>
+
+    <!-- ── 저장한 게시글 전체 화면 ── -->
+    <section data-page="saved-posts" class="page" aria-label="저장한 게시글">
+      <div class="svdp-page">
+        <header class="svdp-header">
+          <button class="svdp-header__back" type="button" data-action="back" aria-label="뒤로가기">
+            <img src="assets/icons/back-icon.svg" alt="" aria-hidden="true" />
+          </button>
+          <h1 class="svdp-header__title">저장한 게시글</h1>
+          <div style="width:40px;flex-shrink:0;"></div>
+        </header>
+        <div class="svdp-body" id="saved-posts-list"></div>
+      </div>
+    </section>
+
+    <!-- ── 작성 리뷰 화면 ── -->
+    <section data-page="my-written-reviews" class="page" aria-label="작성 리뷰">
+      <div class="wrvw-page">
+        <header class="wrvw-header">
+          <button class="wrvw-header__back" type="button" data-action="back" aria-label="뒤로가기">
+            <img src="assets/icons/back-icon.svg" alt="" aria-hidden="true" />
+          </button>
+          <h1 class="wrvw-header__title">작성한 리뷰</h1>
+          <div style="width:40px;flex-shrink:0;"></div>
+        </header>
+        <div class="wrvw-body" id="written-reviews-list"></div>
+      </div>
+    </section>
+
+    <!-- ── 프로젝트 리뷰 목록 ── -->
+    <section data-page="project-review" class="page" aria-label="프로젝트 리뷰">
+      <div class="prv-page">
+        <!-- 헤더 -->
+        <div class="prv-header">
+          <button class="prv-header__back" type="button" data-action="back" aria-label="뒤로가기">
+            <img src="assets/icons/back-icon.svg" alt="" aria-hidden="true" />
+          </button>
+          <button class="prv-header__more" type="button" aria-label="더보기">
+            <img src="assets/icons/dotdotdot-icon.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+
+        <!-- 본문 -->
+        <div class="prv-body">
+          <!-- 프로필 -->
+          <div class="prv-profile">
+            <div class="prv-profile__top">
+              <div class="prv-profile__avatar"><img src="assets/icons/profile.svg" alt="프로필" class="prv-profile__avatar-img" /></div>
+              <div class="prv-profile__info">
+                <span class="prv-profile__name">김티모</span>
+                <span class="prv-profile__role">디자이너</span>
+                <span class="prv-profile__type-badge">🏅 계획러</span>
+              </div>
+            </div>
+            <!-- 별점 -->
+            <div class="prv-rating">
+              <div class="prv-rating__stars" aria-label="4.8점">
+                <span class="prv-rating__star">⭐</span>
+                <span class="prv-rating__star">⭐</span>
+                <span class="prv-rating__star">⭐</span>
+                <span class="prv-rating__star">⭐</span>
+                <span class="prv-rating__star">⭐</span>
+              </div>
+              <span class="prv-rating__score">4.8</span>
+              <span class="prv-rating__total">/ 5.0 (12개)</span>
+            </div>
+          </div>
+
+          <div class="prv-divider"></div>
+
+          <!-- 리뷰 태그 -->
+          <div class="prv-tags-section">
+            <span class="prv-tags__title">리뷰 태그</span>
+            <div class="prv-tags__rows" id="prv-tags-rows">
+              <div class="prv-tags__row">
+                <span class="prv-tag">팀 분위기를 좋게 만들어요</span>
+                <span class="prv-tag">책임감이 강해요</span>
+              </div>
+              <div class="prv-tags__row" id="prv-tags-row2">
+                <span class="prv-tag">소통이 빨라요</span>
+                <span class="prv-tag">맡은 일을 끝까지 해요</span>
+                <!-- +2 버튼: 숨겨진 태그 2개 -->
+                <button class="prv-tag prv-tag--more" id="prv-tag-more-btn" type="button" aria-label="태그 더보기">+2</button>
+              </div>
+              <!-- 숨겨진 태그 (기본 hidden) -->
+              <div class="prv-tags__row" id="prv-tags-hidden" style="display:none;">
+                <span class="prv-tag">피드백을 잘 반영해요</span>
+                <span class="prv-tag">일정 관리를 잘해요</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="prv-divider"></div>
+
+          <!-- 리뷰 목록 -->
+          <span class="prv-list-title">리뷰 목록</span>
+          <div class="prv-list">
+            <!-- 리뷰 1 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">이</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">이지은</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">디자이너 · 2026.04</span>
+                <p class="prv-item__text">정말 든든한 팀원이에요! 일정 관리도 꼼꼼하고 피드백도 빠르게 반영해줘서 프로젝트가 수월하게 진행됐어요 😊</p>
+              </div>
+            </div>
+            <!-- 리뷰 2 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--cyan">박</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">박준형</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">백엔드 개발자 · 2026.03</span>
+                <p class="prv-item__text">소통이 원활하고 팀원들을 잘 이끌어줘요. 다음에도 함께하고 싶어요!</p>
+              </div>
+            </div>
+            <!-- 리뷰 3 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--purple">최</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">최유나</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">기획자 · 2026.02</span>
+                <p class="prv-item__text">책임감이 정말 강해요. 맡은 부분은 무조건 완성해오고, 팀 분위기도 항상 좋게 만들어줘서 감사했어요.</p>
+              </div>
+            </div>
+            <!-- 리뷰 4 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">정</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">정민준</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">백엔드 개발자 · 2026.01</span>
+                <p class="prv-item__text">디자인 시안이 항상 깔끔해서 개발하기 편했어요. 수정 요청에도 빠르게 대응해줘서 감사했습니다!</p>
+              </div>
+            </div>
+            <!-- 리뷰 5 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--cyan">한</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">한소현</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">프론트엔드 개발자 · 2025.12</span>
+                <p class="prv-item__text">팀원들의 의견을 잘 수렴해서 방향을 잡아주셨어요. 덕분에 프로젝트가 원활하게 진행됐어요.</p>
+              </div>
+            </div>
+            <!-- 리뷰 6 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--purple">이</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">이수빈</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">기획자 · 2025.11</span>
+                <p class="prv-item__text">기획 의도를 정확하게 이해하고 디자인해주셔서 감동받았어요. 꼼꼼한 성격이 프로젝트에 큰 도움이 됐어요.</p>
+              </div>
+            </div>
+            <!-- 리뷰 7 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">김</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">김준서</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">디자이너 · 2025.10</span>
+                <p class="prv-item__text">같은 디자이너로서 배울 점이 정말 많았어요! 세심한 UI 구성 덕분에 사용자 경험이 크게 향상됐습니다.</p>
+              </div>
+            </div>
+            <!-- 리뷰 8 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--cyan">오</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">오현주</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">백엔드 개발자 · 2025.09</span>
+                <p class="prv-item__text">항상 긍정적인 에너지로 팀 분위기를 끌어올려줘서 고마워요. 어려운 상황에서도 포기하지 않는 모습이 인상적이었어요.</p>
+              </div>
+            </div>
+            <!-- 리뷰 9 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">박</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">박진우</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">프론트엔드 개발자 · 2025.08</span>
+                <p class="prv-item__text">개발 친화적인 디자인을 해줘서 구현 속도가 많이 빨라졌어요. 프로토타입도 완성도 높게 만들어주셔서 감사했어요!</p>
+              </div>
+            </div>
+            <!-- 리뷰 10 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--purple">최</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">최아름</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">기획자 · 2025.07</span>
+                <p class="prv-item__text">일정 관리가 철저해서 프로젝트 진행이 매끄러웠어요. 문서화 능력도 뛰어나서 팀 전체에 큰 도움이 됐습니다.</p>
+              </div>
+            </div>
+            <!-- 리뷰 11 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--cyan">류</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">류승현</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">백엔드 개발자 · 2025.06</span>
+                <p class="prv-item__text">커뮤니케이션이 원활하고 팀원들의 의견을 잘 반영해줘서 협업이 즐거웠어요. 다음 프로젝트에서도 함께 하고 싶어요!</p>
+              </div>
+            </div>
+            <!-- 리뷰 12 -->
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">신</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">신혜리</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">프론트엔드 개발자 · 2025.05</span>
+                <p class="prv-item__text">세심하게 디자인해줘서 구현이 쉬웠어요. 항상 팀을 위해 노력하는 모습에 많이 배웠습니다. 감사해요!</p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.prv-body -->
+      </div>
+    </section>
+
+    <!-- ── 리뷰 더보기 ── -->
+    <section data-page="profile-review-more" class="page" aria-label="리뷰 더보기">
+      <div class="rvm-page">
+        <!-- 헤더 -->
+        <div class="rvm-header">
+          <button class="rvm-header__back" type="button" data-action="back" aria-label="뒤로가기">
+            <img src="assets/icons/back-icon.svg" alt="" aria-hidden="true" />
+          </button>
+          <button class="rvm-header__more" type="button" aria-label="더보기">
+            <img src="assets/icons/dotdotdot-icon.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+
+        <!-- 본문 -->
+        <div class="rvm-body">
+          <!-- 프로필 -->
+          <div class="prv-profile">
+            <div class="prv-profile__top">
+              <div class="prv-profile__avatar"><img src="assets/icons/profile.svg" alt="프로필" class="prv-profile__avatar-img" /></div>
+              <div class="prv-profile__info">
+                <span class="prv-profile__name">김티모</span>
+                <span class="prv-profile__role">디자이너</span>
+                <span class="prv-profile__type-badge">🏅 계획러</span>
+              </div>
+            </div>
+            <div class="prv-rating">
+              <div class="prv-rating__stars" aria-label="4.8점">
+                <span class="prv-rating__star">⭐</span>
+                <span class="prv-rating__star">⭐</span>
+                <span class="prv-rating__star">⭐</span>
+                <span class="prv-rating__star">⭐</span>
+                <span class="prv-rating__star">⭐</span>
+              </div>
+              <span class="prv-rating__score">4.8</span>
+              <span class="prv-rating__total">/ 5.0 (12개)</span>
+            </div>
+          </div>
+
+          <div class="prv-divider"></div>
+
+          <!-- 모든 태그 펼쳐진 상태 -->
+          <span class="prv-tags__title">리뷰 태그</span>
+          <div class="rvm-tags__rows">
+            <div class="rvm-tags__row">
+              <span class="rvm-tag">팀 분위기를 좋게 만들어요</span>
+              <span class="rvm-tag">소통이 빨라요</span>
+            </div>
+            <div class="rvm-tags__row">
+              <span class="rvm-tag">책임감이 강해요</span>
+              <span class="rvm-tag">맡은 일을 끝까지 해요</span>
+            </div>
+            <div class="rvm-tags__row">
+              <span class="rvm-tag">피드백을 잘 반영해요</span>
+              <span class="rvm-tag">일정 관리를 잘해요</span>
+            </div>
+          </div>
+
+          <div class="prv-divider"></div>
+
+          <!-- 리뷰 목록 -->
+          <span class="prv-list-title">리뷰 목록</span>
+          <div class="prv-list">
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">이</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">이지은</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">디자이너 · 2026.04</span>
+                <p class="prv-item__text">정말 든든한 팀원이에요! 일정 관리도 꼼꼼하고 피드백도 빠르게 반영해줘서 프로젝트가 수월하게 진행됐어요 😊</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--cyan">박</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">박준형</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">백엔드 개발자 · 2026.03</span>
+                <p class="prv-item__text">소통이 원활하고 팀원들을 잘 이끌어줘요. 다음에도 함께하고 싶어요!</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--purple">최</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">최유나</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">기획자 · 2026.02</span>
+                <p class="prv-item__text">책임감이 정말 강해요. 맡은 부분은 무조건 완성해오고, 팀 분위기도 항상 좋게 만들어줘서 감사했어요.</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">정</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">정민준</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">백엔드 개발자 · 2026.01</span>
+                <p class="prv-item__text">디자인 시안이 항상 깔끔해서 개발하기 편했어요. 수정 요청에도 빠르게 대응해줘서 감사했습니다!</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--cyan">한</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">한소현</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">프론트엔드 개발자 · 2025.12</span>
+                <p class="prv-item__text">팀원들의 의견을 잘 수렴해서 방향을 잡아주셨어요. 덕분에 프로젝트가 원활하게 진행됐어요.</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--purple">이</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">이수빈</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">기획자 · 2025.11</span>
+                <p class="prv-item__text">기획 의도를 정확하게 이해하고 디자인해주셔서 감동받았어요. 꼼꼼한 성격이 프로젝트에 큰 도움이 됐어요.</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">김</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">김준서</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">디자이너 · 2025.10</span>
+                <p class="prv-item__text">같은 디자이너로서 배울 점이 정말 많았어요! 세심한 UI 구성 덕분에 사용자 경험이 크게 향상됐습니다.</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--cyan">오</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">오현주</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">백엔드 개발자 · 2025.09</span>
+                <p class="prv-item__text">항상 긍정적인 에너지로 팀 분위기를 끌어올려줘서 고마워요. 어려운 상황에서도 포기하지 않는 모습이 인상적이었어요.</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">박</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">박진우</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">프론트엔드 개발자 · 2025.08</span>
+                <p class="prv-item__text">개발 친화적인 디자인을 해줘서 구현 속도가 많이 빨라졌어요. 프로토타입도 완성도 높게 만들어주셔서 감사했어요!</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--purple">최</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">최아름</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">기획자 · 2025.07</span>
+                <p class="prv-item__text">일정 관리가 철저해서 프로젝트 진행이 매끄러웠어요. 문서화 능력도 뛰어나서 팀 전체에 큰 도움이 됐습니다.</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--cyan">류</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">류승현</span>
+                  <div class="prv-item__stars" aria-label="별점 5점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">백엔드 개발자 · 2025.06</span>
+                <p class="prv-item__text">커뮤니케이션이 원활하고 팀원들의 의견을 잘 반영해줘서 협업이 즐거웠어요. 다음 프로젝트에서도 함께 하고 싶어요!</p>
+              </div>
+            </div>
+            <div class="prv-item">
+              <div class="prv-item__avatar prv-item__avatar--primary">신</div>
+              <div class="prv-item__content">
+                <div class="prv-item__top-row">
+                  <span class="prv-item__name">신혜리</span>
+                  <div class="prv-item__stars" aria-label="별점 4점">
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star">⭐</span><span class="prv-item__star">⭐</span>
+                    <span class="prv-item__star prv-item__star--gray">⭐</span>
+                  </div>
+                </div>
+                <span class="prv-item__sub">프론트엔드 개발자 · 2025.05</span>
+                <p class="prv-item__text">세심하게 디자인해줘서 구현이 쉬웠어요. 항상 팀을 위해 노력하는 모습에 많이 배웠습니다. 감사해요!</p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.rvm-body -->
+      </div>
+    </section>
+
+    <!-- ④ 바텀 네비게이션 -->
+    <nav class="bottom-nav is-hidden" id="bottom-nav" role="navigation" aria-label="하단 메뉴">
+      <button class="bottom-nav__item" data-nav="home" aria-label="홈">
+        <span class="bottom-nav__icon bottom-nav__icon--home" aria-hidden="true"></span>
+        <span>홈</span>
+      </button>
+      <button class="bottom-nav__item" data-nav="project" aria-label="프로젝트">
+        <span class="bottom-nav__icon bottom-nav__icon--project" aria-hidden="true"></span>
+        <span>프로젝트</span>
+      </button>
+      <button class="bottom-nav__item" data-nav="community" aria-label="커뮤니티">
+        <span class="bottom-nav__icon bottom-nav__icon--community" aria-hidden="true"></span>
+        <span>커뮤니티</span>
+      </button>
+      <button class="bottom-nav__item" data-nav="mypage" aria-label="마이페이지">
+        <span class="bottom-nav__icon bottom-nav__icon--mypage" aria-hidden="true"></span>
+        <span>마이페이지</span>
+      </button>
+    </nav>
+
+    <!-- ⑤ 글쓰기 FAB (홈 · 프로젝트 · 커뮤니티 공통) -->
+    <div class="global-fab-backdrop" id="global-fab-backdrop"></div>
+    <div class="global-fab-wrap" id="global-fab-wrap">
+      <div class="global-fab-menu" id="global-fab-menu" aria-hidden="true">
+        <button class="global-fab-option" type="button" id="global-fab-project-btn">
+          <span class="global-fab-option__icon global-fab-option__icon--project" aria-hidden="true"></span>
+          <span class="global-fab-option__label">프로젝트</span>
+        </button>
+        <button class="global-fab-option" type="button" id="global-fab-community-btn">
+          <span class="global-fab-option__icon global-fab-option__icon--community" aria-hidden="true"></span>
+          <span class="global-fab-option__label">커뮤니티</span>
+        </button>
+      </div>
+      <button class="fab fab--lg global-fab-main" type="button" id="global-fab-main" aria-label="메뉴 열기">
+        <img src="assets/icons/plus-tab-icon.svg" alt="" aria-hidden="true" />
+      </button>
+    </div>
+
+    <!-- ⑥ 바텀시트 오버레이 -->
+    <div class="bottom-sheet-overlay" id="bottom-sheet-overlay" aria-hidden="true"></div>
+
+    <!-- ⑦ 바텀시트 -->
+    <div class="bottom-sheet" id="bottom-sheet" role="dialog" aria-hidden="true" aria-label="옵션 메뉴">
+      <div class="bottom-sheet__handle" aria-hidden="true"></div>
+      <ul class="bottom-sheet__list" role="menu"></ul>
+    </div>
+
+    <!-- ⑧ 모달 -->
+    <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal__overlay"></div>
+      <div class="modal__content">
+        <h2 class="modal__title"></h2>
+        <p class="modal__message"></p>
+        <div class="modal__actions">
+          <button class="btn modal__cancel">취소</button>
+          <button class="btn modal__confirm">확인</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑨ 토스트 -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- ⑩ 알림 팝오버 오버레이 -->
+    <div class="notif-overlay" id="notif-overlay" aria-hidden="true"></div>
+
+    <!-- ⑪ 알림 팝오버 -->
+    <div class="notif-popover" id="notif-popover" role="dialog" aria-label="알림" aria-hidden="true">
+      <div class="notif-popover__header">
+        <span class="notif-popover__title">🔔 알림</span>
+        <button class="notif-popover__close" type="button" aria-label="알림 닫기">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M14 4L4 14M4 4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <p class="notif-popover__section-label">최근 알림</p>
+      <div class="notif-list">
+
+        <div class="notif-item notif-item--unread">
+          <span class="notif-item__dot" aria-hidden="true"></span>
+          <div class="notif-item__body">
+            <p class="notif-item__text">👥 새로운 지원자가 프로젝트에 참여했습니다.</p>
+            <span class="notif-item__time">5분 전</span>
+          </div>
+        </div>
+
+        <div class="notif-list__divider"></div>
+
+        <div class="notif-item notif-item--unread">
+          <span class="notif-item__dot" aria-hidden="true"></span>
+          <div class="notif-item__body">
+            <p class="notif-item__text">✅ 프로젝트 지원이 승인되었습니다.</p>
+            <span class="notif-item__time">1시간 전</span>
+          </div>
+        </div>
+
+        <div class="notif-list__divider"></div>
+
+        <div class="notif-item">
+          <span class="notif-item__dot" aria-hidden="true"></span>
+          <div class="notif-item__body">
+            <p class="notif-item__text">⏰ 프로젝트 모집 마감이 3일 남았습니다.</p>
+            <span class="notif-item__time">어제</span>
+          </div>
+        </div>
+
+        <div class="notif-list__divider"></div>
+
+        <div class="notif-item">
+          <span class="notif-item__dot" aria-hidden="true"></span>
+          <div class="notif-item__body">
+            <p class="notif-item__text">💬 내 게시글에 새로운 댓글이 달렸습니다.</p>
+            <span class="notif-item__time">2일 전</span>
+          </div>
+        </div>
+
+        <div class="notif-list__divider"></div>
+
+        <div class="notif-item">
+          <span class="notif-item__dot" aria-hidden="true"></span>
+          <div class="notif-item__body">
+            <p class="notif-item__text">🎉 새로운 해커톤이 등록되었습니다.</p>
+            <span class="notif-item__time">3일 전</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /#app -->
+
+  <!-- JS (의존성 순서 준수) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/mock-data.js"></script>
+  <script src="js/pages/onboarding.js"></script>
+  <script src="js/pages/auth.js"></script>
+  <script src="js/pages/quiz.js"></script>
+  <script src="js/pages/home.js"></script>
+  <script src="js/pages/project.js"></script>
+  <script src="js/pages/community.js"></script>
+  <script src="js/pages/mypage.js"></script>
+  <script src="js/pages/profile.js"></script>
+  <script src="js/pages/review.js"></script>
+  <script src="js/notification.js"></script>
+  <script src="js/global-fab.js"></script>
+  <script src="js/router.js"></script>
+
+  <!-- 바텀 네비 탭 이벤트 바인딩 -->
+  <script>
+    document.querySelectorAll('.bottom-nav__item').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const navKey = btn.dataset.nav;
+        const pageMap = { home: 'home', project: 'project-list', community: 'community', mypage: 'mypage' };
+        const target  = pageMap[navKey];
+        if (target) Router.navigate(target);
+      });
+    });
+
+    /* 바텀시트 오버레이 클릭 시 닫기 */
+    document.getElementById('bottom-sheet-overlay')?.addEventListener('click', closeBottomSheet);
+
+    /* 알림 팝오버 초기화 */
+    NotificationPopover.init();
+
+    /* 글쓰기 FAB 초기화 */
+    GlobalFab.init();
+
+    /* 라우터 초기화 */
+    Router.init();
+  </script>
+
+</body>
+</html>

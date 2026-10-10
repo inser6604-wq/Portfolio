@@ -1,0 +1,128 @@
+/* ===================================================
+   variables.css — 디자인 토큰 (Figma 기준)
+   =================================================== */
+
+:root {
+  /* ── Color ── */
+  --color-primary:        #5ccfa6;   /* 메인 CTA, 온보딩 버튼 */
+  --color-primary-light:  #7fffd4;   /* FAB, active dot, 아바타 */
+  --color-primary-dark:   #66ccaa;   /* 링크 hover */
+
+  --color-black:          #202020;   /* 기본 텍스트, 진한 버튼 */
+  --color-text-primary:   #333;      /* 온보딩 제목 */
+  --color-text-secondary: #666;      /* 본문 보조 텍스트 */
+  --color-text-muted:     #aaa;      /* 시간, 부가정보 */
+  --color-text-nav-off:   #bbb;      /* 바텀 네비 비활성 */
+
+  --color-bg-base:        #ffffff;
+  --color-bg-page:        #f8fafa;   /* 커뮤니티 등 회색 배경 */
+  --color-bg-outer:       #e7ebec;   /* 앱 바깥(viewport) 배경 — 앱 영역과 구분용 */
+  --color-border:         #eaeaea;
+  --color-divider:        #eaeaea;
+
+  /* 소셜 로그인 */
+  --color-kakao:          #fee500;
+  --color-kakao-text:     #3c1e1e;
+  --color-naver:          #03c75a;
+
+  /* 커뮤니티 카테고리 배지 */
+  --color-badge-free-bg:      #f5f5f5;
+  --color-badge-free-text:    #555;
+  --color-badge-contest-bg:   #ebf5ff;
+  --color-badge-contest-text: #1976d2;
+  --color-badge-review-bg:    #f3e8ff;
+  --color-badge-review-text:  #7b1fa2;
+
+  /* 프로젝트 카테고리 배지 (홈 — 커뮤니티 배지와 별도) */
+  --color-badge-hackathon-bg:   #fff3eb;
+  --color-badge-hackathon-text: #e65100;
+  --color-badge-side-bg:        #f0fff4;
+  --color-badge-side-text:      #2e7d32;
+  --color-badge-project-bg:     #eef2ff;
+  --color-badge-project-text:   #4338ca;
+  --color-badge-startup-bg:     #fef3c7;
+  --color-badge-startup-text:   #92400e;
+  /* 공모전은 --color-badge-contest-bg/text 재사용 */
+
+  /* 모집 상태 */
+  --color-status-open:   #16a34a;   /* ● 모집 중 */
+  --color-status-urgent: #ef4444;   /* ● 모집 마감임박 */
+
+  /* 역할(직군) 뱃지 */
+  --color-role-badge-text: #444;    /* 배경은 --color-badge-free-bg 재사용 */
+  --color-role-card-bg:     #f0fffb;            /* 상세 페이지 모집 직군 카드 배경 */
+  --color-role-card-border: var(--color-primary-light);
+
+  /* 배너 그라디언트 */
+  --gradient-banner: linear-gradient(145deg, #202020 0%, #333333 100%);
+
+  /* 보조 아바타 색상 */
+  --color-avatar-cyan:   #b2ebf2;
+  --color-avatar-purple: #e1e0ff;
+
+  /* 프라이머리 틴트 배경 (아바타 래퍼, 프로젝트 아이콘 등) */
+  --color-primary-tint: #e8fff9;
+
+  /* 마감 임박 배지 */
+  --color-deadline:        #ef4444;
+  --color-deadline-bg:     #ffe5e5;
+  --color-deadline-gray:   #707070;
+  --color-deadline-gray-bg:#dfe1e1;
+
+  /* 프로젝트 진행 상태 */
+  --color-status-active:    #0f7d48;
+  --color-status-active-bg: #e8fff9;
+
+  /* 통계 박스 배경 */
+  --color-stats-bg: #f7f8fa;
+
+  /* 리뷰 태그 +more 배경 */
+  --color-tag-more-bg: #d7fff2;
+
+  /* 얕은 구분선 */
+  --color-divider-light: #f0f0f0;
+
+  /* 인기 공모전 카드 상금 배지 */
+  --color-prize-bg:   #fff9e6;
+  --color-prize-text: #92400e;
+
+  /* ── Typography ── */
+  --font-title: "S-Core Dream", sans-serif;
+  --font-body:  "Pretendard", sans-serif;
+
+  --text-xs:   13px;   /* 0.813rem */
+  --text-sm:   14px;   /* 0.875rem */
+  --text-base: 16px;   /* 1rem     */
+  --text-lg:   17px;   /* 1.063rem */
+  --text-xl:   18px;   /* 1.125rem */
+  --text-2xl:  22px;   /* 1.375rem */
+  --text-3xl:  24px;   /* 1.5rem   */
+
+  /* ── Spacing ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+
+  /* ── Border Radius ── */
+  --radius-sm:    8px;
+  --radius-md:    14px;    /* 카드, 버튼 */
+  --radius-lg:    16px;    /* 온보딩 버튼 */
+  --radius-input: 17px;    /* 인풋 필드 */
+  --radius-full:  9999px;  /* 도트, 칩 */
+
+  /* ── Shadow ── */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-fab:  0 6px 12px rgba(127, 255, 212, 0.5);
+  --shadow-app:  0 0 40px rgba(0, 0, 0, 0.12);
+
+  /* ── Layout ── */
+  --bottom-nav-height:  80px;
+  --page-px:            20px;   /* 페이지 좌우 패딩 */
+
+  /* ── Transition ── */
+  --transition-fast:   150ms ease;
+  --transition-normal: 300ms ease;
+}

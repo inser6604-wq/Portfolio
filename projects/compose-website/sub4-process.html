@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴포즈커피-운영 프로세스</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header include-html="header.html"></header>
+
+  <div class="goto-top">
+    <a href="#">
+      <img class="before" src="image/gototop-before.png" alt="goto-top-img">
+      <img class="after" src="image/gototop-after.png" alt="goto-top-img">
+    </a>
+  </div>
+  <div class="process-bg">
+  <h2>PROCESS</h2>
+  </div>
+
+  <div class="top-common">
+    <div class="location">
+      <a href="index.html">홈</a>
+      <span>&gt; 창업경쟁력 &gt;</span>
+      <span>운영프로세스</span>
+    </div>
+    <div class="sub-header scroll-item left-in">
+      <h2>운영 프로세스</h2>
+    </div>
+  </div>
+
+  <div id="wrap">
+    <div class="process-content">
+      <div class="process-img scroll-item left-in delay1">
+        <img src="image/process-img1.jpg" alt="process-image-1"></div>
+    <div class="process-text-wrap scroll-item left-in delay2">
+      <h3 class="process-hdtext">원두 소싱 & 품질 관리</h3>
+          <span class="process-subtext">좋은 커피는 좋은 원두에서 시작됩니다</span>
+            <p class="process-text">
+              컴포즈커피는 전 세계 주요 산지에서 엄선한 원두만을 사용합니다.<br>전문 큐그레이더가 직접 산지를 방문해 품질을 검증하고, 
+              <br>최적의 로스팅 포인트를 찾아 일관된 맛을 유지합니다.<br>단 한 잔도 타협 없이, 처음부터 끝까지 품질을 책임집니다.
+            </p>
+        </div>
+      </div>
+        <div class="process-content">
+    <div class="process-text-wrap scroll-item right-in">
+      <h3 class="process-hdtext">매장 운영 & 바리스타 교육</h3>
+          <span class="process-subtext">모든 매장에서, 언제나 같은 맛</span>
+            <p class="process-text">
+            전국 어느 매장을 방문해도 동일한 품질을 경험할 수 있도록<br>
+            표준화된 교육 시스템을 운영합니다.
+            신규 바리스타는 본사 교육 과정을 필수로 이수하며,<br>
+            정기적인 현장 점검과 피드백을 통해 서비스 수준을 꾸준히 유지합니다.
+            </p>
+        </div>
+        <div class="process-img scroll-item right-in delay1">
+        <img src="image/process-img2.jpg" alt="process-image-2"></div>
+      </div>
+    <div class="process-content">
+      <div class="process-img scroll-item left-in">
+        <img src="image/process-img3.jpg" alt="process-image-3"></div>
+    <div class="process-text-wrap scroll-item left-in delay1">
+      <h3 class="process-hdtext">주문 & 픽업 시스템</h3>
+          <span class="process-subtext">기다림 없이, 더 빠르게</span>
+            <p class="process-text">
+              컴포즈커피 앱을 통해 미리 주문하고 매장에서 바로 픽업하는<br>스마트한 경험을 제공합니다.
+              키오스크와 앱 주문 시스템을 통합 운영해<br>혼잡 시간대에도 빠르고 정확한 서비스가 가능합니다.<br>
+              고객의 시간을 아끼는 것도 컴포즈커피의 철학입니다.
+            </p>
+        </div>
+      </div>
+    <div class="process-content">
+    <div class="process-text-wrap scroll-item right-in">
+      <h3 class="process-hdtext">가맹점 지원 & 관리</h3>
+          <span class="process-subtext">함께 성장하는 파트너십</span>
+            <p class="process-text">
+              컴포즈커피는 가맹점 창업 이후에도 지속적인 성장을 함께합니다.<br>
+              본사에서 원자재를 직접 공급해 원가를 절감하고,<br>
+              매출 데이터 분석과 운영 컨설팅을 통해<br>각 매장이 최적의 성과를 낼 수 있도록 지원합니다.<br>
+              혼자가 아닌, 함께하는 운영입니다.
+            </p>
+        </div>
+        <div class="process-img scroll-item right-in delay1">
+        <img src="image/process-img4.jpg" alt="process-image-4"></div>
+      </div>
+  <footer include-html="footer.html"></footer>
+  </div>
+    <script src="js/includeHTML.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/sub-script.js"></script>
+    <script src="js/scroll.js"></script>
+    <script>
+      includeHTML(function () {
+        initAll();
+        if (typeof initMenu === 'function') initMenu();
+      });
+    </script>
+</body>
+</html>

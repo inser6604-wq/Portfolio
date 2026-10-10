@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴포즈커피-MENU</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header include-html="header.html"></header>
+
+  <div class="goto-top">
+    <a href="#">
+      <img class="before" src="image/gototop-before.png" alt="goto-top-img">
+      <img class="after" src="image/gototop-after.png" alt="goto-top-img">
+    </a>
+  </div>
+
+  <div class="menu-bg">
+  </div>
+
+  <div class="top-common">
+    <div class="location">
+      <a href="index.html">홈</a>
+      <span>&gt; 브랜드 소개 &gt;</span>
+      <span>MENU</span>
+    </div>
+  </div>
+
+  <div id="wrap">
+    <section class="menu-page">
+
+      <div class="menu-main-tab">
+        <button class="active" data-tab="best">BEST</button>
+        <button data-tab="season">SEASON</button>
+        <button data-tab="promotion">PROMOTION</button>
+      </div>
+
+      <div class="menu-filter-chip">
+        <button class="active" data-cat="cat-coffee">COFFEE / LATTE</button>
+        <button data-cat="cat-smoothie">SMOOTHIE</button>
+        <button data-cat="cat-tea">TEA</button>
+        <button data-cat="cat-dessert">DESSERT</button>
+      </div>
+
+      <!-- ====== BEST ====== -->
+      <div class="menu-content active" id="best">
+
+        <div class="menu-grid">
+          <div class="menu-card ice-americano"><h3>ICE 아메리카노</h3></div>
+          <div class="menu-card cano"><h3>쫀득카노</h3></div>
+          <div class="menu-card ice-caffe-latte"><h3>ICE 카페라떼</h3></div>
+          <div class="menu-card java-chip-frappe"><h3>리얼초코자바칩프라페</h3></div>
+          <div class="menu-card mango-espresso"><h3>아망추</h3></div>
+          <div class="menu-card ice-vanilla-latte"><h3>ICE 바닐라라떼</h3></div>
+          <div class="menu-card ainsupanner-latte"><h3>아인슈페너라떼</h3></div>
+          <div class="menu-card milkshake"><h3>플레인 밀크쉐이크</h3></div>
+        </div>
+
+        <!-- COFFEE / LATTE -->
+        <div class="menu-category" id="cat-coffee">
+          <div class="menu-grid">
+            <div class="menu-card ice-americano"><h3>ICE 아메리카노</h3></div>
+            <div class="menu-card big-pose-americano"><h3>빅포즈 아메리카노</h3></div>
+            <div class="menu-card hot-caffe-latte"><h3>HOT 카페라떼</h3></div>
+            <div class="menu-card ice-caffe-latte"><h3>ICE 카페라떼</h3></div>
+            <div class="menu-card hot-vanilla-latte"><h3>HOT 바닐라라떼</h3></div>
+            <div class="menu-card ice-vanilla-latte"><h3>ICE 바닐라라떼</h3></div>
+            <div class="menu-card hot-dolce-latte"><h3>HOT 돌체라떼</h3></div>
+            <div class="menu-card ice-dolce-latte"><h3>ICE 돌체라떼</h3></div>
+            <div class="menu-card ainsupanner-latte"><h3>아인슈페너라떼</h3></div>
+          </div>
+        </div>
+
+        <!-- SMOOTHIE -->
+        <div class="menu-category" id="cat-smoothie">
+          <div class="menu-grid">
+            <div class="menu-card cheesecake-smoothie"><h3>딸기 치즈케이크 스무디</h3></div>
+            <div class="menu-card strawberry-smoothie"><h3>딸기스무디</h3></div>
+            <div class="menu-card mango-smoothie"><h3>망고스무디</h3></div>
+            <div class="menu-card blueberry-smoothie"><h3>블루베리스무디</h3></div>
+            <div class="menu-card yooja-smoothie"><h3>유자스무디</h3></div>
+            <div class="menu-card plain-yogurt-smoothie"><h3>플레인요거트스무디</h3></div>
+            <div class="menu-card blueberry-yogurt-smoothie"><h3>블루베리요거트스무디</h3></div>
+            <div class="menu-card strawberry-yogurt-smoothie"><h3>딸기요거트스무디</h3></div>
+            <div class="menu-card mango-yogurt-smoothie"><h3>망고요거트스무디</h3></div>
+          </div>
+        </div>
+
+        <!-- TEA -->
+        <div class="menu-category" id="cat-tea">
+          <div class="menu-grid">
+            <div class="menu-card ice-masil-tea"><h3>ICE 매실차</h3></div>
+            <div class="menu-card decaf-zero-iced-tea"><h3>디카페인 제로슈가 제로칼로리 아이스티</h3></div>
+            <div class="menu-card peach-espresso-tea"><h3>아샷추</h3></div>
+            <div class="menu-card black-tea"><h3>ICE 자몽허니블랙티</h3></div>
+            <div class="menu-card peppermint-tea"><h3>ICE 페퍼민트</h3></div>
+            <div class="menu-card chamomile-tea"><h3>ICE 캐모마일</h3></div>
+            <div class="menu-card rosemary-tea"><h3>ICE 로즈마리</h3></div>
+            <div class="menu-card earlgrey-tea"><h3>ICE 얼그레이</h3></div>
+          </div>
+        </div>
+
+        <!-- DESSERT -->
+        <div class="menu-category" id="cat-dessert">
+          <div class="menu-grid">
+            <div class="menu-card boonmoja"><h3>쫄깃 분모자 떡볶이</h3></div>
+            <div class="menu-card ham-sandwich"><h3>대파크림 햄샌드위치</h3></div>
+            <div class="menu-card chipotle-ham-sandwich"><h3>치폴레 햄샌드위치</h3></div>
+            <div class="menu-card bungeoppang"><h3>브라운 붕어 딕만스 쿠키</h3></div>
+            <div class="menu-card potato-bread"><h3>국산 감자빵</h3></div>
+            <div class="menu-card sweetpotato-bread"><h3>국산 고구마빵</h3></div>
+            <div class="menu-card cinnamon-waffle"><h3>시나몬카라멜와플</h3></div>
+            <div class="menu-card oreo-waffle"><h3>오레오생크림와플</h3></div>
+            <div class="menu-card apple-waffle"><h3>사과생크림와플</h3></div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="menu-content" id="season">
+        <div class="menu-grid">
+          <div class="menu-card yogurt-bingsu"><h3>망고 자몽 요거빙</h3></div>
+          <div class="menu-card watermelon-bingsu"><h3>연유 수박 팥빙</h3></div>
+          <div class="menu-card injeolmi-bingsu"><h3>인절미 컵빙</h3></div>
+          <div class="menu-card injeolmi-milkshake"><h3>팥절미 밀크쉐이크</h3></div>
+          <div class="menu-card choco-yogurt-smoothie"><h3>초코베리요거스무디</h3></div>
+          <div class="menu-card salted-cool-lychee"><h3>솔티드 쿨 리치</h3></div>
+          <div class="menu-card ice-buyeo-choco-latte"><h3>ICE 부여 밤 생초콜릿 라떼</h3></div>
+          <div class="menu-card ice-buyeo-bam-latte"><h3>ICE 부여 밤 라떼</h3></div>
+        </div>
+      </div>
+
+      <div class="menu-content" id="promotion">
+  <div class="promotion-marquee">
+    <div class="promotion-track">
+
+      <!-- 원본 -->
+      <div class="promotion-card event01"><div class="promotion-overlay"><a href="https://composecoffee.com/event/229303" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event02"><div class="promotion-overlay"><a href="https://composecoffee.com/event/296158" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event03"><div class="promotion-overlay"><a href="https://composecoffee.com/event/289909" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event04"><div class="promotion-overlay"><a href="https://composecoffee.com/event/274145" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event05"><div class="promotion-overlay"><a href="https://composecoffee.com/event/296506" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event06"><div class="promotion-overlay"><a href="https://composecoffee.com/event/243884" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event07"><div class="promotion-overlay"><a href="https://composecoffee.com/event/291563" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event08"><div class="promotion-overlay"><a href="https://composecoffee.com/event/287141" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event09"><div class="promotion-overlay"><a href="https://composecoffee.com/event/249466" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event01"><div class="promotion-overlay"><a href="https://composecoffee.com/event/229303" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event02"><div class="promotion-overlay"><a href="https://composecoffee.com/event/296158" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event03"><div class="promotion-overlay"><a href="https://composecoffee.com/event/289909" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event04"><div class="promotion-overlay"><a href="https://composecoffee.com/event/274145" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event05"><div class="promotion-overlay"><a href="https://composecoffee.com/event/296506" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event06"><div class="promotion-overlay"><a href="https://composecoffee.com/event/243884" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event07"><div class="promotion-overlay"><a href="https://composecoffee.com/event/291563" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event08"><div class="promotion-overlay"><a href="https://composecoffee.com/event/287141" target="_blank"><span>자세히 보기</span></a></div></div>
+      <div class="promotion-card event09"><div class="promotion-overlay"><a href="https://composecoffee.com/event/249466" target="_blank"><span>자세히 보기</span></a></div></div>
+      
+    </div>
+  </div>
+</div>
+    </section>
+
+    <footer include-html="footer.html"></footer>
+  </div>
+
+  <script src="js/includeHTML.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/sub-script.js"></script>
+  <script>
+    includeHTML(function () {
+      initAll();
+      if (typeof initMenu === 'function') initMenu();
+    });
+  </script>
+</body>
+</html>

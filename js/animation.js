@@ -667,8 +667,8 @@ const PROJECT_DETAILS = {
   zara: {
     figmaUrl:
       "https://www.figma.com/design/aK6cCABll232WEyJ1yIcSY/4-Onepage-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=21-2&t=cokYFQYkRYKMglhO-1",
-    siteUrl: "https://inser6604-wq.github.io/onepage/",
-    githubUrl: "https://github.com/inser6604-wq/onepage",
+    siteUrl: "projects/zara-onepage/",
+    githubUrl: "https://github.com/inser6604-wq/Zara-onepage",
     badge: "100% PERSONAL",
     tag: "PUBLISHING",
     titleLines: ["ZARA Onepage"],
@@ -724,7 +724,7 @@ const PROJECT_DETAILS = {
     sectionOrder: ["overview", "color-typography", "wireframe", "design-detail", "preview"],
   },
   compose: {
-    siteUrl: "https://compose.dothome.co.kr/",
+    siteUrl: "projects/compose-website/",
     githubUrl: "https://github.com/inser6604-wq/compose-website",
     badge: "100% PERSONAL",
     badgeColor: "#FFCC00",
@@ -797,8 +797,8 @@ const PROJECT_DETAILS = {
     sectionOrder: ["overview", "storyboard", "publishing-detail", "preview"],
   },
   aether: {
-    siteUrl: "https://cursor-vibe-coding-kappa.vercel.app/",
-    githubUrl: "https://github.com/inser6604-wq/cursor-vibe-coding",
+    siteUrl: "projects/aether-vibecoding/",
+    githubUrl: "https://github.com/inser6604-wq/aether-vibecoding",
     badge: "VIBE CODING",
     badgeColor: "#4D9FFF",
     tag: "PUBLISHING",
@@ -849,7 +849,7 @@ const PROJECT_DETAILS = {
   jejuvegan: {
     figmaUrl:
       "https://www.figma.com/design/DsApQ6nIvzU1U7OowP8Rkh/%ED%95%9C%EB%9D%BC%EB%B4%89%ED%8C%80-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B8%B0%ED%9A%8D?node-id=0-1&t=GO0JhWAC6mpX9hvj-1",
-    siteUrl: "https://kis0503.dothome.co.kr/",
+    siteUrl: "projects/jeju-vegan-project/",
     githubUrl: "https://github.com/inser6604-wq/jeju-vegan-project",
     badge: "TEAM PROJECT",
     badgeColor: "#c1121f",
@@ -936,7 +936,7 @@ const PROJECT_DETAILS = {
     sectionOrder: ["overview", "before-after", "planning", "color-typography", "publishing-detail", "preview"],
   },
   timo: {
-    siteUrl: "https://timo-sigma-six.vercel.app/#login",
+    siteUrl: "projects/timo/#login",
     githubUrl: "https://github.com/kaeunj/timo",
     badge: "TEAM PROJECT",
     badgeColor: "#6FE6C0",

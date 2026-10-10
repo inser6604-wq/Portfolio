@@ -1,0 +1,404 @@
+/* ===================================================
+   review.css — 프로젝트 리뷰 목록 + 리뷰 더보기
+   prefix: prv-  / rvm-  (다른 페이지와 충돌 없음)
+   =================================================== */
+
+/* ══════════════════════════════════════════════════
+   프로젝트 리뷰 목록  (data-page="project-review")
+   ══════════════════════════════════════════════════ */
+
+.prv-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-bg-base);
+  overflow: hidden;
+}
+
+/* 헤더 */
+.prv-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 23px 12px;
+  flex-shrink: 0;
+}
+
+.prv-header__back {
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.prv-header__back img {
+  width: 22px;
+  height: 22px;
+}
+
+.prv-header__more {
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.prv-header__more img {
+  width: 22px;
+  height: 22px;
+}
+
+/* 스크롤 본문 */
+.prv-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 23px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 프로필 섹션 */
+.prv-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 20px;
+}
+
+.prv-profile__top {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.prv-profile__avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.prv-profile__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prv-profile__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.prv-profile__name {
+  font-family: var(--font-body);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--color-black);
+  line-height: 1.5;
+}
+
+.prv-profile__role {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  padding: 3px 0 7px;
+}
+
+.prv-profile__type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--color-primary-light);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+/* 별점 */
+.prv-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prv-rating__stars {
+  display: flex;
+  gap: 2px;
+}
+
+.prv-rating__star {
+  font-size: 20px;
+}
+
+.prv-rating__score {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-black);
+}
+
+.prv-rating__total {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+}
+
+/* 구분선 */
+.prv-divider {
+  height: 1px;
+  background-color: var(--color-divider-light);
+  margin: 20px 0 0;
+}
+
+/* 리뷰 태그 섹션 */
+.prv-tags-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 0 20px;
+}
+
+.prv-tags__title {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-black);
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.prv-tags__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prv-tags__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.prv-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 17px;
+  border: 1.5px solid var(--color-primary-light);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-base);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.prv-tag--more {
+  background-color: var(--color-tag-more-bg);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  width: 44px;
+  padding: 0;
+}
+
+.prv-tag--more:active {
+  background-color: var(--color-primary-light);
+}
+
+/* 리뷰 목록 섹션 */
+.prv-list-title {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-black);
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.prv-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 리뷰 아이템 */
+.prv-item {
+  display: flex;
+  gap: 14px;
+  padding: 20px 0 17px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.prv-item:last-child {
+  border-bottom: none;
+}
+
+.prv-item__avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-black);
+  flex-shrink: 0;
+}
+
+.prv-item__avatar--primary { background-color: var(--color-primary-light); }
+.prv-item__avatar--cyan    { background-color: var(--color-avatar-cyan); }
+.prv-item__avatar--purple  { background-color: var(--color-avatar-purple); }
+
+.prv-item__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.prv-item__top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.prv-item__name {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.prv-item__stars {
+  display: flex;
+  gap: 2px;
+}
+
+.prv-item__star {
+  font-size: 14px;
+}
+
+.prv-item__star--gray {
+  filter: grayscale(1);
+}
+
+.prv-item__sub {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.prv-item__text {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════════════════
+   리뷰 더보기  (data-page="profile-review-more")
+   ══════════════════════════════════════════════════ */
+
+.rvm-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-bg-base);
+  overflow: hidden;
+}
+
+.rvm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 23px 12px;
+  flex-shrink: 0;
+}
+
+.rvm-header__back {
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.rvm-header__back img {
+  width: 22px;
+  height: 22px;
+}
+
+.rvm-header__more {
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.rvm-header__more img {
+  width: 22px;
+  height: 22px;
+}
+
+.rvm-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 23px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 리뷰 더보기 — 태그가 모두 펼쳐진 형태 */
+.rvm-tags__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.rvm-tags__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rvm-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 17px;
+  border: 1.5px solid var(--color-primary-light);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-base);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
